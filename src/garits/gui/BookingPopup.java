@@ -4,17 +4,17 @@ public class BookingPopup extends javax.swing.JFrame {
 
     public BookingPopup() {
         initComponents();
-        setVisible(true);
     }
-    
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         viewVehicleButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
         bookedField = new javax.swing.JTextField();
-        registrationField = new javax.swing.JTextField();
+        vehicleRegField = new javax.swing.JTextField();
         customerNameField = new javax.swing.JTextField();
-        finishedField = new javax.swing.JTextField();
+        dateFinishedField = new javax.swing.JTextField();
         customerSurnameField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -33,26 +33,107 @@ public class BookingPopup extends javax.swing.JFrame {
         typeBox = new javax.swing.JComboBox();
         paidForCheckbox = new javax.swing.JCheckBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         viewVehicleButton.setText("View Vehicle");
+        viewVehicleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewVehicleButtonActionPerformed(evt);
+            }
+        });
+
         saveButton.setText("Save");
+        saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveButtonActionPerformed(evt);
+            }
+        });
+
+        bookedField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bookedFieldActionPerformed(evt);
+            }
+        });
+
+        vehicleRegField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vehicleRegFieldActionPerformed(evt);
+            }
+        });
+
+        customerNameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerNameFieldActionPerformed(evt);
+            }
+        });
+
+        dateFinishedField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dateFinishedFieldActionPerformed(evt);
+            }
+        });
+
+        customerSurnameField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customerSurnameFieldActionPerformed(evt);
+            }
+        });
+
         jLabel1.setText("Customer Name");
+
         jLabel2.setText("Customer Surname");
+
         jLabel3.setText("Date Booked");
+
         jLabel4.setText("Date finished by");
+
         jLabel5.setText("Type");
+
         jLabel7.setText("Description");
+
         jLabel8.setText("Vehicle Registration");
+
         jLabel9.setText("Quoted Price");
+
         jLabel10.setText("Paid For");
+
+        priceField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                priceFieldActionPerformed(evt);
+            }
+        });
+
+        descriptionField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descriptionFieldActionPerformed(evt);
+            }
+        });
+
         jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel12.setText("Booking");
+
         viewCustomerButton.setText("View Customer");
+        viewCustomerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewCustomerButtonActionPerformed(evt);
+            }
+        });
+
         removeBookingButton.setText("Remove Booking");
+        removeBookingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeBookingButtonActionPerformed(evt);
+            }
+        });
+
         typeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         paidForCheckbox.setText("Paid");
+        paidForCheckbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paidForCheckboxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,7 +170,7 @@ public class BookingPopup extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(customerNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                                     .addComponent(descriptionField)
-                                    .addComponent(registrationField)
+                                    .addComponent(vehicleRegField)
                                     .addComponent(customerSurnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                                     .addComponent(typeBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(109, 109, 109)
@@ -102,7 +183,7 @@ public class BookingPopup extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(paidForCheckbox)
                                     .addComponent(bookedField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(finishedField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateFinishedField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(140, 140, 140)
@@ -126,7 +207,7 @@ public class BookingPopup extends javax.swing.JFrame {
                                 .addComponent(customerSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(registrationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vehicleRegField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -145,7 +226,7 @@ public class BookingPopup extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(finishedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateFinishedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -166,14 +247,98 @@ public class BookingPopup extends javax.swing.JFrame {
         );
 
         pack();
-    }                  
+    }// </editor-fold>                        
 
-    // Variables declaration                  
+    private void viewVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+    }                                                 
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }                                          
+
+    private void bookedFieldActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+    }                                           
+
+    private void vehicleRegFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                
+        // TODO add your handling code here:
+    }                                               
+
+    private void customerNameFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+    }                                                 
+
+    private void dateFinishedFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                  
+        // TODO add your handling code here:
+    }                                                 
+
+    private void customerSurnameFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                     
+        // TODO add your handling code here:
+    }                                                    
+
+    private void priceFieldActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+    }                                          
+
+    private void descriptionFieldActionPerformed(java.awt.event.ActionEvent evt) {                                                 
+        // TODO add your handling code here:
+    }                                                
+
+    private void viewCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
+        // TODO add your handling code here:
+    }                                                  
+
+    private void removeBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                    
+
+    }                                                   
+
+    private void paidForCheckboxActionPerformed(java.awt.event.ActionEvent evt) {                                                
+
+    }                                               
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(BookingPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(BookingPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(BookingPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(BookingPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new BookingPopup().setVisible(true);
+            }
+        });
+    }
+
+    // Variables declaration - do not modify                     
     private javax.swing.JTextField bookedField;
     private javax.swing.JTextField customerNameField;
     private javax.swing.JTextField customerSurnameField;
+    private javax.swing.JTextField dateFinishedField;
     private javax.swing.JTextField descriptionField;
-    private javax.swing.JTextField finishedField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -186,10 +351,11 @@ public class BookingPopup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JCheckBox paidForCheckbox;
     private javax.swing.JTextField priceField;
-    private javax.swing.JTextField registrationField;
     private javax.swing.JButton removeBookingButton;
     private javax.swing.JButton saveButton;
     private javax.swing.JComboBox typeBox;
+    private javax.swing.JTextField vehicleRegField;
     private javax.swing.JButton viewCustomerButton;
-    private javax.swing.JButton viewVehicleButton;                
+    private javax.swing.JButton viewVehicleButton;
+    // End of variables declaration                   
 }

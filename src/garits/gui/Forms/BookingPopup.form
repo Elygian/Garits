@@ -59,7 +59,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="customerNameField" pref="137" max="32767" attributes="0"/>
                                   <Component id="descriptionField" max="32767" attributes="0"/>
-                                  <Component id="registrationField" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="vehicleRegField" alignment="0" max="32767" attributes="0"/>
                                   <Component id="customerSurnameField" alignment="0" pref="137" max="32767" attributes="0"/>
                                   <Component id="typeBox" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -74,7 +74,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="paidForCheckbox" min="-2" max="-2" attributes="0"/>
                                   <Component id="bookedField" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <Component id="finishedField" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <Component id="dateFinishedField" min="-2" pref="137" max="-2" attributes="0"/>
                                   <Component id="priceField" min="-2" pref="137" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -107,7 +107,7 @@
                               <Component id="customerSurnameField" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="registrationField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="vehicleRegField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel8" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -131,7 +131,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="finishedField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dateFinishedField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -183,9 +183,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bookedFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="registrationField">
+    <Component class="javax.swing.JTextField" name="vehicleRegField">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrationFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vehicleRegFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="customerNameField">
@@ -193,9 +193,9 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customerNameFieldActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="finishedField">
+    <Component class="javax.swing.JTextField" name="dateFinishedField">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="finishedFieldActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dateFinishedFieldActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="customerSurnameField">
@@ -298,6 +298,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Paid"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="paidForCheckboxActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

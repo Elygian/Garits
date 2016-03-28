@@ -12,9 +12,9 @@ public class BookingPopup extends javax.swing.JFrame {
         viewVehicleButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
         bookedField = new javax.swing.JTextField();
-        registrationField = new javax.swing.JTextField();
+        vehicleRegField = new javax.swing.JTextField();
         customerNameField = new javax.swing.JTextField();
-        finishedField = new javax.swing.JTextField();
+        dateFinishedField = new javax.swing.JTextField();
         customerSurnameField = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -55,9 +55,9 @@ public class BookingPopup extends javax.swing.JFrame {
             }
         });
 
-        registrationField.addActionListener(new java.awt.event.ActionListener() {
+        vehicleRegField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrationFieldActionPerformed(evt);
+                vehicleRegFieldActionPerformed(evt);
             }
         });
 
@@ -67,9 +67,9 @@ public class BookingPopup extends javax.swing.JFrame {
             }
         });
 
-        finishedField.addActionListener(new java.awt.event.ActionListener() {
+        dateFinishedField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                finishedFieldActionPerformed(evt);
+                dateFinishedFieldActionPerformed(evt);
             }
         });
 
@@ -129,6 +129,11 @@ public class BookingPopup extends javax.swing.JFrame {
         typeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         paidForCheckbox.setText("Paid");
+        paidForCheckbox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                paidForCheckboxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -165,7 +170,7 @@ public class BookingPopup extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(customerNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                                     .addComponent(descriptionField)
-                                    .addComponent(registrationField)
+                                    .addComponent(vehicleRegField)
                                     .addComponent(customerSurnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                                     .addComponent(typeBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(109, 109, 109)
@@ -178,7 +183,7 @@ public class BookingPopup extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(paidForCheckbox)
                                     .addComponent(bookedField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(finishedField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateFinishedField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(140, 140, 140)
@@ -202,7 +207,7 @@ public class BookingPopup extends javax.swing.JFrame {
                                 .addComponent(customerSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(registrationField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(vehicleRegField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -221,7 +226,7 @@ public class BookingPopup extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(finishedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(dateFinishedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -256,17 +261,17 @@ public class BookingPopup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_bookedFieldActionPerformed
 
-    private void registrationFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrationFieldActionPerformed
+    private void vehicleRegFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleRegFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_registrationFieldActionPerformed
+    }//GEN-LAST:event_vehicleRegFieldActionPerformed
 
     private void customerNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerNameFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_customerNameFieldActionPerformed
 
-    private void finishedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finishedFieldActionPerformed
+    private void dateFinishedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateFinishedFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_finishedFieldActionPerformed
+    }//GEN-LAST:event_dateFinishedFieldActionPerformed
 
     private void customerSurnameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerSurnameFieldActionPerformed
         // TODO add your handling code here:
@@ -287,6 +292,10 @@ public class BookingPopup extends javax.swing.JFrame {
     private void removeBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBookingButtonActionPerformed
 
     }//GEN-LAST:event_removeBookingButtonActionPerformed
+
+    private void paidForCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paidForCheckboxActionPerformed
+
+    }//GEN-LAST:event_paidForCheckboxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,8 +337,8 @@ public class BookingPopup extends javax.swing.JFrame {
     private javax.swing.JTextField bookedField;
     private javax.swing.JTextField customerNameField;
     private javax.swing.JTextField customerSurnameField;
+    private javax.swing.JTextField dateFinishedField;
     private javax.swing.JTextField descriptionField;
-    private javax.swing.JTextField finishedField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel12;
@@ -342,10 +351,10 @@ public class BookingPopup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JCheckBox paidForCheckbox;
     private javax.swing.JTextField priceField;
-    private javax.swing.JTextField registrationField;
     private javax.swing.JButton removeBookingButton;
     private javax.swing.JButton saveButton;
     private javax.swing.JComboBox typeBox;
+    private javax.swing.JTextField vehicleRegField;
     private javax.swing.JButton viewCustomerButton;
     private javax.swing.JButton viewVehicleButton;
     // End of variables declaration//GEN-END:variables
