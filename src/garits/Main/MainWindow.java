@@ -332,9 +332,9 @@ public class MainWindow extends JFrame {
             ResultSet rs = ps.executeQuery();
             invoices = new ArrayList<>();
             while (rs.next()) {
-                String stockIDs = rs.getString("StockID");                
+                String stockIDs = rs.getString("StockID");
                 int ID = rs.getInt("InvoiceID");
-                String message = rs.getString("message");                
+                String message = rs.getString("message");
                 Customer customer = getCustomer(rs.getInt("CustomerID"));
                 Job job = getJob(rs.getInt("JobID"));
 
@@ -382,7 +382,7 @@ public class MainWindow extends JFrame {
         }
         return null;
     }
-    
+
     private Job getJob(int ID) {
         for (Job job : jobs) {
             if (job.ID == ID) {
@@ -392,6 +392,7 @@ public class MainWindow extends JFrame {
         return null;
     }
 //Create varius popups like BookingPopup
+
     public void showPopup(int type) {
         if (type == 0) {
             BookingPopup bookingPopup = new BookingPopup();
@@ -434,6 +435,7 @@ public class MainWindow extends JFrame {
         //populateJob();
         //populateVehicle();
         //populateReminder();
+        //populateJobInvoice();
 
     }
 
