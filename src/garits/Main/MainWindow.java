@@ -30,6 +30,7 @@ public class MainWindow extends JFrame {
     private ArrayList<Reminder> reminders;
     private ArrayList<Manufacturer> manufacturers;
     private ArrayList<User> users;
+    private ArrayList<JobInvoice> invoices;
 
     public MainWindow(String name) throws SQLException, ClassNotFoundException {
         super(name);
@@ -74,6 +75,7 @@ public class MainWindow extends JFrame {
         pack();
     }
 
+    /* Parse the results */
     private void parseStock(ArrayList<Stock> stocks) {
         DefaultTableModel stockTable = (DefaultTableModel) lists.stockList.getModel();
         cleanList(stockTable);
@@ -106,6 +108,15 @@ public class MainWindow extends JFrame {
         }
     }
 
+    private void parseUsers(ArrayList<User> users) {
+        DefaultTableModel usersTable = (DefaultTableModel) lists.usersList.getModel();
+        cleanList(usersTable);
+        for (User u : users) {
+            usersTable.addRow(new Object[]{u.fName, u.lName, u.DOB, u.email});
+        }
+    }
+
+    /* Clean the lists - fixes a bug */
     private void cleanList(DefaultTableModel model) {
 
         for (int i = model.getRowCount() - 1; i >= 0; i--) {
@@ -113,6 +124,7 @@ public class MainWindow extends JFrame {
         }
     }
 
+    /* Populate lists by fetching data from Database */
     private void populateCustomer() throws SQLException {
         if (con != null) {
             PreparedStatement ps
@@ -313,11 +325,34 @@ public class MainWindow extends JFrame {
         }
     }
 
-    private void parseUsers(ArrayList<User> users) {
-        DefaultTableModel usersTable = (DefaultTableModel) lists.usersList.getModel();
-        cleanList(usersTable);
-        for (User u : users) {
-            usersTable.addRow(new Object[]{u.fName, u.lName, u.DOB, u.email});
+    private void populateJobInvoice() throws SQLException {
+        if (con != null) {
+            PreparedStatement ps
+                    = con.prepareStatement("SELECT * FROM jobinvoice");
+            ResultSet rs = ps.executeQuery();
+            invoices = new ArrayList<>();
+            while (rs.next()) {
+                String stockIDs = rs.getString("StockID");                
+                int ID = rs.getInt("InvoiceID");
+                String message = rs.getString("message");                
+                Customer customer = getCustomer(rs.getInt("CustomerID"));
+                Job job = getJob(rs.getInt("JobID"));
+
+                ArrayList<Integer> count = new ArrayList<>();
+                while (stockIDs.contains(",")) {
+                    count.add(Integer.parseInt(stockIDs.substring(0, stockIDs.indexOf(","))));
+                    stockIDs = stockIDs.substring(stockIDs.indexOf(",") + 1);
+                }
+                count.add(Integer.parseInt(stockIDs));
+
+                Stock[] stockArray = new Stock[count.size()];
+                for (int i = 0; i < count.size(); i++) {
+                    stockArray[i] = getStock(count.get(i));
+                }
+
+                JobInvoice i = new JobInvoice(ID, message, customer, stockArray, job);
+                invoices.add(i);
+            }
         }
     }
 
@@ -347,7 +382,15 @@ public class MainWindow extends JFrame {
         }
         return null;
     }
-
+    
+    private Job getJob(int ID) {
+        for (Job job : jobs) {
+            if (job.ID == ID) {
+                return job;
+            }
+        }
+        return null;
+    }
 //Create varius popups like BookingPopup
     public void showPopup(int type) {
         if (type == 0) {
