@@ -64,7 +64,7 @@ public class MainWindow extends JFrame {
     public void showLists() {
         remove(mainGUI);
 
-        lists = new Lists();
+        lists = new Lists(this);
 
         add(lists);
 
