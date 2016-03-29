@@ -3,11 +3,7 @@ package Garits.Main;
 import Data.*;
 import Garits.GUI.BookingPopup;
 import Garits.GUI.Forms.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -427,10 +423,10 @@ public class MainWindow extends JFrame {
             System.out.println("Can't Connect at: " + URL);
         }
         showLists();
-        populateCustomer();
-        populateUsers();
-        populateManufacturer();
-        populateStock();
+        //populateCustomer();
+        //populateUsers();
+        //populateManufacturer();
+        //populateStock();
         populateBooking();
         //populateJob();
         //populateVehicle();
