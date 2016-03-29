@@ -235,7 +235,7 @@ public class MainWindow extends JFrame {
     private void populateVehicle() throws SQLException {
         if (con != null) {
             PreparedStatement ps
-                    = con.prepareStatement("SELECT * vehicle");
+                    = con.prepareStatement("SELECT * FROM vehicle");
             ResultSet rs = ps.executeQuery();
             vehicles = new ArrayList<>();
             while (rs.next()) {
@@ -423,15 +423,15 @@ public class MainWindow extends JFrame {
             System.out.println("Can't Connect at: " + URL);
         }
         showLists();
-        //populateCustomer();
-        //populateUsers();
-        //populateManufacturer();
-        //populateStock();
+        populateCustomer();
+        populateUsers();
+        populateManufacturer();
+        populateStock();
         populateBooking();
-        //populateJob();
-        //populateVehicle();
-        //populateReminder();
-        //populateJobInvoice();
+        populateJob();
+        populateVehicle();
+        populateReminder();
+        populateJobInvoice();
 
     }
 

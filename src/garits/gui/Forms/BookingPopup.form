@@ -23,69 +23,57 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace pref="25" max="32767" attributes="0"/>
+              <Component id="viewCustomerButton" min="-2" pref="141" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="viewVehicleButton" min="-2" pref="141" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="removeBookingButton" min="-2" pref="141" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="saveButton" min="-2" pref="146" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
-                      <Component id="viewCustomerButton" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="viewVehicleButton" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="removeBookingButton" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="saveButton" min="-2" pref="146" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <Component id="customerNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerSurnameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="descriptionLabel" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
+                  <Component id="typeLabel" min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="vehicleRegLabel" min="-2" pref="97" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="customerNameField" pref="137" max="32767" attributes="0"/>
+                          <Component id="descriptionField" max="32767" attributes="0"/>
+                          <Component id="vehicleRegField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="customerSurnameField" alignment="0" pref="137" max="32767" attributes="0"/>
+                          <Component id="typeBox" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="dateBookedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dateDueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="quotedPriceLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="paidForLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="paidForCheckbox" min="-2" max="-2" attributes="0"/>
+                          <Component id="bookedField" min="-2" pref="137" max="-2" attributes="0"/>
+                          <Component id="dateFinishedField" min="-2" pref="137" max="-2" attributes="0"/>
+                          <Component id="priceField" min="-2" pref="137" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="customerNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="customerSurnameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="descriptionLabel" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <Component id="typeLabel" min="-2" pref="24" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="vehicleRegLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="customerNameField" pref="137" max="32767" attributes="0"/>
-                                  <Component id="descriptionField" max="32767" attributes="0"/>
-                                  <Component id="vehicleRegField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="customerSurnameField" alignment="0" pref="137" max="32767" attributes="0"/>
-                                  <Component id="typeBox" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="dateBookedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="dateDueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="quotedPriceLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="paidForLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="paidForCheckbox" min="-2" max="-2" attributes="0"/>
-                                  <Component id="bookedField" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <Component id="dateFinishedField" min="-2" pref="137" max="-2" attributes="0"/>
-                                  <Component id="priceField" min="-2" pref="137" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
-                              <Component id="bookingTitleLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="140" max="-2" attributes="0"/>
+                      <Component id="bookingTitleLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
