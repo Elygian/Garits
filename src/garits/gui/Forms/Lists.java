@@ -5,7 +5,6 @@
  */
 package Garits.GUI.Forms;
 
-//import Garits.Main.MainWindow;
 import Garits.Main.MainWindow;
 
 public class Lists extends javax.swing.JPanel {
@@ -685,7 +684,7 @@ public class Lists extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        //main.showPopup(0);// TODO add your handling code here:
+        main.showPopup(0);// TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
 

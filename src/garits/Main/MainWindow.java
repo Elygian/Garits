@@ -392,9 +392,8 @@ public class MainWindow extends JFrame {
     public void bookingPopupSave() throws SQLException {
         if (con != null) {
             PreparedStatement ps = con.prepareStatement("INSERT "
-                    + "type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor"
-                    + "INTO booking WHERE"
-                    + "type = ?, description = ?, dateBooked = ?, expectedCompletionDate = ?, quotedPrice = ?, paidFor = ?");
+                    + "type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor INTO booking "
+                    + "VALUES('?', '?', '?', '?', '?', '?')";
             if (doesCustomerExist(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), bookingPopup.DOBTextField.getText())) {
                 ps.setString(1, bookingPopup.typeBox.getSelectedItem().toString());
                 ps.setString(2, bookingPopup.descriptionField.getText());
@@ -402,18 +401,19 @@ public class MainWindow extends JFrame {
                 ps.setString(4, bookingPopup.dateFinishedField.getText());
                 ps.setString(5, bookingPopup.priceField.getText());
                 ps.setString(6, Boolean.toString(bookingPopup.paidForCheckbox.isSelected()));
+                ps.executeQuery();
                 System.out.println("Booking added to database");
             } else {
                 System.out.println("Booking failed");
             }
-            ps.executeQuery();
         }
     }
 
     //Create varius popups like BookingPopup
     public void showPopup(int type) {
         if (type == 0) {
-            new BookingPopup();
+            bookingPopup = new BookingPopup(this);
+            bookingPopup.setVisible(true);
         } else if (type == 1) {
             CustomerAccountsPopup customerAccounts = new CustomerAccountsPopup();
         } else if (type == 2) {
