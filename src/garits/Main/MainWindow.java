@@ -390,14 +390,16 @@ public class MainWindow extends JFrame {
     }
 
     /* Making the buttons in the GUI work */
-   /* public void bookingPopupSave() throws SQLException {
+    /*public void bookingPopupSave() throws SQLException {
         if (con != null) {
             PreparedStatement ps = con.prepareStatement("INSERT "
                     + "type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor"
                     + "INTO booking WHERE"
                     + "");
+            if(doesCustomerExist(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), bookingPopup.DOBTextField.getText())){
             ps.setString(1, bookingPopup.customerNameField.getText());
             ps.setString(2, bookingPopup.customerSurnameField.getText());
+            ps.setString(3, bookingPopup.DOBTextField.getText());
             ps.setString(3, bookingPopup.vehicleRegField.getText());
             ps.setString(4, bookingPopup.typeBox.getSelectedItem().toString());
             ps.setString(5, bookingPopup.descriptionField.getText());
@@ -405,6 +407,10 @@ public class MainWindow extends JFrame {
             ps.setString(7, bookingPopup.dateFinishedField.getText());
             ps.setString(8, bookingPopup.priceField.getText());
             ps.setString(9, Boolean.toString(bookingPopup.paidForCheckbox.isSelected()));
+            System.out.println("Booking added to database");
+            }else{
+                System.out.println("Booking failed");
+            }
 
             ResultSet rs = ps.executeQuery();
         }
@@ -484,5 +490,16 @@ public class MainWindow extends JFrame {
         } else {
             mainGUI.redLabel.setText("Incorrect Username or Password");
         }
+    }
+    
+    private boolean doesCustomerExist(String name, String surname, String dob){
+        for(Customer customer: customers){
+            if((customer.fName == null ? name == null : customer.fName.equals(name))
+                    || (customer.lName == null ? surname == null : customer.lName.equals(surname))
+                    || (customer.dob == null ? dob == null : customer.dob.equals(dob))){
+                return true;
+            }
+        }        
+        return false;
     }
 }
