@@ -336,7 +336,7 @@ public class BookingPopup extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bookedField;
     private javax.swing.JLabel bookingTitleLabel;
-    private javax.swing.JTextField customerNameField;
+    public javax.swing.JTextField customerNameField;
     private javax.swing.JLabel customerNameLabel;
     private javax.swing.JTextField customerSurnameField;
     private javax.swing.JLabel customerSurnameLabel;
