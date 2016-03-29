@@ -5,17 +5,23 @@
  */
 package Garits.GUI.Forms;
 
+import Garits.Main.MainWindow;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author KSA
  */
 public class JobsPopUp extends javax.swing.JFrame {
-
+    MainWindow main;
     /**
      * Creates new form JobsPopUp
      */
-    public JobsPopUp() {
+    public JobsPopUp(MainWindow main) {
         initComponents();
+        this.main = main;
     }
 
     /**
@@ -319,7 +325,11 @@ public class JobsPopUp extends javax.swing.JFrame {
     }//GEN-LAST:event_createInvoiceButtonActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+                try {
+            main.jobsPopupSave();// TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(JobsPopUp.class.getName()).log(Level.SEVERE, null, ex);
+        }// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void makeTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_makeTextFieldActionPerformed
@@ -362,70 +372,36 @@ public class JobsPopUp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_viewVehicleButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JobsPopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JobsPopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JobsPopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JobsPopUp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new JobsPopUp().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Day;
+    public javax.swing.JComboBox<String> Day;
     private javax.swing.JButton createInvoiceButton;
     private javax.swing.JLabel customerNameLabel;
-    private javax.swing.JTextField customerNameTextField;
+    public javax.swing.JTextField customerNameTextField;
     private javax.swing.JLabel dateBookedLabel;
     private javax.swing.JLabel descriptionLabel;
-    private javax.swing.JTextArea descriptionTextField;
+    public javax.swing.JTextArea descriptionTextField;
     private javax.swing.JLabel estTimeLabel;
-    private javax.swing.JTextField estTimeTextField;
+    public javax.swing.JTextField estTimeTextField;
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
+    public javax.swing.JComboBox<String> jComboBox2;
+    public javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jobNumberLabel;
-    private javax.swing.JTextField jobNumberTextField;
+    public javax.swing.JTextField jobNumberTextField;
     private javax.swing.JLabel jobTitleLabel;
     private javax.swing.JLabel makeLabel;
-    private javax.swing.JTextField makeTextField;
+    public javax.swing.JTextField makeTextField;
     private javax.swing.JLabel modelLabel;
-    private javax.swing.JTextField modelTextField;
+    public javax.swing.JTextField modelTextField;
     private javax.swing.JLabel sparePartsLabel;
-    private javax.swing.JTextField sparePartsTextField;
+    public javax.swing.JTextField sparePartsTextField;
     private javax.swing.JLabel tNumberLabel;
-    private javax.swing.JTextField tNumberTextField;
-    private javax.swing.JTextField timeTakeTextField;
+    public javax.swing.JTextField tNumberTextField;
+    public javax.swing.JTextField timeTakeTextField;
     private javax.swing.JLabel timeTakenLabel;
     private javax.swing.JLabel vehicleRegLabel;
-    private javax.swing.JTextField vehicleRegTextField;
+    public javax.swing.JTextField vehicleRegTextField;
     private javax.swing.JButton viewVehicleButton;
     // End of variables declaration//GEN-END:variables
 }

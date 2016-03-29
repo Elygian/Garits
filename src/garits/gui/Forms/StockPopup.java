@@ -5,17 +5,23 @@
  */
 package Garits.GUI.Forms;
 
+import Garits.Main.MainWindow;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author KSA
  */
 public class StockPopup extends javax.swing.JFrame {
-
+    MainWindow main;
     /**
      * Creates new form CustomerAccountsPopup
      */
-    public StockPopup() {
+    public StockPopup(MainWindow main) {
         initComponents();
+        this.main = main;
     }
 
     /**
@@ -230,7 +236,11 @@ public class StockPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_viewManufacturerButtonActionPerformed
 
     private void saveManufacturerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveManufacturerButtonActionPerformed
-        // TODO add your handling code here:
+    try {
+            main.stockPopupSave();// TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(StockPopup.class.getName()).log(Level.SEVERE, null, ex);
+        }// TODO add your handling cod        // TODO add your handling code here:        // TODO add your handling code here:
     }//GEN-LAST:event_saveManufacturerButtonActionPerformed
 
     private void pendingDateTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pendingDateTextFieldActionPerformed
@@ -260,62 +270,27 @@ public class StockPopup extends javax.swing.JFrame {
     private void manuNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manuNameTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_manuNameTextFieldActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StockPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StockPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StockPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StockPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new StockPopup().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel manuNameLabel;
-    private javax.swing.JTextField manuNameTextField;
+    public javax.swing.JTextField manuNameTextField;
     private javax.swing.JLabel partNameLabel;
-    private javax.swing.JTextField partNameTextField;
+    public javax.swing.JTextField partNameTextField;
     private javax.swing.JLabel pendingDateLabel;
-    private javax.swing.JTextField pendingDateTextField;
+    public javax.swing.JTextField pendingDateTextField;
     private javax.swing.JLabel pendingQuantityLabel;
-    private javax.swing.JTextField pendingQuantityTextField;
+    public javax.swing.JTextField pendingQuantityTextField;
     private javax.swing.JLabel priceLabel;
-    private javax.swing.JTextField priceTextField;
+    public javax.swing.JTextField priceTextField;
     private javax.swing.JButton saveManufacturerButton;
     private javax.swing.JLabel stockTitleLabel;
     private javax.swing.JLabel thresholdLabel;
-    private javax.swing.JTextField thresholdTextField;
-    private javax.swing.JComboBox vTypeBox;
+    public javax.swing.JTextField thresholdTextField;
+    public javax.swing.JComboBox vTypeBox;
     private javax.swing.JLabel vTypeLabel;
     private javax.swing.JButton viewManufacturerButton;
     private javax.swing.JLabel yearsLabel;
-    private javax.swing.JTextField yearsTextBox;
+    public javax.swing.JTextField yearsTextBox;
     // End of variables declaration//GEN-END:variables
 }

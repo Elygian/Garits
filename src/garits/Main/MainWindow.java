@@ -13,6 +13,12 @@ public class MainWindow extends JFrame {
     private MainGUI mainGUI;
     private Lists lists;
     private BookingPopup bookingPopup;
+    private CustomerAccountsPopup customersPopup;
+    private JobsPopUp jobsPopUp;
+    private ManufacturerPopup manufacturerPopup;
+    private StockPopup stockPopup;
+    private UserPopup userPopup;
+    private VehiclePopup vehiclePopup;
     private static final String URL = ("jdbc:mysql://173.194.234.254:3306/garits?user=team");
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -391,9 +397,9 @@ public class MainWindow extends JFrame {
     /* Making the buttons in the GUI work */
     public void bookingPopupSave() throws SQLException {
         if (con != null) {
-            PreparedStatement ps = con.prepareStatement("INSERT "
-                    + "type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor INTO booking "
-                    + "VALUES('?', '?', '?', '?', '?', '?')";
+            PreparedStatement ps = con.prepareStatement("INSERT INTO bookings "
+                    + "(type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor) "
+                    + "VALUES(?, ?, ?, ?, ?, ?)");
             if (doesCustomerExist(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), bookingPopup.DOBTextField.getText())) {
                 ps.setString(1, bookingPopup.typeBox.getSelectedItem().toString());
                 ps.setString(2, bookingPopup.descriptionField.getText());
@@ -401,11 +407,106 @@ public class MainWindow extends JFrame {
                 ps.setString(4, bookingPopup.dateFinishedField.getText());
                 ps.setString(5, bookingPopup.priceField.getText());
                 ps.setString(6, Boolean.toString(bookingPopup.paidForCheckbox.isSelected()));
-                ps.executeQuery();
+                ps.executeUpdate();
                 System.out.println("Booking added to database");
             } else {
                 System.out.println("Booking failed");
             }
+        }
+    }
+
+    public void customerPopupSave() throws SQLException {
+        if (con != null) {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO customer "
+                    + "(CustomerID, dateRegistered, fName, lName, cName, dob, address, city, pCode, tNumber, faxNumber) "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
+//            ps.setInt(1, customersPopup.customerIDTextField.getText().);
+            ps.setString(2, customersPopup.dateRegisteredTextField.getText());
+            ps.setString(3, customersPopup.fNameTextField.getText());
+            ps.setString(4, customersPopup.lNameTextField.getText());
+            ps.setString(5, customersPopup.cNameTextField.getText());
+            //  ps.setInt(6, customersPopup.dobTextField.getText());
+            ps.setString(7, customersPopup.addressTextField1.getText());
+            //ps.setString(5, customersPopup.addressTextField2.getText());
+            ps.setString(8, customersPopup.cityTextField.getText());
+            ps.setString(9, customersPopup.pCodeTextField.getText());
+            ps.setString(10, customersPopup.tNumberTextField.getText());
+            ps.setString(11, customersPopup.fNumberTextField.getText());
+            ps.executeUpdate();
+            System.out.println("Customer Added");
+        } else {
+            System.out.println("Customer Already Exists");
+        }
+    }
+
+    public void jobsPopupSave() throws SQLException {
+        if (con != null) {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO job "
+                    + "() "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
+            ps.setString(1, jobsPopUp.jobNumberTextField.getText());
+            ps.executeUpdate();
+            System.out.println("Job Added");
+        } else {
+            System.out.println("Job Already Exists");
+        }
+    }
+
+    public void manufacturerPopupSave() throws SQLException {
+        if (con != null) {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO manufacturer "
+                    + "() "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
+            ps.setString(1, manufacturerPopup.nameTextField.getText());
+            ps.executeUpdate();
+            System.out.println("Manufacturer Added");
+        } else {
+            System.out.println("Manufacturer Already Exists");
+        }
+    }
+
+    public void stockPopupSave() throws SQLException {
+        if (con != null) {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO stock "
+                    + "() "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
+            ps.setString(1, stockPopup.partNameTextField.getText());
+            ps.executeUpdate();
+            System.out.println("Stock Added");
+        } else {
+            System.out.println("Stock Already Exists");
+        }
+    }
+
+    public void userPopupSave() throws SQLException {
+        if (con != null) {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO users "
+                    + "() "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
+            ps.setString(1, userPopup.employeeIDTextField.getText());
+            ps.executeUpdate();
+            System.out.println("User Added");
+        } else {
+            System.out.println("User Already Exists");
+        }
+    }
+
+    public void vehiclePopupSave() throws SQLException {
+        if (con != null) {
+            PreparedStatement ps = con.prepareStatement("INSERT INTO vehicle "
+                    + "() "
+                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
+            ps.setString(1, vehiclePopup.mileageTextField.getText());
+            ps.executeUpdate();
+            System.out.println("Vehicle Added");
+        } else {
+            System.out.println("Vehicle Already Exists");
         }
     }
 
@@ -415,15 +516,23 @@ public class MainWindow extends JFrame {
             bookingPopup = new BookingPopup(this);
             bookingPopup.setVisible(true);
         } else if (type == 1) {
-            CustomerAccountsPopup customerAccounts = new CustomerAccountsPopup();
+            customersPopup = new CustomerAccountsPopup(this);
+            customersPopup.setVisible(true);
         } else if (type == 2) {
-            JobsPopUp jobsPopUp = new JobsPopUp();
+            jobsPopUp = new JobsPopUp(this);
+            jobsPopUp.setVisible(true);
         } else if (type == 3) {
-            ManufacturerPopup manufacturerPopup = new ManufacturerPopup();
+            manufacturerPopup = new ManufacturerPopup(this);
+            manufacturerPopup.setVisible(true);
         } else if (type == 4) {
-            StockPopup stockPopup = new StockPopup();
+            stockPopup = new StockPopup(this);
+            stockPopup.setVisible(true);
         } else if (type == 5) {
-            VehiclePopup vehiclePopup = new VehiclePopup();
+            userPopup = new UserPopup(this);
+            userPopup.setVisible(true);
+        } else if (type == 6) {
+            vehiclePopup = new VehiclePopup(this);
+            vehiclePopup.setVisible(true);
         }
     }
 

@@ -5,17 +5,23 @@
  */
 package Garits.GUI.Forms;
 
+import Garits.Main.MainWindow;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author KSA
  */
 public class UserPopup extends javax.swing.JFrame {
-
+MainWindow main;
     /**
      * Creates new form CustomerAccountsPopup
      */
-    public UserPopup() {
+    public UserPopup(MainWindow main) {
         initComponents();
+        this.main = main;
     }
 
     /**
@@ -277,7 +283,11 @@ public class UserPopup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveUserButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            main.userPopupSave();// TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(UserPopup.class.getName()).log(Level.SEVERE, null, ex);
+        }// TODO add your handling code here:
     }//GEN-LAST:event_saveUserButtonActionPerformed
 
     private void addressTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTextFieldActionPerformed
@@ -328,50 +338,15 @@ public class UserPopup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField13ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UserPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UserPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UserPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UserPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new UserPopup().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addressTextField;
-    private javax.swing.JTextField addressTextField2;
-    private javax.swing.JTextField cityTextField;
-    private javax.swing.JTextField dobTextField;
-    private javax.swing.JTextField employeeIDTextField;
-    private javax.swing.JTextField fNameTextField;
-    private javax.swing.JTextField fNumberTextField;
+    public javax.swing.JTextField addressTextField;
+    public javax.swing.JTextField addressTextField2;
+    public javax.swing.JTextField cityTextField;
+    public javax.swing.JTextField dobTextField;
+    public javax.swing.JTextField employeeIDTextField;
+    public javax.swing.JTextField fNameTextField;
+    public javax.swing.JTextField fNumberTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -381,12 +356,12 @@ public class UserPopup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField lNameTextField;
-    private javax.swing.JTextField pCodeTextField;
+    public javax.swing.JTextField jTextField13;
+    public javax.swing.JTextField lNameTextField;
+    public javax.swing.JTextField pCodeTextField;
     private javax.swing.JButton removeUserButton;
     private javax.swing.JButton saveUserButton;
-    private javax.swing.JTextField tNumberTextField;
+    public javax.swing.JTextField tNumberTextField;
     private javax.swing.JLabel userTitleLabel;
     // End of variables declaration//GEN-END:variables
 }

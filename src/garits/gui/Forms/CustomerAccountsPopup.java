@@ -5,17 +5,26 @@
  */
 package Garits.GUI.Forms;
 
+import Garits.Main.MainWindow;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author KSA
  */
 public class CustomerAccountsPopup extends javax.swing.JFrame {
 
+    MainWindow main;
+
     /**
      * Creates new form CustomerAccountsPopup
+     * @param main
      */
-    public CustomerAccountsPopup() {
+    public CustomerAccountsPopup(MainWindow main) {
         initComponents();
+        this.main = main;
     }
 
     /**
@@ -51,7 +60,7 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         pCodeTextField = new javax.swing.JTextField();
         dobTextField = new javax.swing.JTextField();
         tNumberTextField = new javax.swing.JTextField();
-        cNumberTextField = new javax.swing.JTextField();
+        cNameTextField = new javax.swing.JTextField();
         customerTitleLabel = new javax.swing.JLabel();
         removeCustomerButton = new javax.swing.JButton();
         vehicleRegLabel = new javax.swing.JLabel();
@@ -161,9 +170,9 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
             }
         });
 
-        cNumberTextField.addActionListener(new java.awt.event.ActionListener() {
+        cNameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cNumberTextFieldActionPerformed(evt);
+                cNameTextFieldActionPerformed(evt);
             }
         });
 
@@ -218,7 +227,7 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                                         .addComponent(addressTextField1)
                                         .addComponent(fNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                                         .addComponent(addressTextField2))
-                                    .addComponent(cNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(cNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(109, 109, 109)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -289,7 +298,7 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                                     .addComponent(telephoneLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(cNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(cNameLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
@@ -340,7 +349,11 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_viewVehicleButtonActionPerformed
 
     private void saveCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCustomerButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            main.customerPopupSave();// TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerAccountsPopup.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_saveCustomerButtonActionPerformed
 
     private void dateRegisteredTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateRegisteredTextFieldActionPerformed
@@ -387,9 +400,9 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tNumberTextFieldActionPerformed
 
-    private void cNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cNumberTextFieldActionPerformed
+    private void cNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cNameTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cNumberTextFieldActionPerformed
+    }//GEN-LAST:event_cNameTextFieldActionPerformed
 
     private void removeCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeCustomerButtonActionPerformed
         // TODO add your handling code here:
@@ -399,70 +412,36 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_vehicleRegTextFieldActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CustomerAccountsPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CustomerAccountsPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CustomerAccountsPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CustomerAccountsPopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CustomerAccountsPopup().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
-    private javax.swing.JTextField addressTextField1;
-    private javax.swing.JTextField addressTextField2;
+    public javax.swing.JTextField addressTextField1;
+    public javax.swing.JTextField addressTextField2;
     private javax.swing.JLabel cNameLabel;
-    private javax.swing.JTextField cNumberTextField;
+    public javax.swing.JTextField cNameTextField;
     private javax.swing.JLabel cityLabel;
-    private javax.swing.JTextField cityTextField;
+    public javax.swing.JTextField cityTextField;
     private javax.swing.JLabel customerIDLabel;
-    private javax.swing.JTextField customerIDTextField;
+    public javax.swing.JTextField customerIDTextField;
     private javax.swing.JLabel customerTitleLabel;
     private javax.swing.JLabel dateRegisteredLabel;
-    private javax.swing.JTextField dateRegisteredTextField;
+    public javax.swing.JTextField dateRegisteredTextField;
     private javax.swing.JLabel dobLabel;
-    private javax.swing.JTextField dobTextField;
+    public javax.swing.JTextField dobTextField;
     private javax.swing.JLabel fNameLabel;
-    private javax.swing.JTextField fNameTextField;
-    private javax.swing.JTextField fNumberTextField;
+    public javax.swing.JTextField fNameTextField;
+    public javax.swing.JTextField fNumberTextField;
     private javax.swing.JLabel faxLabel;
     private javax.swing.JLabel lNameLabel;
-    private javax.swing.JTextField lNameTextField;
+    public javax.swing.JTextField lNameTextField;
     private javax.swing.JLabel pCodeLabel;
-    private javax.swing.JTextField pCodeTextField;
+    public javax.swing.JTextField pCodeTextField;
     private javax.swing.JButton removeCustomerButton;
     private javax.swing.JButton saveCustomerButton;
-    private javax.swing.JTextField tNumberTextField;
+    public javax.swing.JTextField tNumberTextField;
     private javax.swing.JLabel telephoneLabel;
     private javax.swing.JLabel vehicleRegLabel;
-    private javax.swing.JTextField vehicleRegTextField;
+    public javax.swing.JTextField vehicleRegTextField;
     private javax.swing.JButton viewVehicleButton;
     // End of variables declaration//GEN-END:variables
 }

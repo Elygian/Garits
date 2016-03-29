@@ -5,17 +5,23 @@
  */
 package Garits.GUI.Forms;
 
+import Garits.Main.MainWindow;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author KSA
  */
 public class VehiclePopup extends javax.swing.JFrame {
-
+MainWindow main;
     /**
      * Creates new form CustomerAccountsPopup
      */
-    public VehiclePopup() {
+    public VehiclePopup(MainWindow main) {
         initComponents();
+        this.main = main;
     }
 
     /**
@@ -214,7 +220,11 @@ public class VehiclePopup extends javax.swing.JFrame {
     }//GEN-LAST:event_removeVehicleButtonActionPerformed
 
     private void saveVehicleButtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveVehicleButtoActionPerformed
-        // TODO add your handling code here:
+            try {
+            main.vehiclePopupSave();// TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(VehiclePopup.class.getName()).log(Level.SEVERE, null, ex);
+        }// TODO add your handling code here:        // TODO add your handling code here:
     }//GEN-LAST:event_saveVehicleButtoActionPerformed
 
     private void mileageTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mileageTextFieldActionPerformed
@@ -245,46 +255,10 @@ public class VehiclePopup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_colorTextFieldActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VehiclePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VehiclePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VehiclePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VehiclePopup.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VehiclePopup().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField chasisNumberTextField;
-    private javax.swing.JTextField colorTextField;
-    private javax.swing.JTextField engSerialNumberTextField;
+    public javax.swing.JTextField chasisNumberTextField;
+    public javax.swing.JTextField colorTextField;
+    public javax.swing.JTextField engSerialNumberTextField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
@@ -293,10 +267,10 @@ public class VehiclePopup extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField makeTextField;
-    private javax.swing.JTextField mileageTextField;
-    private javax.swing.JTextField modelTextField;
-    private javax.swing.JTextField regNumberTextField;
+    public javax.swing.JTextField makeTextField;
+    public javax.swing.JTextField mileageTextField;
+    public javax.swing.JTextField modelTextField;
+    public javax.swing.JTextField regNumberTextField;
     private javax.swing.JButton removeVehicleButton;
     private javax.swing.JButton saveVehicleButto;
     // End of variables declaration//GEN-END:variables
