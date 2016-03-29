@@ -16,18 +16,18 @@ public class BookingPopup extends javax.swing.JFrame {
         customerNameField = new javax.swing.JTextField();
         dateFinishedField = new javax.swing.JTextField();
         customerSurnameField = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        customerNameLabel = new javax.swing.JLabel();
+        customerSurnameLabel = new javax.swing.JLabel();
+        dateBookedLabel = new javax.swing.JLabel();
+        dateDueLabel = new javax.swing.JLabel();
+        typeLabel = new javax.swing.JLabel();
+        descriptionLabel = new javax.swing.JLabel();
+        vehicleRegLabel = new javax.swing.JLabel();
+        quotedPriceLabel = new javax.swing.JLabel();
+        paidForLabel = new javax.swing.JLabel();
         priceField = new javax.swing.JTextField();
         descriptionField = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
+        bookingTitleLabel = new javax.swing.JLabel();
         viewCustomerButton = new javax.swing.JButton();
         removeBookingButton = new javax.swing.JButton();
         typeBox = new javax.swing.JComboBox();
@@ -79,23 +79,23 @@ public class BookingPopup extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Customer Name");
+        customerNameLabel.setText("Customer Name");
 
-        jLabel2.setText("Customer Surname");
+        customerSurnameLabel.setText("Customer Surname");
 
-        jLabel3.setText("Date Booked");
+        dateBookedLabel.setText("Date Booked");
 
-        jLabel4.setText("Date finished by");
+        dateDueLabel.setText("Date finished by");
 
-        jLabel5.setText("Type");
+        typeLabel.setText("Type");
 
-        jLabel7.setText("Description");
+        descriptionLabel.setText("Description");
 
-        jLabel8.setText("Vehicle Registration");
+        vehicleRegLabel.setText("Vehicle Registration");
 
-        jLabel9.setText("Quoted Price");
+        quotedPriceLabel.setText("Quoted Price");
 
-        jLabel10.setText("Paid For");
+        paidForLabel.setText("Paid For");
 
         priceField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,8 +109,8 @@ public class BookingPopup extends javax.swing.JFrame {
             }
         });
 
-        jLabel12.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
-        jLabel12.setText("Booking");
+        bookingTitleLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        bookingTitleLabel.setText("Booking");
 
         viewCustomerButton.setText("View Customer");
         viewCustomerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -157,13 +157,13 @@ public class BookingPopup extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(customerNameLabel)
+                                    .addComponent(customerSurnameLabel)
+                                    .addComponent(descriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(typeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(24, 24, 24))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel8)
+                                .addComponent(vehicleRegLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -175,10 +175,10 @@ public class BookingPopup extends javax.swing.JFrame {
                                     .addComponent(typeBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(109, 109, 109)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel10))
+                                    .addComponent(dateBookedLabel)
+                                    .addComponent(dateDueLabel)
+                                    .addComponent(quotedPriceLabel)
+                                    .addComponent(paidForLabel))
                                 .addGap(23, 23, 23)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(paidForCheckbox)
@@ -187,7 +187,7 @@ public class BookingPopup extends javax.swing.JFrame {
                                     .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(140, 140, 140)
-                                .addComponent(jLabel12)))
+                                .addComponent(bookingTitleLabel)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -196,7 +196,7 @@ public class BookingPopup extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel12)
+                        .addComponent(bookingTitleLabel)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
@@ -208,33 +208,33 @@ public class BookingPopup extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(vehicleRegField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(vehicleRegLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
+                                    .addComponent(typeLabel)
                                     .addComponent(typeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(6, 6, 6)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(descriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))
+                                    .addComponent(descriptionLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
+                                    .addComponent(customerNameLabel)
                                     .addComponent(bookedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel3))
+                                    .addComponent(dateBookedLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel2)
+                                    .addComponent(customerSurnameLabel)
                                     .addComponent(dateFinishedField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4))
+                                    .addComponent(dateDueLabel))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel9)
+                                    .addComponent(quotedPriceLabel)
                                     .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(8, 8, 8)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel10)
+                                    .addComponent(paidForLabel)
                                     .addComponent(paidForCheckbox))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -335,26 +335,26 @@ public class BookingPopup extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bookedField;
+    private javax.swing.JLabel bookingTitleLabel;
     private javax.swing.JTextField customerNameField;
+    private javax.swing.JLabel customerNameLabel;
     private javax.swing.JTextField customerSurnameField;
+    private javax.swing.JLabel customerSurnameLabel;
+    private javax.swing.JLabel dateBookedLabel;
+    private javax.swing.JLabel dateDueLabel;
     private javax.swing.JTextField dateFinishedField;
     private javax.swing.JTextField descriptionField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel descriptionLabel;
     private javax.swing.JCheckBox paidForCheckbox;
+    private javax.swing.JLabel paidForLabel;
     private javax.swing.JTextField priceField;
+    private javax.swing.JLabel quotedPriceLabel;
     private javax.swing.JButton removeBookingButton;
     private javax.swing.JButton saveButton;
     private javax.swing.JComboBox typeBox;
+    private javax.swing.JLabel typeLabel;
     private javax.swing.JTextField vehicleRegField;
+    private javax.swing.JLabel vehicleRegLabel;
     private javax.swing.JButton viewCustomerButton;
     private javax.swing.JButton viewVehicleButton;
     // End of variables declaration//GEN-END:variables

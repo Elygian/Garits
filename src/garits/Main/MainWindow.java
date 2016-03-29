@@ -3,11 +3,10 @@ package Garits.Main;
 import Data.*;
 import Garits.GUI.BookingPopup;
 import Garits.GUI.Forms.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.sql.*;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -57,11 +56,11 @@ public class MainWindow extends JFrame {
 
         add(mainGUI);
 
-        connectToDB();
-
         pack();
 
         setVisible(true);
+
+        connectToDB();
     }
 
     //Hide MainGUI, create List
@@ -239,7 +238,7 @@ public class MainWindow extends JFrame {
     private void populateVehicle() throws SQLException {
         if (con != null) {
             PreparedStatement ps
-                    = con.prepareStatement("SELECT * vehicle");
+                    = con.prepareStatement("SELECT * from vehicle");
             ResultSet rs = ps.executeQuery();
             vehicles = new ArrayList<>();
             while (rs.next()) {
@@ -426,17 +425,6 @@ public class MainWindow extends JFrame {
         } catch (SQLException e) {
             System.out.println("Can't Connect at: " + URL);
         }
-        showLists();
-        populateCustomer();
-        populateUsers();
-        populateManufacturer();
-        populateStock();
-        populateBooking();
-        //populateJob();
-        //populateVehicle();
-        //populateReminder();
-        //populateJobInvoice();
-
     }
 
     //Called in MainGUI
@@ -462,12 +450,20 @@ public class MainWindow extends JFrame {
 
     //Calls login and handles outcome
     public void verifyLogin(String name, String pw) throws SQLException {
-        if (login(name, pw)) {
+        if (login(name, pw.replace("[", "").replace("]", ""))) {
             showLists();
-            //Just for testing
-            showPopup(0);
+            populateCustomer();
+            populateUsers();
+            populateManufacturer();
+            populateStock();
+            populateBooking();
+            populateJob();
+            populateVehicle();
+            populateReminder();
+            populateJobInvoice();
+            //showPopup(0);
         } else {
-            setVisible(true);
+            mainGUI.redLabel.setText("Incorrect Username or Password");
         }
     }
 }
