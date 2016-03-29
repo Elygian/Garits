@@ -485,4 +485,15 @@ public class MainWindow extends JFrame {
             mainGUI.redLabel.setText("Incorrect Username or Password");
         }
     }
+    
+    private boolean doesCustomerExist(String name, String surname, String dob){
+        for(Customer customer: customers){
+            if((customer.fName == null ? name == null : customer.fName.equals(name))
+                    || (customer.lName == null ? surname == null : customer.lName.equals(surname))
+                    || (customer.dob == null ? dob == null : customer.dob.equals(dob))){
+                return true;
+            }
+        }        
+        return false;
+    }
 }
