@@ -45,27 +45,17 @@
                   <Component id="jScrollPane5" pref="1019" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-<<<<<<< HEAD
                       <Component id="jButton4" min="-2" pref="140" max="-2" attributes="0"/>
-=======
-                      <Component id="jButton4" min="-2" pref="130" max="-2" attributes="0"/>
->>>>>>> origin/TomBranchUni
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-<<<<<<< HEAD
                       <Component id="jScrollPane5" min="-2" pref="519" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jButton4" min="-2" pref="44" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-=======
-                      <Component id="jScrollPane5" pref="519" max="32767" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="35" max="-2" attributes="0"/>
->>>>>>> origin/TomBranchUni
                   </Group>
               </Group>
             </DimensionLayout>
@@ -154,22 +144,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane16" pref="1019" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jButton5" min="-2" pref="125" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
                       <Component id="jScrollPane16" pref="579" max="32767" attributes="0"/>
-=======
-                      <Component id="jScrollPane16" pref="519" max="32767" attributes="0"/>
->>>>>>> origin/TomBranchUni
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -252,22 +238,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane17" pref="1019" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton6" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jButton6" min="-2" pref="125" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
                       <Component id="jScrollPane17" pref="579" max="32767" attributes="0"/>
-=======
-                      <Component id="jScrollPane17" pref="519" max="32767" attributes="0"/>
->>>>>>> origin/TomBranchUni
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton6" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jButton6" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -359,22 +341,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane18" pref="1019" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton7" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jButton7" min="-2" pref="125" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
                       <Component id="jScrollPane18" pref="579" max="32767" attributes="0"/>
-=======
-                      <Component id="jScrollPane18" pref="519" max="32767" attributes="0"/>
->>>>>>> origin/TomBranchUni
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton7" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jButton7" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -451,22 +429,18 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane19" alignment="0" pref="1019" max="32767" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="jButton8" min="-2" pref="130" max="-2" attributes="0"/>
+                      <Component id="jButton8" min="-2" pref="125" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-<<<<<<< HEAD
                       <Component id="jScrollPane19" pref="579" max="32767" attributes="0"/>
-=======
-                      <Component id="jScrollPane19" pref="519" max="32767" attributes="0"/>
->>>>>>> origin/TomBranchUni
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton8" min="-2" pref="35" max="-2" attributes="0"/>
+                      <Component id="jButton8" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -525,7 +499,7 @@
             </Container>
             <Component class="javax.swing.JButton" name="jButton8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Add User"/>
+                <Property name="text" type="java.lang.String" value="Add Customer"/>
               </Properties>
             </Component>
           </SubComponents>

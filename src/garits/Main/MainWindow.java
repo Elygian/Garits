@@ -390,12 +390,13 @@ public class MainWindow extends JFrame {
     }
 
     /* Making the buttons in the GUI work */
-   /* public void bookingPopupSave() throws SQLException {
+    /*public void bookingPopupSave() throws SQLException {
         if (con != null) {
             PreparedStatement ps = con.prepareStatement("INSERT "
                     + "type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor"
                     + "INTO booking WHERE"
                     + "");
+            if(doesCustomerExist()){
             ps.setString(1, bookingPopup.customerNameField.getText());
             ps.setString(2, bookingPopup.customerSurnameField.getText());
             ps.setString(3, bookingPopup.vehicleRegField.getText());
@@ -405,6 +406,7 @@ public class MainWindow extends JFrame {
             ps.setString(7, bookingPopup.dateFinishedField.getText());
             ps.setString(8, bookingPopup.priceField.getText());
             ps.setString(9, Boolean.toString(bookingPopup.paidForCheckbox.isSelected()));
+            }
 
             ResultSet rs = ps.executeQuery();
         }
