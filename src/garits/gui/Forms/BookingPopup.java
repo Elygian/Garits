@@ -334,26 +334,26 @@ public class BookingPopup extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField bookedField;
+    public javax.swing.JTextField bookedField;
     private javax.swing.JLabel bookingTitleLabel;
-    private javax.swing.JTextField customerNameField;
+    public javax.swing.JTextField customerNameField;
     private javax.swing.JLabel customerNameLabel;
-    private javax.swing.JTextField customerSurnameField;
+    public javax.swing.JTextField customerSurnameField;
     private javax.swing.JLabel customerSurnameLabel;
     private javax.swing.JLabel dateBookedLabel;
     private javax.swing.JLabel dateDueLabel;
-    private javax.swing.JTextField dateFinishedField;
-    private javax.swing.JTextField descriptionField;
+    public javax.swing.JTextField dateFinishedField;
+    public javax.swing.JTextField descriptionField;
     private javax.swing.JLabel descriptionLabel;
-    private javax.swing.JCheckBox paidForCheckbox;
+    public javax.swing.JCheckBox paidForCheckbox;
     private javax.swing.JLabel paidForLabel;
-    private javax.swing.JTextField priceField;
+    public javax.swing.JTextField priceField;
     private javax.swing.JLabel quotedPriceLabel;
     private javax.swing.JButton removeBookingButton;
     private javax.swing.JButton saveButton;
-    private javax.swing.JComboBox typeBox;
+    public javax.swing.JComboBox typeBox;
     private javax.swing.JLabel typeLabel;
-    private javax.swing.JTextField vehicleRegField;
+    public javax.swing.JTextField vehicleRegField;
     private javax.swing.JLabel vehicleRegLabel;
     private javax.swing.JButton viewCustomerButton;
     private javax.swing.JButton viewVehicleButton;
