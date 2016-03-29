@@ -35,31 +35,23 @@
               <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="customerNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="customerSurnameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="descriptionLabel" alignment="0" min="-2" pref="75" max="-2" attributes="0"/>
-                          <Component id="typeLabel" min="-2" pref="24" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="vehicleRegLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="customerNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerSurnameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerSurnameLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="vehicleRegLabel" min="-2" max="-2" attributes="0"/>
+                  <Component id="typeLabel" min="-2" pref="24" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="customerNameField" pref="137" max="32767" attributes="0"/>
-                          <Component id="descriptionField" max="32767" attributes="0"/>
                           <Component id="vehicleRegField" alignment="0" max="32767" attributes="0"/>
                           <Component id="customerSurnameField" alignment="0" pref="137" max="32767" attributes="0"/>
                           <Component id="typeBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="DOBTextField" alignment="0" pref="137" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -67,6 +59,7 @@
                           <Component id="dateDueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="quotedPriceLabel" min="-2" max="-2" attributes="0"/>
                           <Component id="paidForLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="descriptionLabel" min="-2" pref="75" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -74,6 +67,7 @@
                           <Component id="bookedField" min="-2" pref="137" max="-2" attributes="0"/>
                           <Component id="dateFinishedField" min="-2" pref="137" max="-2" attributes="0"/>
                           <Component id="priceField" min="-2" pref="137" max="-2" attributes="0"/>
+                          <Component id="descriptionField" alignment="0" min="-2" pref="137" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -92,7 +86,6 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="bookingTitleLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
@@ -101,22 +94,6 @@
                               <Component id="customerNameField" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="customerSurnameField" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="vehicleRegField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="vehicleRegLabel" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="typeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="typeBox" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="descriptionField" alignment="3" min="-2" pref="66" max="-2" attributes="0"/>
-                                  <Component id="descriptionLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="46" max="32767" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -130,22 +107,53 @@
                                   <Component id="dateFinishedField" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="dateDueLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="quotedPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="priceField" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="quotedPriceLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="priceField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="DOBTextField" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="customerSurnameLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="paidForLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="paidForCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="paidForLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="paidForCheckbox" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="vehicleRegField" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="vehicleRegLabel" min="-2" pref="20" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                          <Component id="descriptionField" min="-2" pref="66" max="-2" attributes="0"/>
+                                          <Component id="descriptionLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="typeBox" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="typeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="viewVehicleButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                   <Component id="removeBookingButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
@@ -320,6 +328,19 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="paidForCheckboxActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="customerSurnameLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Customer DOB"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="DOBTextField">
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DOBTextFieldActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
