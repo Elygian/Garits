@@ -445,7 +445,7 @@ public class MainWindow extends JFrame {
             }
             return loggedIn;
         }
-        return true;
+        return false;
     }
 
     //Calls login and handles outcome
