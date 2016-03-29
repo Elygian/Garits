@@ -1,7 +1,11 @@
 package Garits.GUI.Forms;
-
+import Garits.Main.MainWindow;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 public class BookingPopup extends javax.swing.JFrame {
-
+    MainWindow main;
+    
     public BookingPopup() {
         initComponents();
     }
@@ -266,7 +270,13 @@ public class BookingPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_viewVehicleButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // TODO add your handling code here:
+    
+        try {
+            main.bookingPopupSave();        // TODO add your handling code here:
+        } catch (SQLException ex) {
+            Logger.getLogger(BookingPopup.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void bookedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookedFieldActionPerformed

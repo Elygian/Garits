@@ -1,7 +1,6 @@
 package Garits.Main;
 
 import Data.*;
-import Garits.GUI.BookingPopup;
 import Garits.GUI.Forms.*;
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,7 +12,7 @@ public class MainWindow extends JFrame {
     private Connection con;
     private MainGUI mainGUI;
     private Lists lists;
-    private Garits.GUI.Forms.BookingPopup bookingPopup;
+    private BookingPopup bookingPopup;
     private static final String URL = ("jdbc:mysql://173.194.234.254:3306/garits?user=team");
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -390,36 +389,31 @@ public class MainWindow extends JFrame {
     }
 
     /* Making the buttons in the GUI work */
-    /*public void bookingPopupSave() throws SQLException {
+    public void bookingPopupSave() throws SQLException {
         if (con != null) {
             PreparedStatement ps = con.prepareStatement("INSERT "
                     + "type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor"
                     + "INTO booking WHERE"
-                    + "");
+                    + "type = ?, description = ?, dateBooked = ?, expectedCompletionDate = ?, quotedPrice = ?, paidFor = ?");
             if (doesCustomerExist(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), bookingPopup.DOBTextField.getText())) {
-                ps.setString(1, bookingPopup.customerNameField.getText());
-                ps.setString(2, bookingPopup.customerSurnameField.getText());
-                ps.setString(3, bookingPopup.DOBTextField.getText());
-                ps.setString(3, bookingPopup.vehicleRegField.getText());
-                ps.setString(4, bookingPopup.typeBox.getSelectedItem().toString());
-                ps.setString(5, bookingPopup.descriptionField.getText());
-                ps.setString(6, bookingPopup.bookedField.getText());
-                ps.setString(7, bookingPopup.dateFinishedField.getText());
-                ps.setString(8, bookingPopup.priceField.getText());
-                ps.setString(9, Boolean.toString(bookingPopup.paidForCheckbox.isSelected()));
+                ps.setString(1, bookingPopup.typeBox.getSelectedItem().toString());
+                ps.setString(2, bookingPopup.descriptionField.getText());
+                ps.setString(3, bookingPopup.bookedField.getText());
+                ps.setString(4, bookingPopup.dateFinishedField.getText());
+                ps.setString(5, bookingPopup.priceField.getText());
+                ps.setString(6, Boolean.toString(bookingPopup.paidForCheckbox.isSelected()));
                 System.out.println("Booking added to database");
             } else {
                 System.out.println("Booking failed");
             }
-
-            ResultSet rs = ps.executeQuery();
+            ps.executeQuery();
         }
-    }*/
+    }
 
     //Create varius popups like BookingPopup
     public void showPopup(int type) {
         if (type == 0) {
-            BookingPopup bookingPopup = new BookingPopup();
+            new BookingPopup();
         } else if (type == 1) {
             CustomerAccountsPopup customerAccounts = new CustomerAccountsPopup();
         } else if (type == 2) {

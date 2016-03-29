@@ -5,12 +5,14 @@
  */
 package Garits.GUI.Forms;
 
+//import Garits.Main.MainWindow;
+
 /**
  *
  * @author fedil
  */
 public class Lists extends javax.swing.JPanel {
-
+    //MainWindow main;
     /**
      * Creates new form ListsNew
      */
@@ -135,6 +137,11 @@ public class Lists extends javax.swing.JPanel {
         jButton4.setText("Modify");
 
         jButton9.setText("Add");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
 
         jButton10.setText("Delete");
 
@@ -679,6 +686,10 @@ public class Lists extends javax.swing.JPanel {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        //main.showPopup(0);// TODO add your handling code here:
+    }//GEN-LAST:event_jButton9ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
