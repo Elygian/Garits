@@ -6,18 +6,15 @@
 package Garits.GUI.Forms;
 
 //import Garits.Main.MainWindow;
+import Garits.Main.MainWindow;
 
-/**
- *
- * @author fedil
- */
 public class Lists extends javax.swing.JPanel {
-    //MainWindow main;
-    /**
-     * Creates new form ListsNew
-     */
-    public Lists() {
+
+    MainWindow main;
+    
+    public Lists(MainWindow main) {
         initComponents();
+        this.main = main;
     }
 
     /**
