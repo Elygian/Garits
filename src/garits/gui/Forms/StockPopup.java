@@ -146,7 +146,7 @@ public class StockPopup extends javax.swing.JFrame {
                                     .addComponent(partNameLabel)
                                     .addComponent(vTypeLabel)
                                     .addComponent(yearsLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(yearsTextBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(vTypeBox, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,23 +299,23 @@ public class StockPopup extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel manuNameLabel;
-    private javax.swing.JTextField manuNameTextField;
+    public javax.swing.JTextField manuNameTextField;
     private javax.swing.JLabel partNameLabel;
-    private javax.swing.JTextField partNameTextField;
+    public javax.swing.JTextField partNameTextField;
     private javax.swing.JLabel pendingDateLabel;
-    private javax.swing.JTextField pendingDateTextField;
+    public javax.swing.JTextField pendingDateTextField;
     private javax.swing.JLabel pendingQuantityLabel;
-    private javax.swing.JTextField pendingQuantityTextField;
+    public javax.swing.JTextField pendingQuantityTextField;
     private javax.swing.JLabel priceLabel;
-    private javax.swing.JTextField priceTextField;
+    public javax.swing.JTextField priceTextField;
     private javax.swing.JButton saveManufacturerButton;
     private javax.swing.JLabel stockTitleLabel;
     private javax.swing.JLabel thresholdLabel;
-    private javax.swing.JTextField thresholdTextField;
-    private javax.swing.JComboBox vTypeBox;
+    public javax.swing.JTextField thresholdTextField;
+    public javax.swing.JComboBox vTypeBox;
     private javax.swing.JLabel vTypeLabel;
     private javax.swing.JButton viewManufacturerButton;
     private javax.swing.JLabel yearsLabel;
-    private javax.swing.JTextField yearsTextBox;
+    public javax.swing.JTextField yearsTextBox;
     // End of variables declaration//GEN-END:variables
 }

@@ -152,7 +152,7 @@ public class ManufacturerPopup extends javax.swing.JFrame {
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(fNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(tNumberLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(pCodeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 97, Short.MAX_VALUE)
+                                    .addComponent(pCodeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(cityLabel)
                                     .addComponent(addressLabel)
                                     .addComponent(nameLabel))
@@ -303,23 +303,23 @@ public class ManufacturerPopup extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
-    private javax.swing.JTextField addressTextField;
+    public javax.swing.JTextField addressTextField;
     private javax.swing.JLabel cityLabel;
-    private javax.swing.JTextField cityTextField;
+    public javax.swing.JTextField cityTextField;
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JTextField emailTextField;
+    public javax.swing.JTextField emailTextField;
     private javax.swing.JLabel fNumberLabel;
-    private javax.swing.JTextField fNumberTextField;
+    public javax.swing.JTextField fNumberTextField;
     private javax.swing.JLabel manufacturerTitleLabel;
     private javax.swing.JLabel nameLabel;
-    private javax.swing.JTextField nameTextField;
+    public javax.swing.JTextField nameTextField;
     private javax.swing.JLabel pCodeLabel;
-    private javax.swing.JTextField postCodeTextField;
+    public javax.swing.JTextField postCodeTextField;
     private javax.swing.JButton saveManufacturerButton;
     private javax.swing.JLabel tNumberLabel;
-    private javax.swing.JTextField tNumberTextField;
+    public javax.swing.JTextField tNumberTextField;
     private javax.swing.JButton viewManufacturerButton;
     private javax.swing.JLabel websiteLabel;
-    private javax.swing.JTextField websiteTextField;
+    public javax.swing.JTextField websiteTextField;
     // End of variables declaration//GEN-END:variables
 }

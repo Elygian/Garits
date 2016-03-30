@@ -14,6 +14,10 @@ public class MainWindow extends JFrame {
     private MainGUI mainGUI;
     private Lists lists;
     private Garits.GUI.Forms.BookingPopup bookingPopup;
+    private Garits.GUI.Forms.CustomerAccountsPopup CustomerAccountsPopup;
+    private Garits.GUI.Forms.JobsPopUp JobsPopup;
+    private Garits.GUI.Forms.ManufacturerPopup ManufacturerPopup;
+    private Garits.GUI.Forms.StockPopup StockPopup;
     private static final String URL = ("jdbc:mysql://173.194.234.254:3306/garits?user=team");
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -501,5 +505,101 @@ public class MainWindow extends JFrame {
             }
         }        
         return false;
+    }
+    
+    public void populateBookingPopup(Booking BookingFields) {
+        
+        //Convert the date booked vale from Booking object to a String to use in the popup text field
+        int dateBooked = BookingFields.dateBooked;
+        String dateBookedString = Integer.toString(dateBooked);
+        
+        //Convert the quoted price float to a string to use with setText
+        float quotedPriceFloat = BookingFields.quotedPrice;
+        String quotedPriceString = Float.toString(quotedPriceFloat);
+       
+        //Fill in the Booking popup with values from the Booking object
+        bookingPopup.customerNameField.setText(BookingFields.customer.fName);
+        bookingPopup.customerSurnameField.setText(BookingFields.customer.cName);
+        bookingPopup.DOBTextField.setText(BookingFields.customer.dob);
+        bookingPopup.vehicleRegField.setText(BookingFields.customer.vehicle.rNumber);
+        bookingPopup.typeBox.setSelectedItem(BookingFields.type);
+        bookingPopup.bookedField.setText(dateBookedString);
+        bookingPopup.priceField.setText(quotedPriceString);
+        bookingPopup.paidForCheckbox.setSelected(true);
+        bookingPopup.descriptionField.setText(BookingFields.description);
+    }
+    
+    public void populateCustomerAccount(Customer AccountFields) {
+        
+        //Convert customer ID from int to string
+        int customerIDTextField = AccountFields.ID;
+        String CustomerIDString = Integer.toString(customerIDTextField);
+    
+        CustomerAccountsPopup.customerIDTextField.setText(CustomerIDString);
+        CustomerAccountsPopup.fNameTextField.setText(AccountFields.fName);
+        CustomerAccountsPopup.cityTextField.setText(AccountFields.city);
+        CustomerAccountsPopup.tNumberTextField.setText(AccountFields.tNumber);
+        CustomerAccountsPopup.cNumberTextField.setText(AccountFields.cName);
+        CustomerAccountsPopup.dateRegisteredTextField.setText(AccountFields.dateRegistered);
+        CustomerAccountsPopup.lNameTextField.setText(AccountFields.lName);
+        CustomerAccountsPopup.pCodeTextField.setText(AccountFields.pCode);
+        CustomerAccountsPopup.fNumberTextField.setText(AccountFields.faxNumber);
+        CustomerAccountsPopup.dobTextField.setText(AccountFields.dob);
+        CustomerAccountsPopup.vehicleRegTextField.setText(AccountFields.vehicle.rNumber);
+}
+    
+    public void populateJobsPopup(Job JobFields) {
+        
+        //Convert estimated duration from int to string
+        int estTimeTextField = JobFields.duration;
+        String estTimeTextFieldString = Integer.toString(estTimeTextField);
+        
+        JobsPopup.jobNumberTextField.setText(" ");
+        JobsPopup.vehicleRegTextField.setText(JobFields.vehicle.rNumber);
+        JobsPopup.customerNameTextField.setText(" ");
+        JobsPopup.makeTextField.setText(JobFields.vehicle.make);
+        JobsPopup.modelTextField.setText(JobFields.vehicle.model);
+        JobsPopup.tNumberTextField.setText(" ");
+        JobsPopup.estTimeTextField.setText(estTimeTextFieldString);
+        JobsPopup.timeTakeTextField.setText(JobFields.timeTakeTextField);
+    }
+    
+    public void populateManufacturerPopup (Manufacturer ManuFields) {
+        
+        ManufacturerPopup.nameTextField.setText(ManuFields.name);
+        ManufacturerPopup.addressTextField.setText(ManuFields.address);
+        ManufacturerPopup.cityTextField.setText(ManuFields.city);
+        ManufacturerPopup.postCodeTextField.setText(ManuFields.pCode);
+        ManufacturerPopup.tNumberTextField.setText(ManuFields.tNumber);
+        ManufacturerPopup.fNumberTextField.setText(ManuFields.faxNumber);
+        ManufacturerPopup.websiteTextField.setText(ManuFields.website);
+        ManufacturerPopup.emailTextField.setText(ManuFields.email);
+    }
+    
+    public void populateStockPopup (Stock StockFields) {
+        
+        //Convert threshold, pending date and pending quantity from int to string
+        int thresholdTextField = StockFields.threshold;
+        String thresholdString = Integer.toString(thresholdTextField);
+        
+        int pendingDateTextField = StockFields.pendingDate;
+        String pendingDateString = Integer.toString(pendingDateTextField);
+        
+        int pendingQuantityTextField = StockFields.pendingQuantity;
+        String pendingQuantityString = Integer.toString(pendingQuantityTextField);
+        
+        //Convert price from float to string
+        float priceTextField = StockFields.price;
+        String priceString = priceTextField + "" ;
+       
+        
+        StockPopup.partNameTextField.setText(StockFields.partName);
+        StockPopup.vTypeBox.setSelectedItem(StockFields.vType);
+        StockPopup.yearsTextBox.setText(StockFields.years);
+        StockPopup.priceTextField.setText(priceString);
+        StockPopup.thresholdTextField.setText(thresholdString);
+        StockPopup.manuNameTextField.setText(StockFields.manufacturer.name);
+        StockPopup.pendingDateTextField.setText(pendingDateString);
+        StockPopup.pendingQuantityTextField.setText(pendingQuantityString);
     }
 }
