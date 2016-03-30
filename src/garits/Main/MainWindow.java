@@ -400,7 +400,7 @@ public class MainWindow extends JFrame {
             PreparedStatement ps = con.prepareStatement("INSERT INTO bookings "
                     + "(type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor) "
                     + "VALUES(?, ?, ?, ?, ?, ?)");
-            if (doesCustomerExist(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), bookingPopup.DOBTextField.getText())) {
+            if (returnCustomerID(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), bookingPopup.DOBTextField.getText())) {
                 ps.setString(1, bookingPopup.typeBox.getSelectedItem().toString());
                 ps.setString(2, bookingPopup.descriptionField.getText());
                 ps.setString(3, bookingPopup.bookedField.getText());
@@ -595,14 +595,14 @@ public class MainWindow extends JFrame {
         }
     }
 
-    private boolean doesCustomerExist(String name, String surname, String dob) {
+    private int returnCustomerID(String name, String surname, String dob) {
         for (Customer customer : customers) {
             if ((customer.fName == null ? name == null : customer.fName.equals(name))
                     || (customer.lName == null ? surname == null : customer.lName.equals(surname))
                     || (customer.dob == null ? dob == null : customer.dob.equals(dob))) {
-                return true;
+                return customer.ID;
             }
         }
-        return false;
+        return -1;
     }
 }
