@@ -11,7 +11,7 @@ public class MainWindow extends JFrame {
 
     private Connection con;
     private MainGUI mainGUI;
-    private Lists lists;
+    public Lists lists;
     private BookingPopup bookingPopup;
     private CustomerAccountsPopup customersPopup;
     private JobsPopUp jobsPopUp;
@@ -82,7 +82,7 @@ public class MainWindow extends JFrame {
         DefaultTableModel stockTable = (DefaultTableModel) lists.stockList.getModel();
         cleanList(stockTable);
         for (Stock s : stocks) {
-            stockTable.addRow(new Object[]{s.partName, s.quantity, s.price, s.threshold, s.pendingQuantity});
+            stockTable.addRow(new Object[]{s.ID, s.partName, s.quantity, s.price, s.threshold, s.pendingQuantity});
         }
     }
 
@@ -90,7 +90,7 @@ public class MainWindow extends JFrame {
         DefaultTableModel customerTable = (DefaultTableModel) lists.customerList.getModel();
         cleanList(customerTable);
         for (Customer c : customers) {
-            customerTable.addRow(new Object[]{c.dateRegistered, c.fName, c.lName, c.dob});
+            customerTable.addRow(new Object[]{c.ID, c.dateRegistered, c.fName, c.lName, c.dob});
         }
     }
 
@@ -98,7 +98,7 @@ public class MainWindow extends JFrame {
         DefaultTableModel bookingsTable = (DefaultTableModel) lists.bookingList.getModel();
         cleanList(bookingsTable);
         for (Booking b : bookings) {
-            bookingsTable.addRow(new Object[]{b.customer.fName, b.customer.lName, b.type, b.dateBooked, b.quotedPrice, b.description});
+            bookingsTable.addRow(new Object[]{b.ID, b.customer.fName, b.customer.lName, b.type, b.dateBooked, b.quotedPrice, b.description});
         }
     }
 
@@ -114,7 +114,7 @@ public class MainWindow extends JFrame {
         DefaultTableModel usersTable = (DefaultTableModel) lists.usersList.getModel();
         cleanList(usersTable);
         for (User u : users) {
-            usersTable.addRow(new Object[]{u.fName, u.lName, u.DOB, u.email});
+            usersTable.addRow(new Object[]{u.ID, u.fName, u.lName, u.DOB, u.email});
         }
     }
 
@@ -144,11 +144,25 @@ public class MainWindow extends JFrame {
                 String pCode = rs.getString("pCode");
                 String tNumber = rs.getString("tNumber");
                 String faxNumber = rs.getString("faxNumber");
-                String dob = rs.getString("DOB");
+                int dob = rs.getInt("DOB");
                 String email = rs.getString("email");
                 int reminderCount = rs.getInt("reminderCount");
                 int responseRate = rs.getInt("responseRate");
-                Customer c = new Customer(ID, dateRegistered, fName, lName, cName, address, city, pCode, tNumber, faxNumber, dob, email, reminderCount, responseRate, new Vehicle());
+                String vehicleIDs = rs.getString("VehicleID");
+
+                ArrayList<Integer> count = new ArrayList<>();
+                while (vehicleIDs.contains(",")) {
+                    count.add(Integer.parseInt(vehicleIDs.substring(0, vehicleIDs.indexOf(","))));
+                    vehicleIDs = vehicleIDs.substring(vehicleIDs.indexOf(",") + 1);
+                }
+                count.add(Integer.parseInt(vehicleIDs));
+
+                Vehicle[] vehicleArray = new Vehicle[count.size()];
+                for (int i = 0; i < count.size(); i++) {
+                    vehicleArray[i] = getVehicle(count.get(i));
+                }
+
+                Customer c = new Customer(ID, dateRegistered, fName, lName, cName, address, city, pCode, tNumber, faxNumber, dob, email, reminderCount, responseRate, vehicleArray);
                 customers.add(c);
             }
             parseCustomer(customers);
@@ -196,7 +210,7 @@ public class MainWindow extends JFrame {
                 int expectedCompletionDate = rs.getInt("expectedCompletionDate");
                 float quotedPrice = rs.getFloat("quotedPrice");
                 boolean paidFor = rs.getBoolean("paidFor");
-                Booking b = new Booking(ID, new Vehicle(), customer, bType, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor);
+                Booking b = new Booking(ID, customer, bType, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor);
                 bookings.add(b);
             }
             parseBooking(bookings);
@@ -253,7 +267,6 @@ public class MainWindow extends JFrame {
                 String chasisNumber = rs.getString("chassisNumber");
                 String color = rs.getString("color");
                 int mileage = rs.getInt("mileage");
-
                 Vehicle v = new Vehicle(ID, rNumber, make, model, engineSerialNumber, chasisNumber, color, mileage);
                 vehicles.add(v);
             }
@@ -394,49 +407,81 @@ public class MainWindow extends JFrame {
         return null;
     }
 
-    /* Making the buttons in the GUI work */
-    public void bookingPopupSave() throws SQLException {
-        if (con != null) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO bookings "
-                    + "(type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor) "
-                    + "VALUES(?, ?, ?, ?, ?, ?)");
-            if (returnCustomerID(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), bookingPopup.DOBTextField.getText())) {
-                ps.setString(1, bookingPopup.typeBox.getSelectedItem().toString());
-                ps.setString(2, bookingPopup.descriptionField.getText());
-                ps.setString(3, bookingPopup.bookedField.getText());
-                ps.setString(4, bookingPopup.dateFinishedField.getText());
-                ps.setString(5, bookingPopup.priceField.getText());
-                ps.setString(6, Boolean.toString(bookingPopup.paidForCheckbox.isSelected()));
-                ps.executeUpdate();
-                System.out.println("Booking added to database");
-            } else {
-                System.out.println("Booking failed");
+    private Vehicle getVehicle(int ID) {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.ID == ID) {
+                return vehicle;
             }
         }
+        return null;
+    }
+
+    public Booking getBooking(int ID) {
+        for (Booking booking : bookings) {
+            if (booking.ID == ID) {
+                return booking;
+            }
+        }
+        return null;
+    }
+
+    /* Making the buttons in the GUI work */
+    public void bookingPopupSave(int _ID) throws SQLException {
+        PreparedStatement ps = con.prepareStatement("INSERT INTO bookings "
+                + "(CustomerId, type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor) "
+                + "VALUES(?, ?, ?, ?, ?, ?, ?)");
+        int ID = returnCustomerID(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), Integer.parseInt(bookingPopup.DOBTextField.getText()));
+        if (ID != -1) {
+            ps.setInt(1, ID);
+            ps.setInt(2, bookingTypeToInt(bookingPopup.typeBox.getSelectedItem().toString()));
+            ps.setString(3, bookingPopup.descriptionField.getText());
+            ps.setString(4, bookingPopup.bookedField.getText());
+            ps.setString(5, bookingPopup.dateFinishedField.getText());
+            ps.setString(6, bookingPopup.priceField.getText());
+            ps.setInt(7, (bookingPopup.paidForCheckbox.isSelected()) ? 1 : 0);
+            ps.executeUpdate();
+            System.out.println("Booking added to database");
+        } else {
+            System.out.println("Booking failed - Customer doesn't exist");
+        }
+    }
+
+    private int bookingTypeToInt(String type) {
+        switch (type) {
+            case "Repair":
+                return 0;
+            case "MOT":
+                return 1;
+            case "Service":
+                return 2;
+            case "Special":
+                return 3;
+        }
+        return -1;
     }
 
     public void customerPopupSave() throws SQLException {
         if (con != null) {
             PreparedStatement ps = con.prepareStatement("INSERT INTO customer "
-                    + "(CustomerID, dateRegistered, fName, lName, cName, dob, address, city, pCode, tNumber, faxNumber) "
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
-//            ps.setInt(1, customersPopup.customerIDTextField.getText().);
-            ps.setString(2, customersPopup.dateRegisteredTextField.getText());
-            ps.setString(3, customersPopup.fNameTextField.getText());
-            ps.setString(4, customersPopup.lNameTextField.getText());
-            ps.setString(5, customersPopup.cNameTextField.getText());
-            //  ps.setInt(6, customersPopup.dobTextField.getText());
-            ps.setString(7, customersPopup.addressTextField1.getText());
-            //ps.setString(5, customersPopup.addressTextField2.getText());
-            ps.setString(8, customersPopup.cityTextField.getText());
-            ps.setString(9, customersPopup.pCodeTextField.getText());
-            ps.setString(10, customersPopup.tNumberTextField.getText());
-            ps.setString(11, customersPopup.fNumberTextField.getText());
-            ps.executeUpdate();
-            System.out.println("Customer Added");
-        } else {
-            System.out.println("Customer Already Exists");
+                    + "(fName, lName, cName, dob, dateRegistered, address, city, pCode, tNumber, faxNumber, VehicleID) "
+                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+            if (returnCustomerID(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), Integer.parseInt(customersPopup.dobTextField.getText())) == -1) {
+                ps.setString(1, customersPopup.fNameTextField.getText());
+                ps.setString(2, customersPopup.lNameTextField.getText());
+                ps.setString(3, customersPopup.cNameTextField.getText());
+                ps.setInt(4, Integer.parseInt(customersPopup.dobTextField.getText()));
+                ps.setString(5, customersPopup.dateRegisteredTextField.getText());
+                ps.setString(6, customersPopup.addressTextField1.getText() + " " + customersPopup.addressTextField2.getText());
+                ps.setString(7, customersPopup.cityTextField.getText());
+                ps.setString(8, customersPopup.pCodeTextField.getText());
+                ps.setString(9, customersPopup.tNumberTextField.getText());
+                ps.setString(10, customersPopup.fNumberTextField.getText());
+                ps.setInt(11, -1);
+                ps.executeUpdate();
+                System.out.println("Customer Added");
+            } else {
+                System.out.println("Customer Already Exists");
+            }
         }
     }
 
@@ -510,6 +555,19 @@ public class MainWindow extends JFrame {
         }
     }
 
+    public void populateBookingPopup(Booking bookingFields) {
+        //Fill in the Booking popup with values from the Booking object
+        bookingPopup.customerNameField.setText(bookingFields.customer.fName);
+        bookingPopup.customerSurnameField.setText(bookingFields.customer.lName);
+        bookingPopup.DOBTextField.setText(Integer.toString(bookingFields.customer.dob));
+        bookingPopup.typeBox.setSelectedItem(bookingFields.type);
+        bookingPopup.bookedField.setText(Integer.toString(bookingFields.dateBooked));
+        bookingPopup.priceField.setText(Float.toString(bookingFields.quotedPrice));
+        bookingPopup.paidForCheckbox.setSelected(bookingFields.paidFor);
+        bookingPopup.descriptionField.setText(bookingFields.description);
+        bookingPopup.dateFinishedField.setText(Integer.toString(bookingFields.expectedCompletionDate));
+    }
+
     //Create varius popups like BookingPopup
     public void showPopup(int type) {
         if (type == 0) {
@@ -580,13 +638,13 @@ public class MainWindow extends JFrame {
     public void verifyLogin(String name, String pw) throws SQLException {
         if (login(name, pw.replace("[", "").replace("]", ""))) {
             showLists();
+            populateVehicle();
             populateCustomer();
             populateUsers();
             populateManufacturer();
             populateStock();
             populateBooking();
             populateJob();
-            populateVehicle();
             populateReminder();
             populateJobInvoice();
             //showPopup(0);
@@ -595,11 +653,11 @@ public class MainWindow extends JFrame {
         }
     }
 
-    private int returnCustomerID(String name, String surname, String dob) {
+    private int returnCustomerID(String name, String surname, int dob) {
         for (Customer customer : customers) {
             if ((customer.fName == null ? name == null : customer.fName.equals(name))
-                    || (customer.lName == null ? surname == null : customer.lName.equals(surname))
-                    || (customer.dob == null ? dob == null : customer.dob.equals(dob))) {
+                    && (customer.lName == null ? surname == null : customer.lName.equals(surname))
+                    && (customer.dob == dob)) {
                 return customer.ID;
             }
         }

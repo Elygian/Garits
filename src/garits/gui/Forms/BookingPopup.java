@@ -17,7 +17,6 @@ public class BookingPopup extends javax.swing.JFrame {
         viewVehicleButton = new javax.swing.JButton();
         saveButton = new javax.swing.JButton();
         bookedField = new javax.swing.JTextField();
-        vehicleRegField = new javax.swing.JTextField();
         customerNameField = new javax.swing.JTextField();
         dateFinishedField = new javax.swing.JTextField();
         customerSurnameField = new javax.swing.JTextField();
@@ -27,11 +26,9 @@ public class BookingPopup extends javax.swing.JFrame {
         dateDueLabel = new javax.swing.JLabel();
         typeLabel = new javax.swing.JLabel();
         descriptionLabel = new javax.swing.JLabel();
-        vehicleRegLabel = new javax.swing.JLabel();
         quotedPriceLabel = new javax.swing.JLabel();
         paidForLabel = new javax.swing.JLabel();
         priceField = new javax.swing.JTextField();
-        descriptionField = new javax.swing.JTextField();
         bookingTitleLabel = new javax.swing.JLabel();
         viewCustomerButton = new javax.swing.JButton();
         removeBookingButton = new javax.swing.JButton();
@@ -39,8 +36,11 @@ public class BookingPopup extends javax.swing.JFrame {
         paidForCheckbox = new javax.swing.JCheckBox();
         customerSurnameLabel1 = new javax.swing.JLabel();
         DOBTextField = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        descriptionField = new javax.swing.JTextArea();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
 
         viewVehicleButton.setText("View Vehicle");
         viewVehicleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -59,12 +59,6 @@ public class BookingPopup extends javax.swing.JFrame {
         bookedField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bookedFieldActionPerformed(evt);
-            }
-        });
-
-        vehicleRegField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                vehicleRegFieldActionPerformed(evt);
             }
         });
 
@@ -98,8 +92,6 @@ public class BookingPopup extends javax.swing.JFrame {
 
         descriptionLabel.setText("Description");
 
-        vehicleRegLabel.setText("Vehicle Registration");
-
         quotedPriceLabel.setText("Quoted Price");
 
         paidForLabel.setText("Paid For");
@@ -107,12 +99,6 @@ public class BookingPopup extends javax.swing.JFrame {
         priceField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 priceFieldActionPerformed(evt);
-            }
-        });
-
-        descriptionField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descriptionFieldActionPerformed(evt);
             }
         });
 
@@ -133,7 +119,7 @@ public class BookingPopup extends javax.swing.JFrame {
             }
         });
 
-        typeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        typeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Repair", "MOT", "Service", "Special" }));
 
         paidForCheckbox.setText("Paid");
         paidForCheckbox.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +135,10 @@ public class BookingPopup extends javax.swing.JFrame {
                 DOBTextFieldActionPerformed(evt);
             }
         });
+
+        descriptionField.setColumns(20);
+        descriptionField.setRows(3);
+        jScrollPane1.setViewportView(descriptionField);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -170,14 +160,16 @@ public class BookingPopup extends javax.swing.JFrame {
                     .addComponent(customerNameLabel)
                     .addComponent(customerSurnameLabel)
                     .addComponent(customerSurnameLabel1)
-                    .addComponent(vehicleRegLabel)
-                    .addComponent(typeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(typeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1)
+                        .addGap(6, 6, 6))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(customerNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
-                            .addComponent(vehicleRegField)
                             .addComponent(customerSurnameField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
                             .addComponent(typeBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(DOBTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE))
@@ -186,15 +178,13 @@ public class BookingPopup extends javax.swing.JFrame {
                             .addComponent(dateBookedLabel)
                             .addComponent(dateDueLabel)
                             .addComponent(quotedPriceLabel)
-                            .addComponent(paidForLabel)
-                            .addComponent(descriptionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(paidForLabel))
                         .addGap(23, 23, 23)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(paidForCheckbox)
                             .addComponent(bookedField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(dateFinishedField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(descriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(140, 140, 140)
                         .addComponent(bookingTitleLabel)))
@@ -205,15 +195,8 @@ public class BookingPopup extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(bookingTitleLabel))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(customerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(customerSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(customerNameLabel)
@@ -230,31 +213,30 @@ public class BookingPopup extends javax.swing.JFrame {
                                         .addComponent(quotedPriceLabel)
                                         .addComponent(priceField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(DOBTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(customerSurnameLabel1))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(layout.createSequentialGroup()
-                                            .addGap(8, 8, 8)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                .addComponent(paidForLabel)
-                                                .addComponent(paidForCheckbox)))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(vehicleRegField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(vehicleRegLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(customerSurnameLabel1)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(customerNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(customerSurnameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(descriptionField, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(descriptionLabel))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                            .addComponent(typeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(52, 52, 52)))
-                                    .addComponent(typeLabel))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(typeBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(typeLabel)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(8, 8, 8)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(paidForLabel)
+                                    .addComponent(paidForCheckbox)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(bookingTitleLabel)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descriptionLabel)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(removeBookingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -271,22 +253,16 @@ public class BookingPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_viewVehicleButtonActionPerformed
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-    
         try {
-            main.bookingPopupSave();        // TODO add your handling code here:
+            main.bookingPopupSave((int) main.lists.bookingList.getValueAt(main.lists.bookingList.getSelectedRow(), 0));        // TODO add your handling code here:
         } catch (SQLException ex) {
             Logger.getLogger(BookingPopup.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void bookedFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bookedFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_bookedFieldActionPerformed
-
-    private void vehicleRegFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleRegFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_vehicleRegFieldActionPerformed
 
     private void customerNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customerNameFieldActionPerformed
         // TODO add your handling code here:
@@ -303,10 +279,6 @@ public class BookingPopup extends javax.swing.JFrame {
     private void priceFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_priceFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_priceFieldActionPerformed
-
-    private void descriptionFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descriptionFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_descriptionFieldActionPerformed
 
     private void viewCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerButtonActionPerformed
         // TODO add your handling code here:
@@ -337,8 +309,9 @@ public class BookingPopup extends javax.swing.JFrame {
     private javax.swing.JLabel dateBookedLabel;
     private javax.swing.JLabel dateDueLabel;
     public javax.swing.JTextField dateFinishedField;
-    public javax.swing.JTextField descriptionField;
+    public javax.swing.JTextArea descriptionField;
     private javax.swing.JLabel descriptionLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JCheckBox paidForCheckbox;
     private javax.swing.JLabel paidForLabel;
     public javax.swing.JTextField priceField;
@@ -347,8 +320,6 @@ public class BookingPopup extends javax.swing.JFrame {
     private javax.swing.JButton saveButton;
     public javax.swing.JComboBox typeBox;
     private javax.swing.JLabel typeLabel;
-    public javax.swing.JTextField vehicleRegField;
-    private javax.swing.JLabel vehicleRegLabel;
     private javax.swing.JButton viewCustomerButton;
     private javax.swing.JButton viewVehicleButton;
     // End of variables declaration//GEN-END:variables

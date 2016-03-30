@@ -53,7 +53,7 @@ public class StockPopup extends javax.swing.JFrame {
         stockTitleLabel = new javax.swing.JLabel();
         vTypeBox = new javax.swing.JComboBox();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         viewManufacturerButton.setText("View Manufacturer");
         viewManufacturerButton.addActionListener(new java.awt.event.ActionListener() {

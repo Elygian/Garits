@@ -51,7 +51,7 @@ MainWindow main;
         colorTextField = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         removeVehicleButton.setText("Remove Vehicle");
         removeVehicleButton.addActionListener(new java.awt.event.ActionListener() {

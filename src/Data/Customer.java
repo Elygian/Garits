@@ -3,7 +3,9 @@ package Data;
 
 public class Customer {
 
-    public Customer(int ID, String dateRegistered, String fName, String lName, String cName, String address, String city, String pCode, String tNumber, String faxNumber, String dob, String email, int reminderCount, int responseRate, Vehicle vehicle) {
+    public Customer(int ID, String dateRegistered, String fName, String lName, String cName, 
+            String address, String city, String pCode, String tNumber, String faxNumber, int dob, 
+            String email, int reminderCount, int responseRate, Vehicle[] vehicle) {
         this.ID = ID;
         this.dateRegistered = dateRegistered;
         this.fName = fName;
@@ -30,11 +32,11 @@ public class Customer {
    public String pCode;
    public String tNumber;
    public String faxNumber;
-   public String dob;
+   public int dob;
    public String email;
    public int reminderCount;
    public int responseRate;
-   public Vehicle vehicle;
+   public Vehicle[] vehicle;
 
     public Customer() {
         

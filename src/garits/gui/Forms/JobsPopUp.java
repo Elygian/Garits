@@ -63,7 +63,7 @@ public class JobsPopUp extends javax.swing.JFrame {
         jobTitleLabel = new javax.swing.JLabel();
         viewVehicleButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jobNumberLabel.setText("Job Number:");
 
