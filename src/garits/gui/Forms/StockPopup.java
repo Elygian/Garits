@@ -130,7 +130,7 @@ public class StockPopup extends javax.swing.JFrame {
         stockTitleLabel.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         stockTitleLabel.setText("Stock");
 
-        vTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        vTypeBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"Car", "Van"}));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -237,7 +237,7 @@ public class StockPopup extends javax.swing.JFrame {
 
     private void saveManufacturerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveManufacturerButtonActionPerformed
     try {
-            main.stockPopupSave();// TODO add your handling code here:
+            main.stockPopupSave((int) main.lists.stockList.getValueAt(main.lists.stockList.getSelectedRow(), 0));// TODO add your handling code here:
         } catch (SQLException ex) {
             Logger.getLogger(StockPopup.class.getName()).log(Level.SEVERE, null, ex);
         }// TODO add your handling cod        // TODO add your handling code here:        // TODO add your handling code here:

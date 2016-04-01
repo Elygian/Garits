@@ -180,15 +180,14 @@ public class MainWindow extends JFrame {
                 int quantity = rs.getInt("quantity");
                 String partName = rs.getString("partName");
                 int vType = rs.getInt("vType");
-                String years = rs.getString("years");
+                String years = rs.getString("Years");
                 int manufacturerID = rs.getInt("ManufacturerID");
                 float price = rs.getFloat("Price");
                 int threshold = rs.getInt("Threshold");
                 int pendingQuantity = rs.getInt("pendingQuantity");
                 int pendingDate = rs.getInt("pendingDate");
                 Manufacturer manu = getManufacturer(manufacturerID);
-                Stock s = new Stock(ID, quantity, partName, vType, years, manu, price, threshold, pendingQuantity, pendingDate, new Manufacturer()
-                );
+                Stock s = new Stock(ID, quantity, partName, vType, years, manu, price, threshold, pendingQuantity, pendingDate);
                 stocks.add(s);
             }
             parseStock(stocks);
@@ -332,8 +331,7 @@ public class MainWindow extends JFrame {
                 String username = rs.getString("Username");
                 String password = rs.getString("Password");
                 int accessLevel = rs.getInt("AccessLevel");
-                User u = new User(ID, fName, lName, address, city, pCode, tNumber, email,
-                        DOB, username, password, accessLevel);
+                User u = new User(ID, fName, lName, address, city, pCode, tNumber, email, DOB, username, password, accessLevel);
                 users.add(u);
             }
             parseUsers(users);
@@ -371,7 +369,7 @@ public class MainWindow extends JFrame {
         }
     }
 
-    private Stock getStock(int ID) {
+    public Stock getStock(int ID) {
         for (Stock stock : stocks) {
             if (stock.ID == ID) {
                 return stock;
@@ -389,7 +387,7 @@ public class MainWindow extends JFrame {
         return null;
     }
 
-    private Customer getCustomer(int ID) {
+    public Customer getCustomer(int ID) {
         for (Customer customer : customers) {
             if (customer.ID == ID) {
                 return customer;
@@ -420,6 +418,15 @@ public class MainWindow extends JFrame {
         for (Booking booking : bookings) {
             if (booking.ID == ID) {
                 return booking;
+            }
+        }
+        return null;
+    }
+
+    public User getUser(int ID) {
+        for (User user : users) {
+            if (user.ID == ID) {
+                return user;
             }
         }
         return null;
@@ -461,51 +468,46 @@ public class MainWindow extends JFrame {
     }
 
     public void customerPopupSave() throws SQLException {
-        if (con != null) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO customer "
-                    + "(fName, lName, cName, dob, dateRegistered, address, city, pCode, tNumber, faxNumber, VehicleID) "
-                    + "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-            if (returnCustomerID(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), Integer.parseInt(customersPopup.dobTextField.getText())) == -1) {
-                ps.setString(1, customersPopup.fNameTextField.getText());
-                ps.setString(2, customersPopup.lNameTextField.getText());
-                ps.setString(3, customersPopup.cNameTextField.getText());
-                ps.setInt(4, Integer.parseInt(customersPopup.dobTextField.getText()));
-                ps.setString(5, customersPopup.dateRegisteredTextField.getText());
-                ps.setString(6, customersPopup.addressTextField1.getText() + " " + customersPopup.addressTextField2.getText());
-                ps.setString(7, customersPopup.cityTextField.getText());
-                ps.setString(8, customersPopup.pCodeTextField.getText());
-                ps.setString(9, customersPopup.tNumberTextField.getText());
-                ps.setString(10, customersPopup.fNumberTextField.getText());
-                ps.setInt(11, -1);
-                ps.executeUpdate();
-                System.out.println("Customer Added");
-            } else {
-                System.out.println("Customer Already Exists");
-            }
+        PreparedStatement ps = con.prepareStatement("INSERT INTO customer "
+                + "(fName, lName, cName, dob, dateRegistered, address, city, pCode, tNumber, faxNumber, VehicleID) "
+                + "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
+        if (returnCustomerID(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), Integer.parseInt(customersPopup.dobTextField.getText())) == -1) {
+            ps.setString(1, customersPopup.fNameTextField.getText());
+            ps.setString(2, customersPopup.lNameTextField.getText());
+            ps.setString(3, customersPopup.cNameTextField.getText());
+            ps.setInt(4, Integer.parseInt(customersPopup.dobTextField.getText()));
+            ps.setString(5, customersPopup.dateRegisteredTextField.getText());
+            ps.setString(6, customersPopup.addressTextField1.getText() + " " + customersPopup.addressTextField2.getText());
+            ps.setString(7, customersPopup.cityTextField.getText());
+            ps.setString(8, customersPopup.pCodeTextField.getText());
+            ps.setString(9, customersPopup.tNumberTextField.getText());
+            ps.setString(10, customersPopup.fNumberTextField.getText());
+            ps.setInt(11, -1);
+            ps.executeUpdate();
+            System.out.println("Customer Added");
+        } else {
+            System.out.println("Customer Already Exists");
         }
     }
 
     public void jobsPopupSave() throws SQLException {
-        if (con != null) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO job "
-                    + "() "
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
-            ps.setString(1, jobsPopUp.jobNumberTextField.getText());
-            ps.executeUpdate();
-            System.out.println("Job Added");
-        } else {
-            System.out.println("Job Already Exists");
-        }
+        // TODO
     }
 
     public void manufacturerPopupSave() throws SQLException {
-        if (con != null) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO manufacturer "
-                    + "() "
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
+        PreparedStatement ps = con.prepareStatement("INSERT INTO manufacturer "
+                + "(name, address, city, pCode, tNumber, faxNumber, website, email) "
+                + "VALUES(?,?,?,?,?,?,?,?)");
+        int ID = returnManufacturerID(manufacturerPopup.nameTextField.getText());
+        if (ID != -1) {
             ps.setString(1, manufacturerPopup.nameTextField.getText());
+            ps.setString(2, manufacturerPopup.addressTextField.getText());
+            ps.setString(3, manufacturerPopup.cityTextField.getText());
+            ps.setString(4, manufacturerPopup.postCodeTextField.getText());
+            ps.setString(5, manufacturerPopup.tNumberTextField.getText());
+            ps.setString(6, manufacturerPopup.fNumberTextField.getText());
+            ps.setString(7, manufacturerPopup.websiteTextField.getText());
+            ps.setString(8, manufacturerPopup.emailTextField.getText());
             ps.executeUpdate();
             System.out.println("Manufacturer Added");
         } else {
@@ -513,13 +515,21 @@ public class MainWindow extends JFrame {
         }
     }
 
-    public void stockPopupSave() throws SQLException {
-        if (con != null) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO stock "
-                    + "() "
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
-            ps.setString(1, stockPopup.partNameTextField.getText());
+    public void stockPopupSave(int _ID) throws SQLException {
+        PreparedStatement ps = con.prepareStatement("INSERT INTO stock "
+                + "(StockID, partName, vType, price, threshold, ManufacturerID, pendingDate, pendingQuantity, years) "
+                + "VALUES(?,?,?,?,?,?,?,?,?)");
+        int ID = returnStockID(stockPopup.partNameTextField.getText(), stockPopup.manuNameTextField.getText());
+        if (ID != -1) {
+            ps.setInt(1, ID);
+            ps.setString(2, stockPopup.partNameTextField.getText());
+            ps.setInt(3, vehicleTypeToInt(stockPopup.vTypeBox.getSelectedItem().toString()));
+            ps.setString(4, stockPopup.priceTextField.getText());
+            ps.setInt(5, Integer.parseInt(stockPopup.thresholdTextField.getText()));
+            ps.setString(6, String.valueOf(returnManufacturerID(stockPopup.manuNameTextField.getText())));
+            ps.setString(7, stockPopup.pendingDateTextField.getText());
+            ps.setString(8, stockPopup.pendingQuantityTextField.getText());
+            ps.setString(9, stockPopup.yearsTextBox.getText());
             ps.executeUpdate();
             System.out.println("Stock Added");
         } else {
@@ -527,27 +537,59 @@ public class MainWindow extends JFrame {
         }
     }
 
+    private int returnManufacturerID(String name) {
+        for (Manufacturer manufacturer : manufacturers) {
+            if (manufacturer.name == null ? name == null : manufacturer.name.equals(name)) {
+                return manufacturer.ID;
+            }
+        }
+        return -1;
+    }
+
+    private int vehicleTypeToInt(String type) {
+        switch (type) {
+            case "Car":
+                return 0;
+            case "Van":
+                return 1;
+        }
+        return -1;
+    }
+
     public void userPopupSave() throws SQLException {
-        if (con != null) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO users "
-                    + "() "
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
-            ps.setString(1, userPopup.employeeIDTextField.getText());
+        PreparedStatement ps = con.prepareStatement("INSERT INTO users "
+                + "(fName, lName, address, city, pCode, dob, tNumber) "
+                + "VALUES(?,?,?,?,?,?,?)");
+        int ID = returnEmployeeID(userPopup.fNameTextField.getText(), userPopup.lNameTextField.getText(), Integer.parseInt(userPopup.dobTextField.getText()));
+        if (ID != -1) {
+            ps.setString(1, userPopup.fNameTextField.getText());
+            ps.setString(2, userPopup.lNameTextField.getText());
+            ps.setString(3, userPopup.addressTextField.getText() + " " + userPopup.addressTextField2.getText());
+            ps.setString(4, userPopup.cityTextField.getText());
+            ps.setString(5, userPopup.pCodeTextField.getText());
+            ps.setString(6, userPopup.dobTextField.getText());
+            ps.setString(7, userPopup.tNumberTextField.getText());
             ps.executeUpdate();
             System.out.println("User Added");
         } else {
             System.out.println("User Already Exists");
         }
+
     }
 
     public void vehiclePopupSave() throws SQLException {
-        if (con != null) {
-            PreparedStatement ps = con.prepareStatement("INSERT INTO vehicle "
-                    + "() "
-                    + "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            //if (doesCustomerExist(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText())) {
-            ps.setString(1, vehiclePopup.mileageTextField.getText());
+        PreparedStatement ps = con.prepareStatement("INSERT INTO vehicle "
+                + "(rNumber, make, model, engineSerialNumber, chassisNumber, color, mileage) "
+                + "VALUES(?,?,?,?,?,?,?)");
+        int ID = returnVehicleID(vehiclePopup.regNumberTextField.getText());
+        if (ID != -1) {
+            ps.setString(1, vehiclePopup.regNumberTextField.getText());
+            ps.setString(2, vehiclePopup.makeTextField.getText());
+            ps.setString(3, vehiclePopup.modelTextField.getText());
+            ps.setString(4, vehiclePopup.engSerialNumberTextField.getText());
+            ps.setString(5, vehiclePopup.chasisNumberTextField.getText());
+            ps.setString(6, vehiclePopup.colorTextField.getText());
+            ps.setString(7, vehiclePopup.mileageTextField.getText());
             ps.executeUpdate();
             System.out.println("Vehicle Added");
         } else {
@@ -566,6 +608,41 @@ public class MainWindow extends JFrame {
         bookingPopup.paidForCheckbox.setSelected(bookingFields.paidFor);
         bookingPopup.descriptionField.setText(bookingFields.description);
         bookingPopup.dateFinishedField.setText(Integer.toString(bookingFields.expectedCompletionDate));
+    }
+
+    public void populateStockPopup(Stock stockFields) {
+        //Fill in the Booking popup with values from the Booking object
+        stockPopup.partNameTextField.setText(stockFields.partName);
+        stockPopup.vTypeBox.setSelectedItem(stockFields.vType);
+        stockPopup.yearsTextBox.setText(stockFields.years);
+        stockPopup.priceTextField.setText(Float.toString(stockFields.price));
+        stockPopup.thresholdTextField.setText(Integer.toString(stockFields.threshold));
+        stockPopup.manuNameTextField.setText(stockFields.manufacturer.name);
+        stockPopup.pendingDateTextField.setText(Integer.toString(stockFields.pendingDate));
+        stockPopup.pendingQuantityTextField.setText(Integer.toString(stockFields.pendingQuantity));
+    }
+
+    public void populateCustomerPopup(Customer customerFields) {
+        customersPopup.fNameTextField.setText(customerFields.fName);
+        customersPopup.addressTextField1.setText(customerFields.address);
+        customersPopup.cityTextField.setText(customerFields.city);
+        customersPopup.tNumberTextField.setText(customerFields.tNumber);
+        customersPopup.cNameTextField.setText(customerFields.cName);
+        customersPopup.dateRegisteredTextField.setText(customerFields.dateRegistered);
+        customersPopup.lNameTextField.setText(customerFields.lName);
+        customersPopup.pCodeTextField.setText(customerFields.pCode);
+        customersPopup.fNumberTextField.setText(customerFields.faxNumber);
+        customersPopup.dobTextField.setText(Integer.toString(customerFields.dob));
+    }
+
+    public void populateUserPopup(User userFields) {
+        userPopup.fNameTextField.setText(userFields.fName);
+        userPopup.addressTextField.setText(userFields.address);
+        userPopup.cityTextField.setText(userFields.city);
+        userPopup.tNumberTextField.setText(userFields.tNumber);
+        userPopup.lNameTextField.setText(userFields.lName);
+        userPopup.pCodeTextField.setText(userFields.pCode);
+        userPopup.dobTextField.setText(Integer.toString(userFields.DOB));
     }
 
     //Create varius popups like BookingPopup
@@ -659,6 +736,36 @@ public class MainWindow extends JFrame {
                     && (customer.lName == null ? surname == null : customer.lName.equals(surname))
                     && (customer.dob == dob)) {
                 return customer.ID;
+            }
+        }
+        return -1;
+    }
+
+    private int returnStockID(String partName, String manuName) {
+        for (Stock stock : stocks) {
+            if ((stock.partName == null ? partName == null : stock.partName.equals(partName))
+                    && (stock.manufacturer.name == null ? manuName == null : stock.manufacturer.name.equals(manuName))) {
+                return stock.ID;
+            }
+        }
+        return -1;
+    }
+
+    private int returnEmployeeID(String name, String surname, int dob) {
+        for (User user : users) {
+            if ((user.fName == null ? name == null : user.fName.equals(name))
+                    && (user.lName == null ? surname == null : user.lName.equals(surname))
+                    && (user.DOB == dob)) {
+                return user.ID;
+            }
+        }
+        return -1;
+    }
+
+    private int returnVehicleID(String rNumber) {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.rNumber == null ? rNumber == null : vehicle.rNumber.equals(rNumber)) {
+                return vehicle.ID;
             }
         }
         return -1;

@@ -1,10 +1,8 @@
-
 package Data;
-
 
 public class Stock {
 
-    public Stock(int ID, int quantity, String partName, int vType, String years, Manufacturer manu, float price, int threshold, int pendingQuantity, int pendingDate, Manufacturer manufacturer) {
+    public Stock(int ID, int quantity, String partName, int vType, String years, Manufacturer manu, float price, int threshold, int pendingQuantity, int pendingDate) {
         this.ID = ID;
         this.quantity = quantity;
         this.partName = partName;

@@ -213,10 +213,11 @@
                 <Component class="javax.swing.JTable" name="stockList">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="6" rowCount="61">
+                      <Table columnCount="7" rowCount="61">
                         <Column editable="true" title="ID" type="java.lang.Object"/>
                         <Column editable="true" title="Part Name" type="java.lang.Object"/>
                         <Column editable="true" title="Quantity" type="java.lang.Object"/>
+                        <Column editable="true" title="Years" type="java.lang.Object"/>
                         <Column editable="true" title="Price" type="java.lang.Object"/>
                         <Column editable="true" title="Threshold" type="java.lang.Object"/>
                         <Column editable="true" title="Pending Quantity" type="java.lang.Object"/>
@@ -224,6 +225,11 @@
                     </Property>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title/>
                           <Editor/>
@@ -288,6 +294,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modify"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ModifyActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -551,6 +560,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modify"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton17ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -667,6 +679,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Modify"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton19ActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
