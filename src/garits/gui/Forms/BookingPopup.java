@@ -1,15 +1,23 @@
 package Garits.GUI.Forms;
+
+import Data.Customer;
 import Garits.Main.MainWindow;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 public class BookingPopup extends javax.swing.JFrame {
+
     MainWindow main;
-    
-    public BookingPopup(MainWindow main) {
+    private int id;
+
+    public BookingPopup(MainWindow main, int id) {
         initComponents();
         this.main = main;
+        this.id = id;
+        this.setLocation(main.size.width/2 - this.getWidth()/2, main.size.height/2 - this.getHeight()/2);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -40,7 +48,6 @@ public class BookingPopup extends javax.swing.JFrame {
         descriptionField = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setAlwaysOnTop(true);
 
         viewVehicleButton.setText("View Vehicle");
         viewVehicleButton.addActionListener(new java.awt.event.ActionListener() {
@@ -254,7 +261,8 @@ public class BookingPopup extends javax.swing.JFrame {
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
-            main.bookingPopupSave((int) main.lists.bookingList.getValueAt(main.lists.bookingList.getSelectedRow(), 0));        // TODO add your handling code here:
+            main.bookingPopupSave(id);
+            setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(BookingPopup.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -281,11 +289,24 @@ public class BookingPopup extends javax.swing.JFrame {
     }//GEN-LAST:event_priceFieldActionPerformed
 
     private void viewCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewCustomerButtonActionPerformed
-        // TODO add your handling code here:
+        Customer customer = main.getCustomer(main.returnCustomerID(this.customerNameField.getText(), this.customerSurnameField.getText(), this.DOBTextField.getText()));
+        if (customer != null) {
+            main.showPopup(1, customer.ID);
+            main.populateCustomerPopup(customer);
+        }else{
+            //Display Error Message
+        }
     }//GEN-LAST:event_viewCustomerButtonActionPerformed
 
     private void removeBookingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeBookingButtonActionPerformed
-
+        if (id != -1) {
+            try {
+                main.removeBooking(id);
+                setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(BookingPopup.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }//GEN-LAST:event_removeBookingButtonActionPerformed
 
     private void paidForCheckboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paidForCheckboxActionPerformed

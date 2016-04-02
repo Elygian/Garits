@@ -118,7 +118,7 @@ public class MainGUI extends javax.swing.JPanel {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         try {
-            main.verifyLogin(userNameField.getText(), Arrays.toString(passwordField.getPassword()));
+            main.verifyLogin(userNameField.getText(), String.valueOf(passwordField.getPassword()));
         } catch (SQLException ex) {
             Logger.getLogger(MainGUI.class.getName()).log(Level.SEVERE, null, ex);
         }

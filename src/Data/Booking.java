@@ -5,7 +5,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(int ID, Customer customer, int type, String description, int dateBooked, int expectedCompletionDate, float quotedPrice, boolean paidFor) {
+    public Booking(int ID, Customer customer, String type, String description, int dateBooked, int expectedCompletionDate, float quotedPrice, boolean paidFor) {
         this.ID = ID;
         this.customer = customer;
         this.type = type;
@@ -17,7 +17,7 @@ public class Booking {
     }
     public int ID;
     public Customer customer;
-    public int type;
+    public String type;
     public String description;
     public int dateBooked;
     public int expectedCompletionDate;

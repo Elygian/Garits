@@ -2,8 +2,12 @@ package Garits.Main;
 
 import Data.*;
 import Garits.GUI.Forms.*;
+import java.awt.Dimension;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,7 +23,10 @@ public class MainWindow extends JFrame {
     private StockPopup stockPopup;
     private UserPopup userPopup;
     private VehiclePopup vehiclePopup;
-    private static final String URL = ("jdbc:mysql://173.194.234.254:3306/garits?user=team");
+    //private static final String URL = ("jdbc:mysql://173.194.234.254:3306/garits?user=team");
+    private static final String URL = ("jdbc:mysql://localhost/garits");
+    private static final String user = "tom2";
+    private static final String pw = "tom2";
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         new MainWindow("Tom");
@@ -33,11 +40,12 @@ public class MainWindow extends JFrame {
     private ArrayList<Manufacturer> manufacturers;
     private ArrayList<User> users;
     private ArrayList<JobInvoice> invoices;
+    public Dimension size;
 
     public MainWindow(String name) throws SQLException, ClassNotFoundException {
         super(name);
-
         setup();
+        size = getSize();
     }
 
     //Creates MainGUI, Setups up Frame
@@ -64,6 +72,8 @@ public class MainWindow extends JFrame {
         setVisible(true);
 
         connectToDB();
+
+        verifyLogin("Penelope", "PinkMobile");
     }
 
     //Hide MainGUI, create List
@@ -114,7 +124,7 @@ public class MainWindow extends JFrame {
         DefaultTableModel usersTable = (DefaultTableModel) lists.usersList.getModel();
         cleanList(usersTable);
         for (User u : users) {
-            usersTable.addRow(new Object[]{u.ID, u.fName, u.lName, u.DOB, u.email});
+            usersTable.addRow(new Object[]{u.ID, u.username, u.pWord, u.DOB, u.email});
         }
     }
 
@@ -203,7 +213,7 @@ public class MainWindow extends JFrame {
             while (rs.next()) {
                 int ID = rs.getInt("BookingsID");
                 Customer customer = getCustomer(rs.getInt("CustomerID"));
-                int bType = rs.getInt("type");
+                String bType = intToBookingType(rs.getInt("type"));
                 String description = rs.getString("description");
                 int dateBooked = rs.getInt("dateBooked");
                 int expectedCompletionDate = rs.getInt("expectedCompletionDate");
@@ -320,18 +330,16 @@ public class MainWindow extends JFrame {
             users = new ArrayList<>();
             while (rs.next()) {
                 int ID = rs.getInt("UserID");
-                String fName = rs.getString("fName");
-                String lName = rs.getString("lName");
+                String username = rs.getString("username");
+                String password = rs.getString("Password");
                 String address = rs.getString("address");
                 String city = rs.getString("city");
                 String pCode = rs.getString("pCode");
                 String tNumber = rs.getString("tNumber");
                 String email = rs.getString("email");
                 int DOB = rs.getInt("DOB");
-                String username = rs.getString("Username");
-                String password = rs.getString("Password");
                 int accessLevel = rs.getInt("AccessLevel");
-                User u = new User(ID, fName, lName, address, city, pCode, tNumber, email, DOB, username, password, accessLevel);
+                User u = new User(ID, username, password, address, city, pCode, tNumber, email, DOB, accessLevel);
                 users.add(u);
             }
             parseUsers(users);
@@ -437,19 +445,40 @@ public class MainWindow extends JFrame {
         PreparedStatement ps = con.prepareStatement("INSERT INTO bookings "
                 + "(CustomerId, type, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor) "
                 + "VALUES(?, ?, ?, ?, ?, ?, ?)");
-        int ID = returnCustomerID(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), Integer.parseInt(bookingPopup.DOBTextField.getText()));
+        int ID = returnCustomerID(bookingPopup.customerNameField.getText(), bookingPopup.customerSurnameField.getText(), bookingPopup.DOBTextField.getText());
         if (ID != -1) {
-            ps.setInt(1, ID);
-            ps.setInt(2, bookingTypeToInt(bookingPopup.typeBox.getSelectedItem().toString()));
-            ps.setString(3, bookingPopup.descriptionField.getText());
-            ps.setString(4, bookingPopup.bookedField.getText());
-            ps.setString(5, bookingPopup.dateFinishedField.getText());
-            ps.setString(6, bookingPopup.priceField.getText());
-            ps.setInt(7, (bookingPopup.paidForCheckbox.isSelected()) ? 1 : 0);
-            ps.executeUpdate();
-            System.out.println("Booking added to database");
+            // Customer exists
+            System.out.println("@Customer exist@");
+            if (_ID == -1) {
+                // Add customer
+                ps.setInt(1, ID);
+                ps.setInt(2, bookingTypeToInt(bookingPopup.typeBox.getSelectedItem().toString()));
+                ps.setString(3, bookingPopup.descriptionField.getText());
+                ps.setString(4, bookingPopup.bookedField.getText());
+                ps.setString(5, bookingPopup.dateFinishedField.getText());
+                ps.setString(6, bookingPopup.priceField.getText());
+                ps.setInt(7, (bookingPopup.paidForCheckbox.isSelected()) ? 1 : 0);
+                ps.executeUpdate();
+                System.out.println("Booking added to database");
+                populateBooking();
+            } else {
+                PreparedStatement updateStatement = con.prepareStatement("UPDATE bookings "
+                        + "SET dateBooked=?, expectedCompletionDate=?, quotedPrice=?, paidFor=?, type=?, description=? "
+                        + "WHERE BookingsID=" + _ID);
+                updateStatement.setString(1, bookingPopup.bookedField.getText());
+                updateStatement.setString(2, bookingPopup.dateFinishedField.getText());
+                updateStatement.setString(3, bookingPopup.priceField.getText());
+                updateStatement.setInt(4, (bookingPopup.paidForCheckbox.isSelected()) ? 1 : 0);
+                updateStatement.setInt(5, bookingTypeToInt(bookingPopup.typeBox.getSelectedItem().toString()));
+                updateStatement.setString(6, bookingPopup.descriptionField.getText());
+                updateStatement.executeUpdate();
+                populateBooking();
+                // Modify Customer
+                System.out.println("Booking Modify");
+            }
         } else {
-            System.out.println("Booking failed - Customer doesn't exist");
+            // Customer doesnt exist
+            System.out.println("@Customer doesnt exist@");
         }
     }
 
@@ -467,17 +496,31 @@ public class MainWindow extends JFrame {
         return -1;
     }
 
+    private String intToBookingType(int type) {
+        switch (type) {
+            case 0:
+                return "Repair";
+            case 1:
+                return "MOT";
+            case 2:
+                return "Service";
+            case 3:
+                return "Special";
+        }
+        return null;
+    }
+
     public void customerPopupSave() throws SQLException {
         PreparedStatement ps = con.prepareStatement("INSERT INTO customer "
                 + "(fName, lName, cName, dob, dateRegistered, address, city, pCode, tNumber, faxNumber, VehicleID) "
                 + "VALUES(?,?,?,?,?,?,?,?,?,?,?)");
-        if (returnCustomerID(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), Integer.parseInt(customersPopup.dobTextField.getText())) == -1) {
+        if (returnCustomerID(customersPopup.fNameTextField.getText(), customersPopup.lNameTextField.getText(), customersPopup.dobTextField.getText()) == -1) {
             ps.setString(1, customersPopup.fNameTextField.getText());
             ps.setString(2, customersPopup.lNameTextField.getText());
             ps.setString(3, customersPopup.cNameTextField.getText());
             ps.setInt(4, Integer.parseInt(customersPopup.dobTextField.getText()));
             ps.setString(5, customersPopup.dateRegisteredTextField.getText());
-            ps.setString(6, customersPopup.addressTextField1.getText() + " " + customersPopup.addressTextField2.getText());
+            ps.setString(6, customersPopup.addressTextField.getText());
             ps.setString(7, customersPopup.cityTextField.getText());
             ps.setString(8, customersPopup.pCodeTextField.getText());
             ps.setString(9, customersPopup.tNumberTextField.getText());
@@ -499,7 +542,7 @@ public class MainWindow extends JFrame {
                 + "(name, address, city, pCode, tNumber, faxNumber, website, email) "
                 + "VALUES(?,?,?,?,?,?,?,?)");
         int ID = returnManufacturerID(manufacturerPopup.nameTextField.getText());
-        if (ID != -1) {
+        if (ID == -1) {
             ps.setString(1, manufacturerPopup.nameTextField.getText());
             ps.setString(2, manufacturerPopup.addressTextField.getText());
             ps.setString(3, manufacturerPopup.cityTextField.getText());
@@ -520,7 +563,7 @@ public class MainWindow extends JFrame {
                 + "(StockID, partName, vType, price, threshold, ManufacturerID, pendingDate, pendingQuantity, years) "
                 + "VALUES(?,?,?,?,?,?,?,?,?)");
         int ID = returnStockID(stockPopup.partNameTextField.getText(), stockPopup.manuNameTextField.getText());
-        if (ID != -1) {
+        if (ID == -1) {
             ps.setInt(1, ID);
             ps.setString(2, stockPopup.partNameTextField.getText());
             ps.setInt(3, vehicleTypeToInt(stockPopup.vTypeBox.getSelectedItem().toString()));
@@ -558,18 +601,21 @@ public class MainWindow extends JFrame {
 
     public void userPopupSave() throws SQLException {
         PreparedStatement ps = con.prepareStatement("INSERT INTO users "
-                + "(fName, lName, address, city, pCode, dob, tNumber) "
-                + "VALUES(?,?,?,?,?,?,?)");
-        int ID = returnEmployeeID(userPopup.fNameTextField.getText(), userPopup.lNameTextField.getText(), Integer.parseInt(userPopup.dobTextField.getText()));
-        if (ID != -1) {
+                + "(username, password, address, city, pCode, dob, tNumber,email,AccessLevel) "
+                + "VALUES(?,?,?,?,?,?,?,?,?)");
+        int ID = returnEmployeeID(userPopup.fNameTextField.getText(), Integer.parseInt(userPopup.dobTextField.getText()));
+        if (ID == -1) {
             ps.setString(1, userPopup.fNameTextField.getText());
-            ps.setString(2, userPopup.lNameTextField.getText());
-            ps.setString(3, userPopup.addressTextField.getText() + " " + userPopup.addressTextField2.getText());
+            ps.setString(2, String.valueOf(userPopup.passwordField.getPassword()));
+            ps.setString(3, userPopup.addressTextField.getText());
             ps.setString(4, userPopup.cityTextField.getText());
             ps.setString(5, userPopup.pCodeTextField.getText());
             ps.setString(6, userPopup.dobTextField.getText());
             ps.setString(7, userPopup.tNumberTextField.getText());
+            ps.setString(8, userPopup.emailTextField.getText());
+            ps.setInt(9, Integer.parseInt(userPopup.accessLevelTextField.getText()));
             ps.executeUpdate();
+            System.out.println(String.valueOf(userPopup.passwordField.getPassword()));
             System.out.println("User Added");
         } else {
             System.out.println("User Already Exists");
@@ -582,7 +628,7 @@ public class MainWindow extends JFrame {
                 + "(rNumber, make, model, engineSerialNumber, chassisNumber, color, mileage) "
                 + "VALUES(?,?,?,?,?,?,?)");
         int ID = returnVehicleID(vehiclePopup.regNumberTextField.getText());
-        if (ID != -1) {
+        if (ID == -1) {
             ps.setString(1, vehiclePopup.regNumberTextField.getText());
             ps.setString(2, vehiclePopup.makeTextField.getText());
             ps.setString(3, vehiclePopup.modelTextField.getText());
@@ -608,6 +654,10 @@ public class MainWindow extends JFrame {
         bookingPopup.paidForCheckbox.setSelected(bookingFields.paidFor);
         bookingPopup.descriptionField.setText(bookingFields.description);
         bookingPopup.dateFinishedField.setText(Integer.toString(bookingFields.expectedCompletionDate));
+
+        bookingPopup.customerNameField.setEditable(false);
+        bookingPopup.customerSurnameField.setEditable(false);
+        bookingPopup.DOBTextField.setEditable(false);
     }
 
     public void populateStockPopup(Stock stockFields) {
@@ -624,7 +674,7 @@ public class MainWindow extends JFrame {
 
     public void populateCustomerPopup(Customer customerFields) {
         customersPopup.fNameTextField.setText(customerFields.fName);
-        customersPopup.addressTextField1.setText(customerFields.address);
+        customersPopup.addressTextField.setText(customerFields.address);
         customersPopup.cityTextField.setText(customerFields.city);
         customersPopup.tNumberTextField.setText(customerFields.tNumber);
         customersPopup.cNameTextField.setText(customerFields.cName);
@@ -636,19 +686,21 @@ public class MainWindow extends JFrame {
     }
 
     public void populateUserPopup(User userFields) {
-        userPopup.fNameTextField.setText(userFields.fName);
+        userPopup.fNameTextField.setText(userFields.username);
         userPopup.addressTextField.setText(userFields.address);
         userPopup.cityTextField.setText(userFields.city);
         userPopup.tNumberTextField.setText(userFields.tNumber);
-        userPopup.lNameTextField.setText(userFields.lName);
+        userPopup.passwordField.setText(userFields.pWord);
         userPopup.pCodeTextField.setText(userFields.pCode);
         userPopup.dobTextField.setText(Integer.toString(userFields.DOB));
+        userPopup.emailTextField.setText(userFields.email);
+        userPopup.accessLevelTextField.setText(Integer.toString(userFields.accessLevel));
     }
 
     //Create varius popups like BookingPopup
-    public void showPopup(int type) {
+    public void showPopup(int type, int id) {
         if (type == 0) {
-            bookingPopup = new BookingPopup(this);
+            bookingPopup = new BookingPopup(this, id);
             bookingPopup.setVisible(true);
         } else if (type == 1) {
             customersPopup = new CustomerAccountsPopup(this);
@@ -683,7 +735,7 @@ public class MainWindow extends JFrame {
         System.out.println("Connecting to database...");
 
         try {
-            con = DriverManager.getConnection(URL);
+            con = DriverManager.getConnection(URL, user, pw);
             System.out.println("Database connected!");
         } catch (SQLException e) {
             System.out.println("Can't Connect at: " + URL);
@@ -694,7 +746,7 @@ public class MainWindow extends JFrame {
     public boolean login(String username, String password) throws SQLException {
         if (con != null) {
             boolean loggedIn = false;
-            PreparedStatement ps = con.prepareStatement("SELECT Username, Password FROM users WHERE Username=? AND Password=?");
+            PreparedStatement ps = con.prepareStatement("SELECT Username, Password FROM users WHERE username=? AND Password=?");
             ps.setString(1, username);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
@@ -730,11 +782,11 @@ public class MainWindow extends JFrame {
         }
     }
 
-    private int returnCustomerID(String name, String surname, int dob) {
+    public int returnCustomerID(String name, String surname, String dob) {
         for (Customer customer : customers) {
             if ((customer.fName == null ? name == null : customer.fName.equals(name))
                     && (customer.lName == null ? surname == null : customer.lName.equals(surname))
-                    && (customer.dob == dob)) {
+                    && (String.valueOf(customer.dob) == null ? dob == null : String.valueOf(customer.dob).equals(dob))) {
                 return customer.ID;
             }
         }
@@ -751,10 +803,9 @@ public class MainWindow extends JFrame {
         return -1;
     }
 
-    private int returnEmployeeID(String name, String surname, int dob) {
+    private int returnEmployeeID(String name, int dob) {
         for (User user : users) {
-            if ((user.fName == null ? name == null : user.fName.equals(name))
-                    && (user.lName == null ? surname == null : user.lName.equals(surname))
+            if ((user.username == null ? name == null : user.username.equals(name))
                     && (user.DOB == dob)) {
                 return user.ID;
             }
@@ -769,5 +820,11 @@ public class MainWindow extends JFrame {
             }
         }
         return -1;
+    }
+
+    public void removeBooking(int _ID) throws SQLException {
+        PreparedStatement deleteStatement = con.prepareStatement("DELETE FROM bookings WHERE BookingsID = " + _ID);
+        deleteStatement.executeUpdate();
+        populateBooking();
     }
 }

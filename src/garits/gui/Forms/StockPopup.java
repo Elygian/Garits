@@ -22,6 +22,7 @@ public class StockPopup extends javax.swing.JFrame {
     public StockPopup(MainWindow main) {
         initComponents();
         this.main = main;
+                this.setLocation(main.size.width/2 - this.getWidth()/2, main.size.height/2 - this.getHeight()/2);
     }
 
     /**

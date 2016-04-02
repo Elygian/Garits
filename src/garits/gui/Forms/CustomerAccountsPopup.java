@@ -25,6 +25,7 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
     public CustomerAccountsPopup(MainWindow main) {
         initComponents();
         this.main = main;
+                this.setLocation(main.size.width/2 - this.getWidth()/2, main.size.height/2 - this.getHeight()/2);
     }
 
     /**
@@ -39,8 +40,6 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         viewVehicleButton = new javax.swing.JButton();
         saveCustomerButton = new javax.swing.JButton();
         dateRegisteredTextField = new javax.swing.JTextField();
-        addressTextField1 = new javax.swing.JTextField();
-        addressTextField2 = new javax.swing.JTextField();
         lNameTextField = new javax.swing.JTextField();
         fNameTextField = new javax.swing.JTextField();
         cityTextField = new javax.swing.JTextField();
@@ -61,6 +60,8 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         cNameTextField = new javax.swing.JTextField();
         customerTitleLabel = new javax.swing.JLabel();
         removeCustomerButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        addressTextField = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -81,18 +82,6 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         dateRegisteredTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dateRegisteredTextFieldActionPerformed(evt);
-            }
-        });
-
-        addressTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressTextField1ActionPerformed(evt);
-            }
-        });
-
-        addressTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressTextField2ActionPerformed(evt);
             }
         });
 
@@ -174,6 +163,10 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
             }
         });
 
+        addressTextField.setColumns(20);
+        addressTextField.setRows(3);
+        jScrollPane1.setViewportView(addressTextField);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -181,30 +174,40 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(247, 247, 247)
+                        .addComponent(customerTitleLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(viewVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(removeCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(saveCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(9, 9, 9))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fNameLabel)
-                                    .addComponent(addressLabel))
-                                .addGap(29, 29, 29))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cityLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(cNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(telephoneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cityTextField)
-                                .addComponent(tNumberTextField)
-                                .addComponent(addressTextField1)
-                                .addComponent(fNameTextField)
-                                .addComponent(addressTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(cNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(106, 106, 106)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(tNumberTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cNameTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 137, Short.MAX_VALUE)
+                                    .addComponent(cityTextField)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fNameLabel)
+                                    .addComponent(addressLabel))
+                                .addGap(29, 29, 29)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(fNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(106, 106, 106)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(dobLabel)
@@ -219,22 +222,11 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                                     .addComponent(dateRegisteredLabel)
                                     .addComponent(lNameLabel)
                                     .addComponent(pCodeLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pCodeTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lNameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dateRegisteredTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
-                        .addComponent(customerTitleLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(40, 40, 40)
-                        .addComponent(viewVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(removeCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(saveCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(9, 9, 9)))
+                                    .addComponent(dateRegisteredTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -248,30 +240,13 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                         .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(fNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addressTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(addressTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(cityLabel))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cityTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(telephoneLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(cNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(cNameLabel)))
-                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(fNameLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(addressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(fNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(dateRegisteredTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -295,7 +270,21 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(dobTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(dobLabel))))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(cityLabel))
+                    .addComponent(cityTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(telephoneLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cNameLabel))
+                .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(viewVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(saveCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -321,10 +310,6 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
     private void dateRegisteredTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dateRegisteredTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dateRegisteredTextFieldActionPerformed
-
-    private void addressTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addressTextField1ActionPerformed
 
     private void lNameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lNameTextFieldActionPerformed
         // TODO add your handling code here:
@@ -362,15 +347,10 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_removeCustomerButtonActionPerformed
 
-    private void addressTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addressTextField2ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel addressLabel;
-    public javax.swing.JTextField addressTextField1;
-    public javax.swing.JTextField addressTextField2;
+    public javax.swing.JTextArea addressTextField;
     private javax.swing.JLabel cNameLabel;
     public javax.swing.JTextField cNameTextField;
     private javax.swing.JLabel cityLabel;
@@ -384,6 +364,7 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
     public javax.swing.JTextField fNameTextField;
     public javax.swing.JTextField fNumberTextField;
     private javax.swing.JLabel faxLabel;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lNameLabel;
     public javax.swing.JTextField lNameTextField;
     private javax.swing.JLabel pCodeLabel;

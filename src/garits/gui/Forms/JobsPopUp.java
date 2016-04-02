@@ -22,6 +22,7 @@ public class JobsPopUp extends javax.swing.JFrame {
     public JobsPopUp(MainWindow main) {
         initComponents();
         this.main = main;
+                this.setLocation(main.size.width/2 - this.getWidth()/2, main.size.height/2 - this.getHeight()/2);
     }
 
     /**
@@ -33,8 +34,6 @@ public class JobsPopUp extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jobNumberLabel = new javax.swing.JLabel();
-        jobNumberTextField = new javax.swing.JTextField();
         vehicleRegLabel = new javax.swing.JLabel();
         makeLabel = new javax.swing.JLabel();
         dateBookedLabel = new javax.swing.JLabel();
@@ -64,14 +63,6 @@ public class JobsPopUp extends javax.swing.JFrame {
         viewVehicleButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-
-        jobNumberLabel.setText("Job Number:");
-
-        jobNumberTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jobNumberTextFieldActionPerformed(evt);
-            }
-        });
 
         vehicleRegLabel.setText("Vehicle Registration Number:");
 
@@ -190,7 +181,6 @@ public class JobsPopUp extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(vehicleRegLabel)
-                            .addComponent(jobNumberLabel)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(1, 1, 1)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,7 +189,6 @@ public class JobsPopUp extends javax.swing.JFrame {
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(vehicleRegTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
-                            .addComponent(jobNumberTextField)
                             .addComponent(customerNameTextField))
                         .addGap(25, 25, 25)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,8 +253,6 @@ public class JobsPopUp extends javax.swing.JFrame {
                 .addComponent(jobTitleLabel)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jobNumberLabel)
-                    .addComponent(jobNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dateBookedLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Day, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,10 +302,6 @@ public class JobsPopUp extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jobNumberTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jobNumberTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jobNumberTextFieldActionPerformed
 
     private void createInvoiceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createInvoiceButtonActionPerformed
         // TODO add your handling code here:
@@ -387,8 +370,6 @@ public class JobsPopUp extends javax.swing.JFrame {
     public javax.swing.JComboBox<String> jComboBox2;
     public javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel jobNumberLabel;
-    public javax.swing.JTextField jobNumberTextField;
     private javax.swing.JLabel jobTitleLabel;
     private javax.swing.JLabel makeLabel;
     public javax.swing.JTextField makeTextField;
