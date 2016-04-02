@@ -17,15 +17,16 @@ import java.util.logging.Logger;
 public class CustomerAccountsPopup extends javax.swing.JFrame {
 
     MainWindow main;
-
+    private final int id;
     /**
      * Creates new form CustomerAccountsPopup
      * @param main
      */
-    public CustomerAccountsPopup(MainWindow main) {
+    public CustomerAccountsPopup(MainWindow main, int id) {
         initComponents();
         this.main = main;
-                this.setLocation(main.size.width/2 - this.getWidth()/2, main.size.height/2 - this.getHeight()/2);
+                this.id = id;
+        this.setLocation(main.size.width/2 - this.getWidth()/2, main.size.height/2 - this.getHeight()/2);
     }
 
     /**
@@ -62,6 +63,8 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         removeCustomerButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         addressTextField = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
+        emailTextField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -167,6 +170,8 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         addressTextField.setRows(3);
         jScrollPane1.setViewportView(addressTextField);
 
+        jLabel1.setText("Email");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -207,7 +212,7 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                                     .addComponent(fNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(106, 106, 106)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 5, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(dobLabel)
@@ -222,11 +227,16 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                                     .addComponent(dateRegisteredLabel)
                                     .addComponent(lNameLabel)
                                     .addComponent(pCodeLabel))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(pCodeTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lNameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(dateRegisteredTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(dateRegisteredTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(26, 26, 26)
+                                .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -279,7 +289,9 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(telephoneLabel))
+                    .addComponent(telephoneLabel)
+                    .addComponent(jLabel1)
+                    .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,7 +313,7 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
 
     private void saveCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCustomerButtonActionPerformed
         try {
-            main.customerPopupSave();// TODO add your handling code here:
+            main.customerPopupSave(id);// TODO add your handling code here:
         } catch (SQLException ex) {
             Logger.getLogger(CustomerAccountsPopup.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -360,10 +372,12 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
     public javax.swing.JTextField dateRegisteredTextField;
     private javax.swing.JLabel dobLabel;
     public javax.swing.JTextField dobTextField;
+    public javax.swing.JTextField emailTextField;
     private javax.swing.JLabel fNameLabel;
     public javax.swing.JTextField fNameTextField;
     public javax.swing.JTextField fNumberTextField;
     private javax.swing.JLabel faxLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lNameLabel;
     public javax.swing.JTextField lNameTextField;

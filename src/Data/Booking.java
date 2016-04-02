@@ -16,7 +16,7 @@ public class Booking {
         this.paidFor = paidFor;
     }
     public int ID;
-    public Customer customer;
+    public Customer customer;    
     public String type;
     public String description;
     public int dateBooked;

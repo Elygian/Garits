@@ -5,9 +5,10 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(int ID, String rNumber, String make, String model, String engineSerialNumber, String chasisNumber, String color, int mileage) {
+    public Vehicle(int ID, String vType, String rNumber, String make, String model, String engineSerialNumber, String chasisNumber, String color, int mileage) {
         this.ID = ID;
         this.rNumber = rNumber;
+        this.vType = vType;
         this.make = make;
         this.model = model;
         this.engineSerialNumber = engineSerialNumber;
@@ -17,6 +18,7 @@ public class Vehicle {
     }
     public int ID;
     public String rNumber;
+    public String vType;
     public String make;
     public String model;
     public String engineSerialNumber;

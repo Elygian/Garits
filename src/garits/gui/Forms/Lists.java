@@ -22,7 +22,7 @@ public class Lists extends javax.swing.JPanel {
         bookingList.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if(e.getButton() == MouseEvent.BUTTON3){
+                if (e.getButton() == MouseEvent.BUTTON3) {
                     bookingList.clearSelection();
                 }
             }
@@ -30,9 +30,60 @@ public class Lists extends javax.swing.JPanel {
         jScrollPane5.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                         
-                 bookingList.clearSelection();
-                
+
+                bookingList.clearSelection();
+
+            }
+        });
+
+        customerList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    customerList.clearSelection();
+                }
+            }
+        });
+        jScrollPane18.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                customerList.clearSelection();
+
+            }
+        });
+
+        usersList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    usersList.clearSelection();
+                }
+            }
+        });
+        jScrollPane19.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                usersList.clearSelection();
+
+            }
+        });
+        
+                stockList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    stockList.clearSelection();
+                }
+            }
+        });
+        jScrollPane16.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                stockList.clearSelection();
+
             }
         });
     }
@@ -58,7 +109,6 @@ public class Lists extends javax.swing.JPanel {
         Order = new javax.swing.JButton();
         Add = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
-        Modify = new javax.swing.JButton();
         jLayeredPane6 = new javax.swing.JLayeredPane();
         jScrollPane17 = new javax.swing.JScrollPane();
         jobList = new javax.swing.JTable();
@@ -71,13 +121,11 @@ public class Lists extends javax.swing.JPanel {
         jButton7 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
         jLayeredPane9 = new javax.swing.JLayeredPane();
         jScrollPane19 = new javax.swing.JScrollPane();
         usersList = new javax.swing.JTable();
         jButton8 = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
-        jButton19 = new javax.swing.JButton();
 
         bookingList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -272,7 +320,7 @@ public class Lists extends javax.swing.JPanel {
 
         Order.setText("Order");
 
-        Add.setText("Add");
+        Add.setText("Add/Modify");
         Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AddActionPerformed(evt);
@@ -280,11 +328,9 @@ public class Lists extends javax.swing.JPanel {
         });
 
         jButton12.setText("Delete");
-
-        Modify.setText("Modify");
-        Modify.addActionListener(new java.awt.event.ActionListener() {
+        jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ModifyActionPerformed(evt);
+                jButton12ActionPerformed(evt);
             }
         });
 
@@ -292,7 +338,6 @@ public class Lists extends javax.swing.JPanel {
         jLayeredPane5.setLayer(Order, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane5.setLayer(Add, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane5.setLayer(jButton12, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane5.setLayer(Modify, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane5Layout = new javax.swing.GroupLayout(jLayeredPane5);
         jLayeredPane5.setLayout(jLayeredPane5Layout);
@@ -305,8 +350,6 @@ public class Lists extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Modify, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Order, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -318,8 +361,7 @@ public class Lists extends javax.swing.JPanel {
                 .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Order, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Modify, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         MainJTabbedPane.addTab("Stock", jLayeredPane5);
@@ -517,7 +559,7 @@ public class Lists extends javax.swing.JPanel {
         ));
         jScrollPane18.setViewportView(customerList);
 
-        jButton7.setText("Add");
+        jButton7.setText("Add/Modify");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
@@ -525,21 +567,18 @@ public class Lists extends javax.swing.JPanel {
         });
 
         jButton15.setText("Delete");
-
-        jButton16.setText("Vehicle");
-
-        jButton17.setText("Modify");
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        jButton15.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                jButton15ActionPerformed(evt);
             }
         });
+
+        jButton16.setText("Vehicle");
 
         jLayeredPane7.setLayer(jScrollPane18, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(jButton15, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(jButton16, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane7.setLayer(jButton17, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane7Layout = new javax.swing.GroupLayout(jLayeredPane7);
         jLayeredPane7.setLayout(jLayeredPane7Layout);
@@ -551,9 +590,7 @@ public class Lists extends javax.swing.JPanel {
                 .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -565,8 +602,7 @@ public class Lists extends javax.swing.JPanel {
                 .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton17, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         MainJTabbedPane.addTab("Customers", jLayeredPane7);
@@ -636,12 +672,12 @@ public class Lists extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "First Name", "Last Name", "DOB", "Email"
+                "ID", "First Name", "Password", "DOB", "Email"
             }
         ));
         jScrollPane19.setViewportView(usersList);
 
-        jButton8.setText("Add");
+        jButton8.setText("Add/Modify");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
@@ -649,18 +685,15 @@ public class Lists extends javax.swing.JPanel {
         });
 
         jButton18.setText("Delete");
-
-        jButton19.setText("Modify");
-        jButton19.addActionListener(new java.awt.event.ActionListener() {
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton19ActionPerformed(evt);
+                jButton18ActionPerformed(evt);
             }
         });
 
         jLayeredPane9.setLayer(jScrollPane19, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane9.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane9.setLayer(jButton18, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane9.setLayer(jButton19, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane9Layout = new javax.swing.GroupLayout(jLayeredPane9);
         jLayeredPane9.setLayout(jLayeredPane9Layout);
@@ -672,8 +705,6 @@ public class Lists extends javax.swing.JPanel {
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jLayeredPane9Layout.setVerticalGroup(
@@ -683,8 +714,7 @@ public class Lists extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         MainJTabbedPane.addTab("Users", jLayeredPane9);
@@ -717,15 +747,33 @@ public class Lists extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        main.showPopup(1, -1);        // TODO add your handling code here:
+        System.out.println(this.customerList.getSelectedRow());
+        if (main.lists.customerList.getSelectedRow() != -1) {
+            main.showPopup(1, (int) main.lists.customerList.getValueAt(main.lists.customerList.getSelectedRow(), 0));
+            main.populateCustomerPopup(main.getCustomer((int) main.lists.customerList.getValueAt(main.lists.customerList.getSelectedRow(), 0)));
+        } else {
+            main.showPopup(1, -1);
+        }
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
-        main.showPopup(4, -1);        // TODO add your handling code here:
+        System.out.println(this.stockList.getSelectedRow());
+        if (main.lists.stockList.getSelectedRow() != -1) {
+            main.showPopup(4, (int) main.lists.stockList.getValueAt(main.lists.stockList.getSelectedRow(), 0));
+            main.populateStockPopup(main.getStock((int) main.lists.stockList.getValueAt(main.lists.stockList.getSelectedRow(), 0)));
+        } else {
+            main.showPopup(4, -1);
+        }
     }//GEN-LAST:event_AddActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        main.showPopup(5, -1);        // TODO add your handling code here:
+        System.out.println(this.usersList.getSelectedRow());
+        if (main.lists.usersList.getSelectedRow() != -1) {
+            main.showPopup(5, (int) main.lists.usersList.getValueAt(main.lists.usersList.getSelectedRow(), 0));
+            main.populateUserPopup(main.getUser((int) main.lists.usersList.getValueAt(main.lists.usersList.getSelectedRow(), 0)));
+        } else {
+            main.showPopup(5, -1);
+        }       // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -736,26 +784,7 @@ public class Lists extends javax.swing.JPanel {
         } else {
             main.showPopup(0, -1);
         }
-        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void ModifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModifyActionPerformed
-        System.out.println(this.stockList.getSelectedRow());
-        main.showPopup(4, -1);
-        main.populateStockPopup(main.getStock((int) main.lists.stockList.getValueAt(main.lists.stockList.getSelectedRow(), 0)));        // TODO add your handling code here:
-    }//GEN-LAST:event_ModifyActionPerformed
-
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        System.out.println(this.customerList.getSelectedRow());
-        main.showPopup(1, -1);
-        main.populateCustomerPopup(main.getCustomer((int) main.lists.customerList.getValueAt(main.lists.customerList.getSelectedRow(), 0)));        // TODO add your handling code here:    // TODO add your handling code here:
-    }//GEN-LAST:event_jButton17ActionPerformed
-
-    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        System.out.println(this.usersList.getSelectedRow());
-        main.showPopup(5, -1);
-        main.populateUserPopup(main.getUser((int) main.lists.usersList.getValueAt(main.lists.usersList.getSelectedRow(), 0)));
-    }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         try {
@@ -767,11 +796,41 @@ public class Lists extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
+        try {
+            if (main.lists.customerList.getSelectedRow() != -1) {
+                main.removeCustomer((int) main.lists.customerList.getValueAt(main.lists.customerList.getSelectedRow(), 0));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Lists.class.getName()).log(Level.SEVERE, null, ex);
+        }        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton15ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        try {
+            if (main.lists.usersList.getSelectedRow() != -1) {
+                main.removeUser((int) main.lists.usersList.getValueAt(main.lists.usersList.getSelectedRow(), 0));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Lists.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
+                                      
+        try {
+            if (main.lists.stockList.getSelectedRow() != -1) {
+                main.removeStock((int) main.lists.stockList.getValueAt(main.lists.stockList.getSelectedRow(), 0));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Lists.class.getName()).log(Level.SEVERE, null, ex);
+        } // TODO add your handling code here:
+    }//GEN-LAST:event_jButton12ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Add;
     private javax.swing.JTabbedPane MainJTabbedPane;
-    private javax.swing.JButton Modify;
     private javax.swing.JButton Order;
     public javax.swing.JTable bookingList;
     public javax.swing.JTable customerList;
@@ -782,9 +841,7 @@ public class Lists extends javax.swing.JPanel {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton19;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;

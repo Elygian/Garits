@@ -16,12 +16,14 @@ import java.util.logging.Logger;
  */
 public class UserPopup extends javax.swing.JFrame {
 MainWindow main;
+    private final int id;
     /**
      * Creates new form CustomerAccountsPopup
      */
-    public UserPopup(MainWindow main) {
+    public UserPopup(MainWindow main, int id) {
         initComponents();
         this.main = main;
+                this.id = id;
                 this.setLocation(main.size.width/2 - this.getWidth()/2, main.size.height/2 - this.getHeight()/2);
     }
 
@@ -260,7 +262,7 @@ MainWindow main;
 
     private void saveUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveUserButtonActionPerformed
         try {
-            main.userPopupSave();// TODO add your handling code here:
+            main.userPopupSave(id);// TODO add your handling code here:
         } catch (SQLException ex) {
             Logger.getLogger(UserPopup.class.getName()).log(Level.SEVERE, null, ex);
         }// TODO add your handling code here:
@@ -287,7 +289,14 @@ MainWindow main;
     }//GEN-LAST:event_tNumberTextFieldActionPerformed
 
     private void removeUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeUserButtonActionPerformed
-        // TODO add your handling code here:
+          if (id != -1) {
+            try {
+                main.removeUser(id);
+                setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(UserPopup.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_removeUserButtonActionPerformed
 
 
