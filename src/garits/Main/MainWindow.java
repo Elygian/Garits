@@ -3,11 +3,11 @@ package Garits.Main;
 import Data.*;
 import Garits.GUI.Forms.*;
 import java.awt.Dimension;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.lang.reflect.Field;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -25,11 +25,11 @@ public class MainWindow extends JFrame {
     private VehiclePopup vehiclePopup;
     //private static final String URL = ("jdbc:mysql://173.194.234.254:3306/garits?user=team");
     private static final String URL = ("jdbc:mysql://localhost/garits");
-    private static final String user = "tom2";
-    private static final String pw = "tom2";
+    private static final String USER = "root";
+    private static final String PW = "";
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        new MainWindow("Tom");
+        MainWindow mainWindow = new MainWindow("Tom");
     }
     private ArrayList<Customer> customers;
     private ArrayList<Stock> stocks;
@@ -88,44 +88,63 @@ public class MainWindow extends JFrame {
     }
 
     /* Parse the results */
-    private void parseStock(ArrayList<Stock> stocks) {
+    private void parseStock(ArrayList<Stock> stocks, String search) {
         DefaultTableModel stockTable = (DefaultTableModel) lists.stockList.getModel();
         cleanList(stockTable);
         for (Stock s : stocks) {
-            stockTable.addRow(new Object[]{s.ID, s.partName, s.quantity, s.price, s.threshold, s.pendingQuantity});
+            if (dataContainsString(s, search)) {
+                stockTable.addRow(new Object[]{s.ID, s.partName, s.quantity, s.price, s.threshold, s.pendingQuantity});
+            }
         }
     }
 
-    private void parseCustomer(ArrayList<Customer> customers) {
+    private void parseCustomer(ArrayList<Customer> customers, String search) {
         DefaultTableModel customerTable = (DefaultTableModel) lists.customerList.getModel();
         cleanList(customerTable);
         for (Customer c : customers) {
-            customerTable.addRow(new Object[]{c.ID, c.dateRegistered, c.fName, c.lName, c.dob});
+            if (dataContainsString(c, search)) {
+                customerTable.addRow(new Object[]{c.ID, c.dateRegistered, c.fName, c.lName, c.dob});
+            }
         }
     }
 
-    private void parseBooking(ArrayList<Booking> bookings) {
+    private void parseBooking(ArrayList<Booking> bookings, String search) {
         DefaultTableModel bookingsTable = (DefaultTableModel) lists.bookingList.getModel();
         cleanList(bookingsTable);
         for (Booking b : bookings) {
-            bookingsTable.addRow(new Object[]{b.ID, b.customer.fName, b.customer.lName, b.type, b.dateBooked, b.quotedPrice, b.description});
+            if (dataContainsString(b, search)) {
+                bookingsTable.addRow(new Object[]{b.ID, b.customer.fName, b.customer.lName, b.type, b.dateBooked, b.quotedPrice, b.description});
+            }
         }
+
     }
 
-    private void parseJob(ArrayList<Job> jobs) {
+    private void parseJob(ArrayList<Job> jobs, String search) {
         DefaultTableModel jobsTable = (DefaultTableModel) lists.jobList.getModel();
         cleanList(jobsTable);
         for (Job j : jobs) {
-            jobsTable.addRow(new Object[]{j.ID, j.dateCreated, j.dateDue, j.detailedDescription, j.duration, j.price});
+            if (dataContainsString(j, search)) {
+                jobsTable.addRow(new Object[]{j.ID, j.dateCreated, j.dateDue, j.detailedDescription, j.duration, j.price});
+            }
         }
     }
 
-    private void parseUsers(ArrayList<User> users) {
+    private void parseUsers(ArrayList<User> users, String search) {
         DefaultTableModel usersTable = (DefaultTableModel) lists.usersList.getModel();
         cleanList(usersTable);
         for (User u : users) {
-            usersTable.addRow(new Object[]{u.ID, u.username, u.pWord, u.DOB, u.email});
+            if (dataContainsString(u, search)) {
+                usersTable.addRow(new Object[]{u.ID, u.username, u.pWord, u.DOB, u.email});
+
+            }
         }
+    }
+
+    private boolean dataContainsString(StringComparable data, String search) {
+        if (Lists.DEFAULT_TEXT.equals(search) || search == null || "".equals(search)) {
+            return true;
+        }
+        return data.toComparisonString().contains(search);
     }
 
     /* Clean the lists - fixes a bug */
@@ -137,7 +156,7 @@ public class MainWindow extends JFrame {
     }
 
     /* Populate lists by fetching data from Database */
-    private void populateCustomer() throws SQLException {
+    public void populateCustomer(String search) throws SQLException {
         if (con != null) {
             PreparedStatement ps
                     = con.prepareStatement("SELECT * FROM customer");
@@ -175,11 +194,11 @@ public class MainWindow extends JFrame {
                 Customer c = new Customer(ID, dateRegistered, fName, lName, cName, address, city, pCode, tNumber, faxNumber, dob, email, reminderCount, responseRate, vehicleArray);
                 customers.add(c);
             }
-            parseCustomer(customers);
+            parseCustomer(customers, search);
         }
     }
 
-    private void populateStock() throws SQLException {
+    public void populateStock(String search) throws SQLException {
         if (con != null) {
             PreparedStatement ps
                     = con.prepareStatement("SELECT * FROM stock");
@@ -200,11 +219,11 @@ public class MainWindow extends JFrame {
                 Stock s = new Stock(ID, quantity, partName, vType, years, manu, price, threshold, pendingQuantity, pendingDate);
                 stocks.add(s);
             }
-            parseStock(stocks);
+            parseStock(stocks, search);
         }
     }
 
-    private void populateBooking() throws SQLException {
+    public void populateBooking(String search) throws SQLException {
         if (con != null) {
             PreparedStatement ps
                     = con.prepareStatement("SELECT * FROM bookings");
@@ -222,11 +241,11 @@ public class MainWindow extends JFrame {
                 Booking b = new Booking(ID, customer, bType, description, dateBooked, expectedCompletionDate, quotedPrice, paidFor);
                 bookings.add(b);
             }
-            parseBooking(bookings);
+            parseBooking(bookings, search);
         }
     }
 
-    private void populateJob() throws SQLException {
+    public void populateJob(String search) throws SQLException {
         if (con != null) {
             PreparedStatement ps
                     = con.prepareStatement("SELECT * FROM job");
@@ -257,7 +276,7 @@ public class MainWindow extends JFrame {
                 Job j = new Job(ID, dateCreated, dateDue, initialDescription, detailedDescription, stockArray, duration, price, new Vehicle());
                 jobs.add(j);
             }
-            parseJob(jobs);
+            parseJob(jobs, search);
         }
     }
 
@@ -324,7 +343,7 @@ public class MainWindow extends JFrame {
         }
     }
 
-    private void populateUsers() throws SQLException {
+    public void populateUsers(String search) throws SQLException {
         if (con != null) {
             PreparedStatement ps = con.prepareStatement("SELECT * FROM users");
             ResultSet rs = ps.executeQuery();
@@ -343,7 +362,7 @@ public class MainWindow extends JFrame {
                 User u = new User(ID, username, password, address, city, pCode, tNumber, email, DOB, accessLevel);
                 users.add(u);
             }
-            parseUsers(users);
+            parseUsers(users, search);
         }
     }
 
@@ -461,7 +480,7 @@ public class MainWindow extends JFrame {
                 ps.setInt(7, (bookingPopup.paidForCheckbox.isSelected()) ? 1 : 0);
                 ps.executeUpdate();
                 System.out.println("Booking added to database");
-                populateBooking();
+                populateBooking(null);
             } else {
                 PreparedStatement updateStatement = con.prepareStatement("UPDATE bookings "
                         + "SET dateBooked=?, expectedCompletionDate=?, quotedPrice=?, paidFor=?, type=?, description=? "
@@ -473,7 +492,7 @@ public class MainWindow extends JFrame {
                 updateStatement.setInt(5, bookingTypeToInt(bookingPopup.typeBox.getSelectedItem().toString()));
                 updateStatement.setString(6, bookingPopup.descriptionField.getText());
                 updateStatement.executeUpdate();
-                populateBooking();
+                populateBooking(null);
                 // Modify Customer
                 System.out.println("Booking Modify");
             }
@@ -531,7 +550,7 @@ public class MainWindow extends JFrame {
                 ps.setString(11, customersPopup.emailTextField.getText());
                 ps.setInt(12, -1);
                 ps.executeUpdate();
-                populateCustomer();
+                populateCustomer(null);
                 System.out.println("Customer Added");
             } else {
                 PreparedStatement updateStatement = con.prepareStatement("UPDATE customer "
@@ -549,7 +568,7 @@ public class MainWindow extends JFrame {
                 updateStatement.setString(10, customersPopup.cNameTextField.getText());
                 updateStatement.setString(11, customersPopup.emailTextField.getText());
                 updateStatement.executeUpdate();
-                populateCustomer();
+                populateCustomer(null);
                 // Modify Customer
                 System.out.println("Customer Modified");
             }
@@ -605,7 +624,7 @@ public class MainWindow extends JFrame {
                 ps.setString(9, stockPopup.yearsTextBox.getText());
                 ps.executeUpdate();
                 System.out.println("Stock added to database");
-                populateStock();
+                populateStock(null);
             } else {
                 PreparedStatement updateStatement = con.prepareStatement("UPDATE stock "
                         + "SET partName=?, vType=?, Years=?, price=?, Threshold=?, pendingDate=?, pendingQuantity=? "
@@ -618,7 +637,7 @@ public class MainWindow extends JFrame {
                 updateStatement.setString(6, (stockPopup.pendingDateTextField.getText()));
                 updateStatement.setString(4, (stockPopup.pendingQuantityTextField.getText()));
                 updateStatement.executeUpdate();
-                populateStock();
+                populateStock(null);
                 // Modify Customer
                 System.out.println("Stock Modified");
             }
@@ -675,7 +694,7 @@ public class MainWindow extends JFrame {
                 ps.setString(8, userPopup.emailTextField.getText());
                 ps.setInt(9, Integer.parseInt(userPopup.accessLevelTextField.getText()));
                 ps.executeUpdate();
-                populateUsers();
+                populateUsers(null);
                 System.out.println("User Added");
             } else {
                 PreparedStatement updateStatement = con.prepareStatement("UPDATE users "
@@ -690,7 +709,7 @@ public class MainWindow extends JFrame {
                 updateStatement.setString(7, userPopup.accessLevelTextField.getText());
                 updateStatement.setString(8, userPopup.emailTextField.getText());
                 updateStatement.executeUpdate();
-                populateUsers();
+                populateUsers(null);
                 // Modify Customer
                 System.out.println("User Modified");
             }
@@ -835,50 +854,46 @@ public class MainWindow extends JFrame {
     //Connects to remote database and saves it as con
     private void connectToDB() throws ClassNotFoundException, SQLException {
         System.out.println("Connecting to database...");
-
         try {
-            con = DriverManager.getConnection(URL, user, pw);
+            con = DriverManager.getConnection(URL, USER, PW);
             System.out.println("Database connected!");
         } catch (SQLException e) {
             System.out.println("Can't Connect at: " + URL);
+            mainGUI.redLabel.setText("Can't connect to the Database");
         }
     }
 
     //Called in MainGUI
     public boolean login(String username, String password) throws SQLException {
-        if (con != null) {
-            boolean loggedIn = false;
-            PreparedStatement ps = con.prepareStatement("SELECT Username, Password FROM users WHERE username=? AND Password=?");
-            ps.setString(1, username);
-            ps.setString(2, password);
-            ResultSet rs = ps.executeQuery();
-            if (rs.next()) {
-                if (username.equals(rs.getString(1)) && password.equals(rs.getString(2))) {
-                    loggedIn = true;
-                    System.out.println("Logged In");
-                }
-            } else {
-                System.out.println("Nope Nope Nope Nope");
+        boolean loggedIn = false;
+        PreparedStatement ps = con.prepareStatement("SELECT Username, Password FROM users WHERE username=? AND Password=?");
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) {
+            if (username.equals(rs.getString(1)) && password.equals(rs.getString(2))) {
+                loggedIn = true;
             }
-            return loggedIn;
         }
-        return false;
+        return loggedIn;
     }
 
     //Calls login and handles outcome
     public void verifyLogin(String name, String pw) throws SQLException {
+        if (con == null) {
+            return;
+        }
         if (login(name, pw.replace("[", "").replace("]", ""))) {
             showLists();
             populateVehicle();
-            populateCustomer();
-            populateUsers();
+            populateCustomer(null);
+            populateUsers(null);
             populateManufacturer();
-            populateStock();
-            populateBooking();
-            populateJob();
+            populateStock(null);
+            populateBooking(null);
+            populateJob(null);
             populateReminder();
             populateJobInvoice();
-            //showPopup(0);
         } else {
             mainGUI.redLabel.setText("Incorrect Username or Password");
         }
@@ -927,24 +942,24 @@ public class MainWindow extends JFrame {
     public void removeBooking(int _ID) throws SQLException {
         PreparedStatement deleteStatement = con.prepareStatement("DELETE FROM bookings WHERE BookingsID = " + _ID);
         deleteStatement.executeUpdate();
-        populateBooking();
+        populateBooking(null);
     }
 
     public void removeCustomer(int _ID) throws SQLException {
         PreparedStatement deleteStatement = con.prepareStatement("DELETE FROM customer WHERE CustomerID = " + _ID);
         deleteStatement.executeUpdate();
-        populateCustomer();
+        populateCustomer(null);
     }
 
     public void removeUser(int _ID) throws SQLException {
         PreparedStatement deleteStatement = con.prepareStatement("DELETE FROM users WHERE UserID = " + _ID);
         deleteStatement.executeUpdate();
-        populateUsers();
+        populateUsers(null);
     }
 
     public void removeStock(int _ID) throws SQLException {
         PreparedStatement deleteStatement = con.prepareStatement("DELETE FROM stock WHERE StockID = " + _ID);
         deleteStatement.executeUpdate();
-        populateStock();
+        populateStock(null);
     }
 }

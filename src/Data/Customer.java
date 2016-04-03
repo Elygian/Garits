@@ -1,10 +1,9 @@
 package Data;
 
+public class Customer extends StringComparable {
 
-public class Customer {
-
-    public Customer(int ID, String dateRegistered, String fName, String lName, String cName, 
-            String address, String city, String pCode, String tNumber, String faxNumber, int dob, 
+    public Customer(int ID, String dateRegistered, String fName, String lName, String cName,
+            String address, String city, String pCode, String tNumber, String faxNumber, int dob,
             String email, int reminderCount, int responseRate, Vehicle[] vehicle) {
         this.ID = ID;
         this.dateRegistered = dateRegistered;
@@ -22,23 +21,35 @@ public class Customer {
         this.responseRate = responseRate;
         this.vehicle = vehicle;
     }
-   public int ID;
-   public String dateRegistered;
-   public String fName;
-   public String lName;
-   public String cName;
-   public String address;
-   public String city;
-   public String pCode;
-   public String tNumber;
-   public String faxNumber;
-   public int dob;
-   public String email;
-   public int reminderCount;
-   public int responseRate;
-   public Vehicle[] vehicle;
+    public int ID;
+    public String dateRegistered;
+    public String fName;
+    public String lName;
+    public String cName;
+    public String address;
+    public String city;
+    public String pCode;
+    public String tNumber;
+    public String faxNumber;
+    public int dob;
+    public String email;
+    public int reminderCount;
+    public int responseRate;
+    public Vehicle[] vehicle;
 
     public Customer() {
-        
+
+    }
+
+    @Override
+    public String toComparisonString() {
+        String s = "";
+        for (Vehicle v : vehicle) {
+            s += " " + v.toComparisonString();
+        }
+
+        return ID + " " + dateRegistered + " " + fName + " " + lName + " " + cName + " " + address + " " + city + " " + pCode + " " + tNumber + " " + faxNumber + " " + dob
+                + " " + email + " " + reminderCount + " " + responseRate
+                + " " + s;
     }
 }

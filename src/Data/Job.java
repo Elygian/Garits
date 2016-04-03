@@ -1,7 +1,6 @@
-
 package Data;
 
-public class Job {
+public class Job extends StringComparable {
 
     public Job(int ID, int dateCreated, int dateDue, String initialDescription, String detailedDescription, Stock[] Arraystock, int duration, float price, Vehicle vehicle) {
         this.ID = ID;
@@ -23,5 +22,15 @@ public class Job {
     public int duration;
     public float price;
     public Vehicle vehicle;
-    
+
+    @Override
+    public String toComparisonString() {
+        String a = (vehicle != null) ? vehicle.toComparisonString() : "";
+        String s = "";
+        for (Stock stock : Arraystock) {
+            s += stock.toComparisonString() + " ";
+        }
+        return ID + " " + dateCreated + " " + dateDue + " " + initialDescription + " " + detailedDescription + " " + duration + " " + price
+                + " " + a + ", " + s;
+    }
 }

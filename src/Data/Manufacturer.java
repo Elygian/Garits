@@ -1,10 +1,10 @@
-
 package Data;
 
+public class Manufacturer extends StringComparable {
 
-public class Manufacturer {
-    public Manufacturer(){
+    public Manufacturer() {
     }
+
     public Manufacturer(int ID, String name, String address, String city, String pCode, String tNumber, String faxNumber, String website, String email) {
         this.ID = ID;
         this.name = name;
@@ -25,4 +25,9 @@ public class Manufacturer {
     public String faxNumber;
     public String website;
     public String email;
+
+    @Override
+    public String toComparisonString() {
+        return ID + " " + name + " " + address + " " + city + " " + pCode + " " + tNumber + " " + faxNumber + " " + website + " " + email;
+    }
 }

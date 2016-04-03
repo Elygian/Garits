@@ -1,6 +1,6 @@
 package Data;
 
-public class Stock {
+public class Stock extends StringComparable {
 
     public Stock(int ID, int quantity, String partName, int vType, String years, Manufacturer manu, float price, int threshold, int pendingQuantity, int pendingDate) {
         this.ID = ID;
@@ -25,4 +25,11 @@ public class Stock {
     public int pendingDate;
     public Manufacturer manufacturer;
 
+    @Override
+    public String toComparisonString() {
+        String s = (manufacturer != null) ? manufacturer.toComparisonString() : "";
+
+        return ID + " " + quantity + " " + partName + " " + vType + " " + years + " " + price + " " + threshold + " " + pendingQuantity + " " + pendingDate
+                + " " + s;
+    }
 }

@@ -1,6 +1,6 @@
 package Data;
 
-public class Vehicle {
+public class Vehicle extends StringComparable {
 
     public Vehicle() {
     }
@@ -24,5 +24,10 @@ public class Vehicle {
     public String engineSerialNumber;
     public String chasisNumber;
     public String color;
-    public int mileage;             
+    public int mileage;
+
+    @Override
+    public String toComparisonString() {
+        return ID + " " + rNumber + " " + vType + " " + make + " " + model + " " + engineSerialNumber + " " + chasisNumber + " " + color + " " + mileage;
+    }
 }

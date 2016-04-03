@@ -1,6 +1,6 @@
 package Data;
 
-public class User {
+public class User extends StringComparable {
 
     public User(int ID, String username, String pWord, String address, String city, String pCode, String tNumber, String email, int DOB, int accessLevel) {
         this.ID = ID;
@@ -24,4 +24,9 @@ public class User {
     public String email;
     public int DOB;
     public int accessLevel;
+
+    @Override
+    public String toComparisonString() {
+        return ID + " " + username + " " + pWord + " " + city + " " + pCode + " " + tNumber + " " + email + " " + DOB + " " + accessLevel;
+    }
 }
