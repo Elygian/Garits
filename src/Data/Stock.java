@@ -2,7 +2,7 @@ package Data;
 
 public class Stock extends StringComparable {
 
-    public Stock(int ID, int quantity, String partName, int vType, String years, Manufacturer manu, float price, int threshold, int pendingQuantity, int pendingDate) {
+    public Stock(int ID, int quantity, String partName, int vType, String years, Manufacturer manu, float price, int threshold, int pendingQuantity, String pendingDate) {
         this.ID = ID;
         this.quantity = quantity;
         this.partName = partName;
@@ -22,7 +22,7 @@ public class Stock extends StringComparable {
     public float price;
     public int threshold;
     public int pendingQuantity;
-    public int pendingDate;
+    public String pendingDate;
     public Manufacturer manufacturer;
 
     @Override

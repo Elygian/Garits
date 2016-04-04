@@ -5,6 +5,7 @@
  */
 package Garits.GUI.Forms;
 
+import Data.Customer;
 import Garits.Main.MainWindow;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -15,16 +16,20 @@ import java.util.logging.Logger;
  * @author KSA
  */
 public class VehiclePopup extends javax.swing.JFrame {
-MainWindow main;
-int id;
+
+    MainWindow main;
+    int id;
+    Customer customer;
+
     /**
      * Creates new form CustomerAccountsPopup
      */
-    public VehiclePopup(MainWindow main, int id) {
+    public VehiclePopup(MainWindow main, int id, Customer customer) {
         initComponents();
         this.id = id;
         this.main = main;
-                this.setLocation(main.size.width/2 - this.getWidth()/2, main.size.height/2 - this.getHeight()/2);
+        this.customer = customer;
+        this.setLocation(main.size.width / 2 - this.getWidth() / 2, main.size.height / 2 - this.getHeight() / 2);
     }
 
     /**
@@ -235,9 +240,12 @@ int id;
     }//GEN-LAST:event_removeVehicleButtonActionPerformed
 
     private void saveVehicleButtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveVehicleButtoActionPerformed
-            try {
-            main.vehiclePopupSave(id);// TODO add your handling code here:
+        try {
+            main.vehiclePopupSave(id, customer);// TODO add your handling code here:
             setVisible(false);
+            if(main.customersPopup != null && main.customersPopup.isShowing()){
+                main.populateCustomerPopup(customer);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(VehiclePopup.class.getName()).log(Level.SEVERE, null, ex);
         }// TODO add your handling code here:        // TODO add your handling code here:

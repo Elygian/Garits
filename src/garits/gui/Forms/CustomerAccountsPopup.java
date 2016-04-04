@@ -29,6 +29,9 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         initComponents();
         this.main = main;
         this.id = id;
+        if(id == -1){
+            addVehicleButton.setVisible(false);
+        }
         this.setLocation(main.size.width / 2 - this.getWidth() / 2, main.size.height / 2 - this.getHeight() / 2);
     }
 
@@ -70,6 +73,7 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         emailTextField = new javax.swing.JTextField();
         vehicleDropdown = new javax.swing.JComboBox<>();
         cNameLabel1 = new javax.swing.JLabel();
+        addVehicleButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -181,6 +185,13 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
 
         cNameLabel1.setText("Vehicles");
 
+        addVehicleButton.setText("Add vehicle");
+        addVehicleButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addVehicleButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -215,18 +226,13 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fNameLabel)
-                                    .addComponent(addressLabel))
-                                .addGap(29, 29, 29)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
-                                    .addComponent(fNameTextField))
-                                .addGap(156, 156, 156))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(viewVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(54, 54, 54)))
+                            .addComponent(fNameLabel)
+                            .addComponent(addressLabel))
+                        .addGap(29, 29, 29)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                            .addComponent(fNameTextField))
+                        .addGap(156, 156, 156)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(dobLabel)
@@ -251,7 +257,12 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(emailTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(99, 99, 99))))
+                        .addGap(99, 99, 99))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(viewVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(addVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(241, 241, 241))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -318,7 +329,8 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vehicleDropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(viewVehicleButton)
-                    .addComponent(cNameLabel1))
+                    .addComponent(cNameLabel1)
+                    .addComponent(addVehicleButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveCustomerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -330,11 +342,11 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void viewVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewVehicleButtonActionPerformed
-       int a = vehicleDropdown.getSelectedIndex();
-       String c = vehicleDropdown.getItemAt(vehicleDropdown.getSelectedIndex());
         Vehicle vehicle = main.getVehicleFromRNumber(vehicleDropdown.getItemAt(vehicleDropdown.getSelectedIndex()));
-        main.showPopup(6,vehicle.ID);
-        main.populateVehiclePopup(vehicle);
+        if (vehicle != null) {
+            main.showVehiclePopup(-1, id);
+            main.populateVehiclePopup(vehicle);
+        }
     }//GEN-LAST:event_viewVehicleButtonActionPerformed
 
     private void saveCustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveCustomerButtonActionPerformed
@@ -386,8 +398,13 @@ public class CustomerAccountsPopup extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_removeCustomerButtonActionPerformed
 
+    private void addVehicleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addVehicleButtonActionPerformed
+            main.showVehiclePopup(-1, id);
+    }//GEN-LAST:event_addVehicleButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addVehicleButton;
     private javax.swing.JLabel addressLabel;
     public javax.swing.JTextArea addressTextField;
     private javax.swing.JLabel cNameLabel;

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Garits.GUI.Forms;
 
 import Garits.Main.MainWindow;
@@ -28,7 +23,12 @@ public class Lists extends javax.swing.JPanel {
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     bookingList.clearSelection();
                 }
+                if (e.getClickCount() == 2 && !e.isConsumed()) {
+                    addModifyBooking.doClick();
+                }
+
             }
+
         });
         jScrollPane5.addMouseListener(new MouseAdapter() {
             @Override
@@ -44,6 +44,9 @@ public class Lists extends javax.swing.JPanel {
             public void mousePressed(MouseEvent e) {
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     customerList.clearSelection();
+                }
+                if (e.getClickCount() == 2 && !e.isConsumed()) {
+                    addModifyCustomer.doClick();
                 }
             }
         });
@@ -62,6 +65,9 @@ public class Lists extends javax.swing.JPanel {
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     usersList.clearSelection();
                 }
+                if (e.getClickCount() == 2 && !e.isConsumed()) {
+                    addModifyUser.doClick();
+                }
             }
         });
         jScrollPane19.addMouseListener(new MouseAdapter() {
@@ -79,6 +85,9 @@ public class Lists extends javax.swing.JPanel {
                 if (e.getButton() == MouseEvent.BUTTON3) {
                     stockList.clearSelection();
                 }
+                if (e.getClickCount() == 2 && !e.isConsumed()) {
+                    addModifyStock.doClick();
+                }
             }
         });
         jScrollPane16.addMouseListener(new MouseAdapter() {
@@ -86,6 +95,46 @@ public class Lists extends javax.swing.JPanel {
             public void mousePressed(MouseEvent e) {
 
                 stockList.clearSelection();
+
+            }
+        });
+
+        vehicleList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    vehicleList.clearSelection();
+                }
+                if (e.getClickCount() == 2 && !e.isConsumed()) {
+                    addModifyVehicle.doClick();
+                }
+            }
+        });
+        jScrollPane20.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                vehicleList.clearSelection();
+
+            }
+        });
+
+        jobList.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                if (e.getButton() == MouseEvent.BUTTON3) {
+                    jobList.clearSelection();
+                }
+                if (e.getClickCount() == 2 && !e.isConsumed()) {
+                    addModifyJob.doClick();
+                }
+            }
+        });
+        jScrollPane17.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+                jobList.clearSelection();
 
             }
         });
@@ -99,7 +148,7 @@ public class Lists extends javax.swing.JPanel {
         jLayeredPane1 = new javax.swing.JLayeredPane();
         jScrollPane5 = new javax.swing.JScrollPane();
         bookingList = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
+        addModifyBooking = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         bookingSearchField = new javax.swing.JTextField();
         bookingSearchButton = new javax.swing.JButton();
@@ -107,14 +156,14 @@ public class Lists extends javax.swing.JPanel {
         jScrollPane16 = new javax.swing.JScrollPane();
         stockList = new javax.swing.JTable();
         Order = new javax.swing.JButton();
-        Add = new javax.swing.JButton();
+        addModifyStock = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         stockSearchField = new javax.swing.JTextField();
         stockSearchButton = new javax.swing.JButton();
         jLayeredPane6 = new javax.swing.JLayeredPane();
         jScrollPane17 = new javax.swing.JScrollPane();
         jobList = new javax.swing.JTable();
-        jButton11 = new javax.swing.JButton();
+        addModifyJob = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jobsSearchField = new javax.swing.JTextField();
@@ -122,18 +171,26 @@ public class Lists extends javax.swing.JPanel {
         jLayeredPane7 = new javax.swing.JLayeredPane();
         jScrollPane18 = new javax.swing.JScrollPane();
         customerList = new javax.swing.JTable();
-        jButton7 = new javax.swing.JButton();
+        addModifyCustomer = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         customersSearchField = new javax.swing.JTextField();
         customersSearchButton = new javax.swing.JButton();
+        makeBooking = new javax.swing.JButton();
         jLayeredPane9 = new javax.swing.JLayeredPane();
         jScrollPane19 = new javax.swing.JScrollPane();
         usersList = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
+        addModifyUser = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         usersSearchField = new javax.swing.JTextField();
         usersSearchButton = new javax.swing.JButton();
+        jLayeredPane10 = new javax.swing.JLayeredPane();
+        jScrollPane20 = new javax.swing.JScrollPane();
+        vehicleList = new javax.swing.JTable();
+        addModifyVehicle = new javax.swing.JButton();
+        jButton19 = new javax.swing.JButton();
+        vehicleSearchField = new javax.swing.JTextField();
+        vehicleSearchButton = new javax.swing.JButton();
 
         bookingList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -214,10 +271,10 @@ public class Lists extends javax.swing.JPanel {
         bookingList.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(bookingList);
 
-        jButton4.setText("Add/Modify");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        addModifyBooking.setText("Add/Modify");
+        addModifyBooking.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                addModifyBookingActionPerformed(evt);
             }
         });
 
@@ -258,7 +315,7 @@ public class Lists extends javax.swing.JPanel {
         });
 
         jLayeredPane1.setLayer(jScrollPane5, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane1.setLayer(jButton4, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(addModifyBooking, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(jButton10, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(bookingSearchField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(bookingSearchButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -270,7 +327,7 @@ public class Lists extends javax.swing.JPanel {
             .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
             .addGroup(jLayeredPane1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addModifyBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -285,7 +342,7 @@ public class Lists extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addModifyBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(bookingSearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bookingSearchField)))
@@ -374,10 +431,10 @@ public class Lists extends javax.swing.JPanel {
 
         Order.setText("Order");
 
-        Add.setText("Add/Modify");
-        Add.addActionListener(new java.awt.event.ActionListener() {
+        addModifyStock.setText("Add/Modify");
+        addModifyStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddActionPerformed(evt);
+                addModifyStockActionPerformed(evt);
             }
         });
 
@@ -414,7 +471,7 @@ public class Lists extends javax.swing.JPanel {
 
         jLayeredPane5.setLayer(jScrollPane16, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane5.setLayer(Order, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane5.setLayer(Add, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane5.setLayer(addModifyStock, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane5.setLayer(jButton12, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane5.setLayer(stockSearchField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane5.setLayer(stockSearchButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -426,7 +483,7 @@ public class Lists extends javax.swing.JPanel {
             .addComponent(jScrollPane16, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
             .addGroup(jLayeredPane5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addModifyStock, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -445,7 +502,7 @@ public class Lists extends javax.swing.JPanel {
                     .addGroup(jLayeredPane5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(Order, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(Add, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(addModifyStock, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(stockSearchField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(stockSearchButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
@@ -531,10 +588,10 @@ public class Lists extends javax.swing.JPanel {
         jobList.getTableHeader().setReorderingAllowed(false);
         jScrollPane17.setViewportView(jobList);
 
-        jButton11.setText("Add/Modify");
-        jButton11.addActionListener(new java.awt.event.ActionListener() {
+        addModifyJob.setText("Add/Modify");
+        addModifyJob.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton11ActionPerformed(evt);
+                addModifyJobActionPerformed(evt);
             }
         });
 
@@ -587,7 +644,7 @@ public class Lists extends javax.swing.JPanel {
         });
 
         jLayeredPane6.setLayer(jScrollPane17, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane6.setLayer(jButton11, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane6.setLayer(addModifyJob, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane6.setLayer(jButton13, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane6.setLayer(jButton14, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane6.setLayer(jobsSearchField, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -600,7 +657,7 @@ public class Lists extends javax.swing.JPanel {
             .addComponent(jScrollPane17, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
             .addGroup(jLayeredPane6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addModifyJob, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -617,7 +674,7 @@ public class Lists extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jLayeredPane6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addModifyJob, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jobsSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -705,10 +762,10 @@ public class Lists extends javax.swing.JPanel {
         customerList.getTableHeader().setReorderingAllowed(false);
         jScrollPane18.setViewportView(customerList);
 
-        jButton7.setText("Add/Modify");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        addModifyCustomer.setText("Add/Modify");
+        addModifyCustomer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
+                addModifyCustomerActionPerformed(evt);
             }
         });
 
@@ -750,12 +807,15 @@ public class Lists extends javax.swing.JPanel {
             }
         });
 
+        makeBooking.setText("Make Booking");
+
         jLayeredPane7.setLayer(jScrollPane18, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane7.setLayer(jButton7, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane7.setLayer(addModifyCustomer, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(jButton15, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(jButton16, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(customersSearchField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane7.setLayer(customersSearchButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane7.setLayer(makeBooking, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane7Layout = new javax.swing.GroupLayout(jLayeredPane7);
         jLayeredPane7.setLayout(jLayeredPane7Layout);
@@ -764,11 +824,13 @@ public class Lists extends javax.swing.JPanel {
             .addComponent(jScrollPane18, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
             .addGroup(jLayeredPane7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addModifyCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(makeBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(customersSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -781,9 +843,10 @@ public class Lists extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jLayeredPane7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addModifyCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(makeBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(customersSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(customersSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
@@ -869,10 +932,10 @@ public class Lists extends javax.swing.JPanel {
         usersList.getTableHeader().setReorderingAllowed(false);
         jScrollPane19.setViewportView(usersList);
 
-        jButton8.setText("Add/Modify");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        addModifyUser.setText("Add/Modify");
+        addModifyUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                addModifyUserActionPerformed(evt);
             }
         });
 
@@ -894,6 +957,11 @@ public class Lists extends javax.swing.JPanel {
                 usersSearchFieldMouseClicked(evt);
             }
         });
+        usersSearchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usersSearchFieldActionPerformed(evt);
+            }
+        });
         usersSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 usersSearchFieldKeyPressed(evt);
@@ -913,7 +981,7 @@ public class Lists extends javax.swing.JPanel {
         });
 
         jLayeredPane9.setLayer(jScrollPane19, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jLayeredPane9.setLayer(jButton8, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane9.setLayer(addModifyUser, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane9.setLayer(jButton18, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane9.setLayer(usersSearchField, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane9.setLayer(usersSearchButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -925,7 +993,7 @@ public class Lists extends javax.swing.JPanel {
             .addComponent(jScrollPane19, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
             .addGroup(jLayeredPane9Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addModifyUser, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -940,13 +1008,171 @@ public class Lists extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jLayeredPane9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jLayeredPane9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(addModifyUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jButton18, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(usersSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(usersSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        MainJTabbedPane.addTab("                        Users                        ", jLayeredPane9);
+        MainJTabbedPane.addTab(" Users", jLayeredPane9);
+
+        vehicleList.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "ID", "Registration", "Type", "Make", "Model"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        vehicleList.getTableHeader().setReorderingAllowed(false);
+        jScrollPane20.setViewportView(vehicleList);
+
+        addModifyVehicle.setText("Add/Modify");
+        addModifyVehicle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addModifyVehicleActionPerformed(evt);
+            }
+        });
+
+        jButton19.setText("Delete");
+        jButton19.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton19ActionPerformed(evt);
+            }
+        });
+
+        vehicleSearchField.setText("Type here..");
+        vehicleSearchField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                vehicleSearchFieldFocusLost(evt);
+            }
+        });
+        vehicleSearchField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vehicleSearchFieldMouseClicked(evt);
+            }
+        });
+        vehicleSearchField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                vehicleSearchFieldKeyPressed(evt);
+            }
+        });
+
+        vehicleSearchButton.setText("Search");
+        vehicleSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vehicleSearchButtonActionPerformed(evt);
+            }
+        });
+        vehicleSearchButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                vehicleSearchButtonKeyPressed(evt);
+            }
+        });
+
+        jLayeredPane10.setLayer(jScrollPane20, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane10.setLayer(addModifyVehicle, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane10.setLayer(jButton19, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane10.setLayer(vehicleSearchField, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane10.setLayer(vehicleSearchButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout jLayeredPane10Layout = new javax.swing.GroupLayout(jLayeredPane10);
+        jLayeredPane10.setLayout(jLayeredPane10Layout);
+        jLayeredPane10Layout.setHorizontalGroup(
+            jLayeredPane10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 1019, Short.MAX_VALUE)
+            .addGroup(jLayeredPane10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(addModifyVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(vehicleSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vehicleSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        jLayeredPane10Layout.setVerticalGroup(
+            jLayeredPane10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jLayeredPane10Layout.createSequentialGroup()
+                .addComponent(jScrollPane20, javax.swing.GroupLayout.DEFAULT_SIZE, 537, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jLayeredPane10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jLayeredPane10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(addModifyVehicle, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(vehicleSearchField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vehicleSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        MainJTabbedPane.addTab("Vehicles", jLayeredPane10);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -963,9 +1189,9 @@ public class Lists extends javax.swing.JPanel {
         getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+    private void addModifyJobActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addModifyJobActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton11ActionPerformed
+    }//GEN-LAST:event_addModifyJobActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
         // TODO add your handling code here:
@@ -975,7 +1201,7 @@ public class Lists extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton14ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void addModifyCustomerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addModifyCustomerActionPerformed
         System.out.println(this.customerList.getSelectedRow());
         if (main.lists.customerList.getSelectedRow() != -1) {
             main.showPopup(1, (int) main.lists.customerList.getValueAt(main.lists.customerList.getSelectedRow(), 0));
@@ -983,9 +1209,9 @@ public class Lists extends javax.swing.JPanel {
         } else {
             main.showPopup(1, -1);
         }
-    }//GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_addModifyCustomerActionPerformed
 
-    private void AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddActionPerformed
+    private void addModifyStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addModifyStockActionPerformed
         System.out.println(this.stockList.getSelectedRow());
         if (main.lists.stockList.getSelectedRow() != -1) {
             main.showPopup(4, (int) main.lists.stockList.getValueAt(main.lists.stockList.getSelectedRow(), 0));
@@ -993,19 +1219,18 @@ public class Lists extends javax.swing.JPanel {
         } else {
             main.showPopup(4, -1);
         }
-    }//GEN-LAST:event_AddActionPerformed
+    }//GEN-LAST:event_addModifyStockActionPerformed
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        System.out.println(this.usersList.getSelectedRow());
+    private void addModifyUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addModifyUserActionPerformed
         if (main.lists.usersList.getSelectedRow() != -1) {
             main.showPopup(5, (int) main.lists.usersList.getValueAt(main.lists.usersList.getSelectedRow(), 0));
             main.populateUserPopup(main.getUser((int) main.lists.usersList.getValueAt(main.lists.usersList.getSelectedRow(), 0)));
         } else {
             main.showPopup(5, -1);
         }       // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_addModifyUserActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void addModifyBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addModifyBookingActionPerformed
         System.out.println(this.bookingList.getSelectedRow());
         if (main.lists.bookingList.getSelectedRow() != -1) {
             main.showPopup(0, (int) main.lists.bookingList.getValueAt(main.lists.bookingList.getSelectedRow(), 0));
@@ -1013,7 +1238,7 @@ public class Lists extends javax.swing.JPanel {
         } else {
             main.showPopup(0, -1);
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_addModifyBookingActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         try {
@@ -1212,11 +1437,69 @@ public class Lists extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_usersSearchFieldKeyPressed
 
+    private void addModifyVehicleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addModifyVehicleActionPerformed
+        if (main.lists.vehicleList.getSelectedRow() != -1) {
+            main.showPopup(6, (int) main.lists.vehicleList.getValueAt(main.lists.vehicleList.getSelectedRow(), 0));
+            main.populateVehiclePopup(main.getVehicle((int) main.lists.vehicleList.getValueAt(main.lists.vehicleList.getSelectedRow(), 0)));
+        } else {
+            main.showPopup(6, -1);
+        }
+    }//GEN-LAST:event_addModifyVehicleActionPerformed
+
+    private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+        try {
+            if (main.lists.vehicleList.getSelectedRow() != -1) {
+                main.removeVehicle((int) main.lists.vehicleList.getValueAt(main.lists.vehicleList.getSelectedRow(), 0));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Lists.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton19ActionPerformed
+
+    private void vehicleSearchFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_vehicleSearchFieldFocusLost
+        if ("".equals(vehicleSearchField.getText())) {
+            vehicleSearchField.setText(DEFAULT_TEXT);
+        }
+    }//GEN-LAST:event_vehicleSearchFieldFocusLost
+
+    private void vehicleSearchFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vehicleSearchFieldMouseClicked
+        if (DEFAULT_TEXT.equals(vehicleSearchField.getText())) {
+            vehicleSearchField.setText("");
+        }
+    }//GEN-LAST:event_vehicleSearchFieldMouseClicked
+
+    private void vehicleSearchFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vehicleSearchFieldKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            vehicleSearchButton.doClick();
+        }
+    }//GEN-LAST:event_vehicleSearchFieldKeyPressed
+
+    private void vehicleSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vehicleSearchButtonActionPerformed
+        try {
+            main.populateVehicle(vehicleSearchField.getText());
+        } catch (SQLException ex) {
+            Logger.getLogger(Lists.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_vehicleSearchButtonActionPerformed
+
+    private void vehicleSearchButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_vehicleSearchButtonKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_vehicleSearchButtonKeyPressed
+
+    private void usersSearchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usersSearchFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usersSearchFieldActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Add;
     private javax.swing.JTabbedPane MainJTabbedPane;
     private javax.swing.JButton Order;
+    private javax.swing.JButton addModifyBooking;
+    private javax.swing.JButton addModifyCustomer;
+    private javax.swing.JButton addModifyJob;
+    private javax.swing.JButton addModifyStock;
+    private javax.swing.JButton addModifyUser;
+    private javax.swing.JButton addModifyVehicle;
     public javax.swing.JTable bookingList;
     private javax.swing.JButton bookingSearchButton;
     private javax.swing.JTextField bookingSearchField;
@@ -1224,17 +1507,15 @@ public class Lists extends javax.swing.JPanel {
     private javax.swing.JButton customersSearchButton;
     private javax.swing.JTextField customersSearchField;
     private javax.swing.JButton jButton10;
-    private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton18;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton19;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLayeredPane jLayeredPane10;
     private javax.swing.JLayeredPane jLayeredPane5;
     private javax.swing.JLayeredPane jLayeredPane6;
     private javax.swing.JLayeredPane jLayeredPane7;
@@ -1243,15 +1524,20 @@ public class Lists extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane18;
     private javax.swing.JScrollPane jScrollPane19;
+    private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane5;
     public javax.swing.JTable jobList;
     private javax.swing.JButton jobsSearchButton;
     private javax.swing.JTextField jobsSearchField;
+    private javax.swing.JButton makeBooking;
     public javax.swing.JTable stockList;
     private javax.swing.JButton stockSearchButton;
     private javax.swing.JTextField stockSearchField;
     public javax.swing.JTable usersList;
     private javax.swing.JButton usersSearchButton;
     private javax.swing.JTextField usersSearchField;
+    public javax.swing.JTable vehicleList;
+    private javax.swing.JButton vehicleSearchButton;
+    private javax.swing.JTextField vehicleSearchField;
     // End of variables declaration//GEN-END:variables
 }

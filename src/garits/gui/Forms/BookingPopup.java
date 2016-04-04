@@ -261,7 +261,6 @@ public class BookingPopup extends javax.swing.JFrame {
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         try {
             main.bookingPopupSave(id);
-            setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(BookingPopup.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -5,7 +5,7 @@ public class Booking extends StringComparable {
     public Booking() {
     }
 
-    public Booking(int ID, Customer customer, String type, String description, int dateBooked, int expectedCompletionDate, float quotedPrice, boolean paidFor) {
+    public Booking(int ID, Customer customer, String type, String description, String dateBooked, String expectedCompletionDate, float quotedPrice, boolean paidFor) {
         this.ID = ID;
         this.customer = customer;
         this.type = type;
@@ -19,8 +19,8 @@ public class Booking extends StringComparable {
     public Customer customer;
     public String type;
     public String description;
-    public int dateBooked;
-    public int expectedCompletionDate;
+    public String dateBooked;
+    public String expectedCompletionDate;
     public float quotedPrice;
     public boolean paidFor;
 

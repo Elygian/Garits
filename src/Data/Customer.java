@@ -1,10 +1,12 @@
 package Data;
 
+import java.util.ArrayList;
+
 public class Customer extends StringComparable {
 
     public Customer(int ID, String dateRegistered, String fName, String lName, String cName,
-            String address, String city, String pCode, String tNumber, String faxNumber, int dob,
-            String email, int reminderCount, int responseRate, Vehicle[] vehicle) {
+            String address, String city, String pCode, String tNumber, String faxNumber, String dob,
+            String email, int reminderCount, int responseRate, ArrayList<Vehicle> vehicle) {
         this.ID = ID;
         this.dateRegistered = dateRegistered;
         this.fName = fName;
@@ -31,11 +33,11 @@ public class Customer extends StringComparable {
     public String pCode;
     public String tNumber;
     public String faxNumber;
-    public int dob;
+    public String dob;
     public String email;
     public int reminderCount;
     public int responseRate;
-    public Vehicle[] vehicle;
+    public ArrayList<Vehicle> vehicle;
 
     public Customer() {
 

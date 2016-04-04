@@ -2,7 +2,7 @@ package Data;
 
 public class Job extends StringComparable {
 
-    public Job(int ID, int dateCreated, int dateDue, String initialDescription, String detailedDescription, Stock[] Arraystock, int duration, float price, Vehicle vehicle) {
+    public Job(int ID, String dateCreated, String dateDue, String initialDescription, String detailedDescription, Stock[] Arraystock, int duration, float price, Vehicle vehicle) {
         this.ID = ID;
         this.dateCreated = dateCreated;
         this.dateDue = dateDue;
@@ -14,14 +14,15 @@ public class Job extends StringComparable {
         this.vehicle = vehicle;
     }
     public int ID;
-    public int dateCreated;
-    public int dateDue;
+    public String dateCreated;
+    public String dateDue;
     public String initialDescription;
     public String detailedDescription;
     public Stock[] Arraystock;
     public int duration;
     public float price;
     public Vehicle vehicle;
+   
 
     @Override
     public String toComparisonString() {

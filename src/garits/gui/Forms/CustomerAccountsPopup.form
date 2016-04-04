@@ -61,23 +61,15 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="fNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jScrollPane1" pref="183" max="32767" attributes="0"/>
-                                  <Component id="fNameTextField" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="viewVehicleButton" min="-2" pref="125" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="fNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="addressLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jScrollPane1" pref="183" max="32767" attributes="0"/>
+                          <Component id="fNameTextField" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="dobLabel" min="-2" max="-2" attributes="0"/>
@@ -110,6 +102,12 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="viewVehicleButton" min="-2" pref="125" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="addVehicleButton" min="-2" pref="125" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="241" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -202,6 +200,7 @@
                   <Component id="vehicleDropdown" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="viewVehicleButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cNameLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="addVehicleButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="51" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -411,6 +410,14 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Vehicles"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="addVehicleButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add vehicle"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addVehicleButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

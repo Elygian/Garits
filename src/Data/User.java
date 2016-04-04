@@ -2,7 +2,7 @@ package Data;
 
 public class User extends StringComparable {
 
-    public User(int ID, String username, String pWord, String address, String city, String pCode, String tNumber, String email, int DOB, int accessLevel) {
+    public User(int ID, String username, String pWord, String address, String city, String pCode, String tNumber, String email, String DOB, int accessLevel) {
         this.ID = ID;
         this.username = username;
         this.pWord = pWord;
@@ -22,7 +22,7 @@ public class User extends StringComparable {
     public String pCode;
     public String tNumber;
     public String email;
-    public int DOB;
+    public String DOB;
     public int accessLevel;
 
     @Override
