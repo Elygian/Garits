@@ -263,6 +263,7 @@ MainWindow main;
     private void saveUserButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveUserButtonActionPerformed
         try {
             main.userPopupSave(id);// TODO add your handling code here:
+            setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(UserPopup.class.getName()).log(Level.SEVERE, null, ex);
         }// TODO add your handling code here:

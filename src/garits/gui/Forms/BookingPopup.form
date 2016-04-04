@@ -27,54 +27,56 @@
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                       <Component id="viewCustomerButton" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="viewVehicleButton" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                       <Component id="removeBookingButton" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Component id="saveButton" min="-2" pref="146" max="-2" attributes="0"/>
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                      <EmptySpace pref="91" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="typeLabel" min="-2" pref="24" max="-2" attributes="0"/>
-                                  <Component id="customerSurnameLabel1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="customerSurnameLabel" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="typeLabel" min="-2" pref="24" max="-2" attributes="0"/>
+                                          <Component id="customerSurnameLabel1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="customerSurnameLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="customerNameField" max="32767" attributes="0"/>
+                                          <Component id="customerSurnameField" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="typeBox" alignment="0" pref="137" max="32767" attributes="0"/>
+                                          <Component id="DOBTextField" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Component id="customerNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="customerNameField" max="32767" attributes="0"/>
-                                  <Component id="customerSurnameField" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="typeBox" alignment="0" pref="137" max="32767" attributes="0"/>
-                                  <Component id="DOBTextField" alignment="0" max="32767" attributes="0"/>
+                              <EmptySpace pref="38" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="dateBookedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="dateDueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="quotedPriceLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="paidForLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="paidForCheckbox" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bookedField" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <Component id="dateFinishedField" min="-2" pref="137" max="-2" attributes="0"/>
+                                  <Component id="priceField" min="-2" pref="137" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="customerNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="descriptionLabel" min="-2" pref="75" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="dateBookedLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="dateDueLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="quotedPriceLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="paidForLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="paidForCheckbox" min="-2" max="-2" attributes="0"/>
-                          <Component id="bookedField" min="-2" pref="137" max="-2" attributes="0"/>
-                          <Component id="dateFinishedField" min="-2" pref="137" max="-2" attributes="0"/>
-                          <Component id="priceField" min="-2" pref="137" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="descriptionLabel" min="-2" pref="75" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
+                      <EmptySpace min="127" pref="127" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -150,27 +152,26 @@
                   <Component id="descriptionLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane1" min="-2" pref="75" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" pref="22" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="removeBookingButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="saveButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="viewCustomerButton" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="viewVehicleButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace type="separate" pref="22" max="32767" attributes="0"/>
+                      <Component id="viewCustomerButton" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="saveButton" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="removeBookingButton" min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="viewVehicleButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="View Vehicle"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="viewVehicleButtonActionPerformed"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="saveButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Save"/>

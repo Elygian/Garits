@@ -37,13 +37,14 @@
                               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel5" alignment="0" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel6" alignment="0" min="-2" pref="71" max="-2" attributes="0"/>
                                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
@@ -51,16 +52,15 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="regNumberTextField" pref="137" max="32767" attributes="0"/>
-                              <Component id="engSerialNumberTextField" pref="137" max="32767" attributes="0"/>
-                              <Component id="chasisNumberTextField" max="32767" attributes="0"/>
-                              <Component id="modelTextField" alignment="0" max="32767" attributes="0"/>
-                              <Component id="makeTextField" alignment="0" pref="137" max="32767" attributes="0"/>
-                          </Group>
-                          <Component id="colorTextField" min="-2" pref="137" max="-2" attributes="0"/>
-                          <Component id="mileageTextField" min="-2" pref="137" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="regNumberTextField" pref="137" max="32767" attributes="0"/>
+                          <Component id="engSerialNumberTextField" pref="137" max="32767" attributes="0"/>
+                          <Component id="chasisNumberTextField" max="32767" attributes="0"/>
+                          <Component id="modelTextField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="makeTextField" alignment="0" pref="137" max="32767" attributes="0"/>
+                          <Component id="colorTextField" pref="137" max="32767" attributes="0"/>
+                          <Component id="mileageTextField" pref="137" max="32767" attributes="0"/>
+                          <Component id="typeDropdown" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -120,10 +120,17 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="22" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="removeVehicleButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="saveVehicleButto" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="typeDropdown" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="removeVehicleButton" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                          <Component id="saveVehicleButto" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -244,6 +251,22 @@
           <Font name="Lucida Grande" size="24" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Vehicle"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="typeDropdown">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;Car&quot;, &quot;Van&quot;, &quot;e-Car&quot;, &quot;Motorbike&quot;})" type="code"/>
+        </Property>
+      </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Type"/>
       </Properties>
     </Component>
   </SubComponents>

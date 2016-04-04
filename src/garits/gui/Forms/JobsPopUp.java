@@ -61,6 +61,7 @@ public class JobsPopUp extends javax.swing.JFrame {
         timeTakeTextField = new javax.swing.JTextField();
         jobTitleLabel = new javax.swing.JLabel();
         viewVehicleButton = new javax.swing.JButton();
+        removeJobButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -171,6 +172,13 @@ public class JobsPopUp extends javax.swing.JFrame {
             }
         });
 
+        removeJobButton.setText("Save");
+        removeJobButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeJobButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -236,6 +244,8 @@ public class JobsPopUp extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(viewVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(removeJobButton, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))))
             .addGroup(layout.createSequentialGroup()
@@ -296,7 +306,8 @@ public class JobsPopUp extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(createInvoiceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(viewVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(viewVehicleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeJobButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -310,6 +321,7 @@ public class JobsPopUp extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
                 try {
             main.jobsPopupSave();// TODO add your handling code here:
+            setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(JobsPopUp.class.getName()).log(Level.SEVERE, null, ex);
         }// TODO add your handling code here:
@@ -355,6 +367,10 @@ public class JobsPopUp extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_viewVehicleButtonActionPerformed
 
+    private void removeJobButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeJobButtonActionPerformed
+
+    }//GEN-LAST:event_removeJobButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JComboBox<String> Day;
@@ -375,6 +391,7 @@ public class JobsPopUp extends javax.swing.JFrame {
     public javax.swing.JTextField makeTextField;
     private javax.swing.JLabel modelLabel;
     public javax.swing.JTextField modelTextField;
+    private javax.swing.JButton removeJobButton;
     private javax.swing.JLabel sparePartsLabel;
     public javax.swing.JTextField sparePartsTextField;
     private javax.swing.JLabel tNumberLabel;

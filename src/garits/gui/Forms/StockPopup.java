@@ -239,6 +239,7 @@ public class StockPopup extends javax.swing.JFrame {
     private void saveManufacturerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveManufacturerButtonActionPerformed
     try {
             main.stockPopupSave((int) main.lists.stockList.getValueAt(main.lists.stockList.getSelectedRow(), 0));// TODO add your handling code here:
+            setVisible(false);
         } catch (SQLException ex) {
             Logger.getLogger(StockPopup.class.getName()).log(Level.SEVERE, null, ex);
         }// TODO add your handling cod        // TODO add your handling code here:        // TODO add your handling code here:
